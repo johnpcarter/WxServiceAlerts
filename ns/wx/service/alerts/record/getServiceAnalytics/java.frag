@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Values version="2.0">
+  <value name="name">getServiceAnalytics</value>
+  <value name="encodeutf8">true</value>
+  <value name="body">Ly8gcGlwZWxpbmUgaW4gCgpJRGF0YUN1cnNvciBjID0gcGlwZWxpbmUuZ2V0Q3Vyc29yKCk7Cgov
+LyBwcm9jZXNzCgpsb25nIHlzY2FsZSA9IDIwMDsKCkFycmF5TGlzdDxJRGF0YT4gbmFtZXNwYWNl
+cyA9IG5ldyBBcnJheUxpc3Q8SURhdGE+KCk7CgkJCmZvciAoU3RyaW5nIGlkIDogX2RlZmF1bHQu
+a2V5U2V0KCkpIHsKCQkJCglNYXA8U3RyaW5nLCBTZXJ2aWNlSGlzdG9yeT4gaCA9IF9kZWZhdWx0
+LmdldChpZCkuZ2V0U2VydmljZUhpc3RvcnkoKTsKCQoJSURhdGEgbnMgPSBJRGF0YUZhY3Rvcnku
+Y3JlYXRlKCk7CglJRGF0YUN1cnNvciBuc2MgPSBucy5nZXRDdXJzb3IoKTsKCQoJbnNjLmRlc3Ry
+b3koKTsKCW5hbWVzcGFjZXMuYWRkKG5zKTsKfQoJCQovLyBwaXBlbGluZSBvdXQKCQkKSURhdGFV
+dGlsLnB1dChwaXBlbGluZUN1cnNvciwgInJlc3VsdHMiLCBuYW1lc3BhY2VzLnRvQXJyYXkobmV3
+IElEYXRhW25hbWVzcGFjZXMuc2l6ZSgpXSkpOwpwaXBlbGluZUN1cnNvci5kZXN0cm95KCk7Cgk=
+</value>
+</Values>

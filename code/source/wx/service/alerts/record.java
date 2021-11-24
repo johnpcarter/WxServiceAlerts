@@ -96,6 +96,7 @@ public final class record
 		} else {
 			IDataUtil.put(c, "results", AllComputers.instance.summary());
 		}	
+		
 		// pipeline out
 				
 		c.destroy();

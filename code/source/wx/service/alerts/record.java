@@ -64,6 +64,23 @@ public final class record
 		// [i] field:0:optional type
 		// [i] field:0:required yscale
 		// [o] record:1:required results
+		// [o] - field:0:required name
+		// [o] - record:1:required types
+		// [o] -- field:0:required name
+		// [o] -- field:0:required uom
+		// [o] -- field:0:required source
+		// [o] -- record:1:required eventTypes
+		// [o] --- field:0:required label
+		// [o] --- field:0:required color
+		// [o] -- record:1:required intervals
+		// [o] --- field:0:required time
+		// [o] --- record:1:required values
+		// [o] ---- field:0:required label
+		// [o] ---- object:0:required violationLevel
+		// [o] ---- object:0:required didFire
+		// [o] ---- object:0:required value
+		// [o] ---- object:0:required scaledValue
+		// [o] ---- field:0:required color
 		// pipeline in 
 		
 		IDataCursor c = pipeline.getCursor();

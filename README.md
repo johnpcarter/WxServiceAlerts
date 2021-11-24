@@ -28,7 +28,7 @@ http://localhost:5555/WxServiceAlerts
 
 You will need to enable auditing at the service level if you want to track service performance i.e. duration or execution count. You will need to do this in Designer and for each service. Ensure that you set the audit setting "Log on" to "Error, Success end Start". However, you do not have to configure service monitoring in order for this package to work.
 
-Data is collated in memory and volatile, I would only recommend using 1 minute collection intervals for testing purposes. In real world settings use a much larger interval and with small number of permissable slots in order to ensure that you do use too much memory. THe goal of this package is not to trace historical data but to instead detect performance/issues with service execution and trigger an alert.
+Data is collated in memory and volatile, I would only recommend using 1 minute collection intervals for testing purposes. In real world settings use a much larger interval and with a small number of permissable slots in order to ensure that you do use too much memory. THe goal of this package is not to trace historical data but to instead detect performance/issues with service execution and trigger an alert.
 
 *Source code*
 

@@ -6,8 +6,9 @@ webMethods package to allow alerts to be triggered based on service usage i.e. n
 
 If you have an Integration Server or Micro Service Runtime running locally for development purposes, first navigate to your packages directory;
 
-$cd /${SAG_HOME}/IntegrationServer/packages
-or $cd /${SAG_HOME}/IntegrationServer/instances/${INSTANCE}/packages
+$cd /${SAG_HOME}/IntegrationServer/packages \r
+or 
+$cd /${SAG_HOME}/IntegrationServer/instances/${INSTANCE}/packages \r
 
 If your packages directory is already under version control
 

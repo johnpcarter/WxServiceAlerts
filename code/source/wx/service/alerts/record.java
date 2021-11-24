@@ -89,7 +89,7 @@ public final class record
 		
 		// process
 		
-		long yscale = 200;
+		long yscale = 200; 
 		
 		if (service != null || type != null) {
 			IDataUtil.put(c, "results", AllComputers.instance.report(service, type, yscale));

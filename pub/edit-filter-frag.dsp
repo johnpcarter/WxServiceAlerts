@@ -72,11 +72,12 @@
 			<td style="text-align: right; padding-right: 10px">Time interval</td>
 			<td>
 			  <select class="filter-select" name="timeInterval" value="%value timeInterval%">
+				<option value="30000" %ifvar timeInterval  equals('30000')%selected%endif%>every minute</option>
 				<option value="300000" %ifvar timeInterval  equals('300000')%selected%endif%>5 minutes</option>
 				<option value="600000" %ifvar timeInterval equals('600000')%selected%endif%>10 minutes</option>
 				<option value="900000" %ifvar timeInterval equals('900000')%selected%endif%>15 minutes</option>
 				<option value="1800000" %ifvar timeInterval equals('1800000')%selected%endif%>30 minutes</option>
-				<option value="3600000" %ifvar timeInterval equals('3600000')%selected%endif%>1 hour</option>
+				<option value="3600000" %ifvar timeInterval equals('3600000')%selected%endif%>every hour</option>
 				<option value="43200000" %ifvar timeInterval equals('43200000')%selected%endif%>12 hour</option>
 				<option value="86400000" %ifvar timeInterval equals('86400000')%selected%endif%>24 hour</option>
 			  </select>

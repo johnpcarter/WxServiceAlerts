@@ -5,7 +5,7 @@
 		<link rel="stylesheet" type="text/css" href="/WmRoot/top.css">
 		<link rel="stylesheet" type="text/css" href="styles.css">
 		<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v6.0.0-beta2/css/all.css">
-		<meta http-equiv="refresh" content="30">
+		<meta http-equiv="refresh" content="60">
 	</head>
 	<body>
 %invoke wx.service.alerts.record:getServiceAnalytics%

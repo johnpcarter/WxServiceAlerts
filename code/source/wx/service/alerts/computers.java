@@ -52,7 +52,7 @@ public final class computers
 		if (rules != null) {
 			for (Object rule : rules) {
 				av.addRule((Rule<Double>) rule);
-			}
+			} 
 		}
 		
 		// pipeline out

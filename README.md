@@ -22,3 +22,8 @@ $git clone https://github.com/johnpcarter/WxServiceAlerts.git
 You can then start configuring which services you want to monitor and trace via the package home directory.
 
 http://localhost:5555/WxServiceAlerts
+
+*Source code*
+
+webMethods services are directly editable. Supporting java library at code/jars/simple-rules.jar is in the
+git repository [WmServiceRules](https://github.com/johnpcarter/WmServiceRules).

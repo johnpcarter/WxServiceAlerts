@@ -30,11 +30,11 @@
       %invoke wx.service.alerts.dsp:getFilters%
       %loop filters%
         <div class="sag-content">
-          <div class="collapsible" style="margin-top: 10px; background-color: red">
+          <div class="collapsible" style="margin-top: 10px; background-color: color(srgb 0.378 0.3449 0.775)">
             <div style="float: right; display: inline-flex; align-items: center; gap: 10px">
               <div><i class="fas fa-clock"></i></div>
               <div style="font-size: 10px;">
-                %ifvar timeInterval equals('30000')%5 minutes%endif%
+                %ifvar timeInterval equals('300000')%5 minutes%endif%
                 %ifvar timeInterval equals('600000')%10 minutes%endif%
                 %ifvar timeInterval equals('900000')%15 minutes%endif%
                 %ifvar timeInterval equals('1800000')%30 minutes%endif%
@@ -55,39 +55,35 @@
             <div>%value eventType% (%value filter%)</div>
           </div>
           <div class="content">
-            <table style="width: 100%; border-radius: 5px; padding: 5px">
             %loop computers%
+            <div> 
             %ifvar active equals('true')%
-              <tr>
-                <td colspan="3" style="background-color: transparent; padding: 10px; text-align: center"><div style="margin: auto; width: 110px; line-height: 30px; vertical-align: middle; font-weight: bold; border-radius: 3px; background-color: green; color: white">%value type% %ifvar source equals('count')%count%else%duration%endif%</div></td>
-              </tr>
-              <tr>
-              %loop types%
-                <td style="width: 33%; height: 30px; text-align: center; font-weight: bold">
-                  %ifvar active equals('true')%%value type%%endif%
-                </td>
-              %endloop%
-              </tr>
-              <tr>
+              <div class="collapsible" style="margin-top: 10px; background-color: color(srgb 0.378 0.3449 0.775)">%value type% %ifvar source equals('count')%count%else%duration%endif%</div>
+              <div style="width: 100%; display: inline-flex; justify-content: space-around">
                 %loop types%
-                  <td>
-                  %ifvar rules -notempty%
-                    <div style="margin-top: 0px">
-                      %loop rules%
-                        %include rule-frag.dsp%
-                        %endloop%
-                    </div>
-                  %else%
-                    <div style="margin-top: 10px; padding-top: 5px; height: 30px">
-                      %ifvar active equals('true')%<div style="text-align: center; font-weight: lighter">No rules</div>%endif%
-                    </div>
-                  %endif%
-                  </td>
+                  <div style="display: flex; flex-direction: column; justify-content: flex-start; align-items: center; text-align: center; font-weight: bold; min-width: 300px; margin-top: 20px">
+                    %value type%
+                    %ifvar active equals('true')%
+                      %ifvar rules -notempty%
+                        <div style="margin-top: 0px">
+                          %loop rules%
+                            %include rule-frag.dsp%
+                            %endloop%
+                        </div>
+                      %else%
+                        <div style="margin-top: 10px; padding-top: 5px; height: 30px">
+                          %ifvar active equals('true')%<div style="text-align: center; font-weight: lighter"><u>active</u></div>%endif%
+                        </div>
+                      %endif%
+                    %else%
+                      <div style="margin-top: 20px; text-align: center; font-weight: lighter"><i>inactive</i></div>
+                    %endif%
+                  </div>
                 %endloop%
-              </tr>
-            %endloop%
+              </div>
             %endif%
-            </table>
+            %endloop%
+            </div>
             <div style="width: 100%; margin-top: 20px">
               <div style="width: 100px; padding-bottom: 15px; float: right; text-align: right; display: inline-flex; gap: 20px; justify-content: flex-end">
                 <a href="edit.dsp?eventType=%value eventType%&filter=%value filter%"><i class="fa-solid fa-pen" style="color: gray"></i></a>

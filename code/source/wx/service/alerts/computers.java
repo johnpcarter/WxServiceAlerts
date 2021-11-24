@@ -9,7 +9,7 @@ import com.wm.app.b2b.server.ServiceException;
 // --- <<IS-START-IMPORTS>> ---
 import com.jc.compute.Rule;
 import com.jc.compute.computers.Average;
-import com.jc.compute.computers.Delta;
+import com.jc.compute.computers.Difference;
 import com.jc.compute.computers.Total;
 // --- <<IS-END-IMPORTS>> ---
 
@@ -43,16 +43,15 @@ public final class computers
 		IDataCursor c = pipeline.getCursor();
 		String source = IDataUtil.getString(c, "source");
 		String uom = IDataUtil.getString(c, "uom");
-		@SuppressWarnings("unchecked")		
-		Rule<Double>[] rules = (Rule<Double>[]) IDataUtil.get(c, "rules");
+		Object[] rules = (Object[]) IDataUtil.get(c, "rules");
 		
 		// process
 		
 		Average av = new Average(source, uom, 0);
 		
 		if (rules != null) {
-			for (Rule<Double> rule : rules) {
-				av.addRule(rule);
+			for (Object rule : rules) {
+				av.addRule((Rule<Double>) rule);
 			}
 		}
 		
@@ -82,15 +81,16 @@ public final class computers
 		IDataCursor c = pipeline.getCursor();
 		String source = IDataUtil.getString(c, "source");
 		String uom = IDataUtil.getString(c, "uom");
-		@SuppressWarnings("unchecked")
-		Rule<Double> rule = (Rule<Double>) IDataUtil.get(c, "rule");
+		Object[] rules = (Object[]) IDataUtil.get(c, "rules");
 		
 		// process
 		
-		Delta dt = new Delta(source, uom, 0);
+		Difference dt = new Difference(source, uom, 0);
 		
-		if (rule != null) {
-			dt.addRule(rule);
+		if (rules != null) {
+			for (Object rule : rules) {
+				dt.addRule((Rule<Double>) rule);
+			}
 		}
 		
 		// pipeline out
@@ -120,15 +120,15 @@ public final class computers
 		String source = IDataUtil.getString(c, "source");
 		String uom = IDataUtil.getString(c, "uom");
 		
-		Rule<Double>[] rules = (Rule<Double>[]) IDataUtil.get(c, "rules");
+		Object[] rules = (Object[]) IDataUtil.get(c, "rules");
 		
 		// process
 		
 		Total tc = new Total(source, uom, 0);
 		
 		if (rules != null) {
-			for (Rule<Double> rule : rules) {
-				tc.addRule(rule);
+			for (Object rule : rules) {
+				tc.addRule((Rule<Double>) rule);
 			}
 		}
 		

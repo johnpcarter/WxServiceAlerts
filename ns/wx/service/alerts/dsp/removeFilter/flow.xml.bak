@@ -1068,7 +1068,7 @@
 </MAP>
 
 <INVOKE TIMEOUT="" SERVICE="pub.flow:setResponseHeaders" VALIDATE-IN="$none" VALIDATE-OUT="$none">
-  <COMMENT>set location to /WxCyberark</COMMENT>
+  <COMMENT>set location to /WxSimpleRules</COMMENT>
 
   <!-- nodes -->
 

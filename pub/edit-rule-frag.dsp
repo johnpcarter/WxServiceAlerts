@@ -5,7 +5,7 @@
       <i class="fa-solid fa-bell" style="color: gray; margin-right: 5px; margin-top: 2px"></i>
       <select class="rule-select" name="editRuleType" style="margin-left: 5px; margin-right: 5px">
         <option class="rule-select" value="maxValue">&gt;</option>
-        <option class="rule-select" value="trendUp" %ifvar type equals('trendUp')%selected%endif%>%</option>
+        <option class="rule-select" value="percentage" %ifvar type equals('percentage')%selected%endif%>%</option>
         </select>
       <input type="number" class="rule-input" name="editRuleValue" value="%value value%" onchange="checkRuleSaveButton()" style="width: 40px"/>     
     </div>

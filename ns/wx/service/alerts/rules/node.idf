@@ -13,5 +13,6 @@
   <array name="imports" type="value" depth="1">
     <value>com.jc.compute.Rule</value>
     <value>com.jc.compute.rules.MaxValueExceededRule</value>
+    <value>com.jc.compute.rules.PercentageExceededRule</value>
   </array>
 </Values>

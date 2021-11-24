@@ -1,4 +1,4 @@
-package wx.service.alerts;
+package wx.service.alerts.configuration;
 
 // -----( IS Java Code Template v1.2
 
@@ -22,19 +22,61 @@ import java.util.HashMap;
 import java.util.List;
 // --- <<IS-END-IMPORTS>> ---
 
-public final class configuration
+public final class _priv
 
 {
 	// ---( internal utility methods )---
 
-	final static configuration _instance = new configuration();
+	final static _priv _instance = new _priv();
 
-	static configuration _newInstance() { return new configuration(); }
+	static _priv _newInstance() { return new _priv(); }
 
-	static configuration _cast(Object o) { return (configuration)o; }
+	static _priv _cast(Object o) { return (_priv)o; }
 
 	// ---( server methods )---
 
+
+
+
+	public static final void appendToObjectList (IData pipeline)
+        throws ServiceException
+	{
+		// --- <<IS-START(appendToObjectList)>> ---
+		// @sigtype java 3.5
+		// [i] object:0:required object
+		// [i] object:1:required fromList
+		// [o] object:1:required toList
+		// pipeline in
+		
+		IDataCursor pipelineCursor = pipeline.getCursor();
+		Object object = IDataUtil.get(pipelineCursor, "object");
+		Object[] fromList = IDataUtil.getObjectArray(pipelineCursor, "fromList");
+		
+		// process
+		
+		Object[] toList = null;
+		
+		if (fromList == null) {
+			toList = new Object[1];
+		} else {
+			toList = new Object[fromList.length+1];
+			int i = 0;
+			
+			for (Object o : fromList) {
+				toList[i++] = o;
+			}
+		}
+		
+		toList[toList.length-1] = object;
+		
+		// pipeline
+		
+		IDataUtil.put(pipelineCursor, "toList", toList);
+		pipelineCursor.destroy();
+		// --- <<IS-END>> ---
+
+                
+	}
 
 
 

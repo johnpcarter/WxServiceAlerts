@@ -176,4 +176,8 @@
 <INVOKE TIMEOUT="" SERVICE="wx.service.alerts.record:unregisterComputers" VALIDATE-IN="$none" VALIDATE-OUT="$none">
   <COMMENT></COMMENT>
 </INVOKE>
+
+<INVOKE TIMEOUT="" SERVICE="wx.service.alerts.record:clearRules" VALIDATE-IN="$none" VALIDATE-OUT="$none">
+  <COMMENT></COMMENT>
+</INVOKE>
 </FLOW>

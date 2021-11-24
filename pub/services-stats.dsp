@@ -4,56 +4,51 @@
 		<link rel="stylesheet" type="text/css" href="/WmRoot/webMethods.css">
 		<link rel="stylesheet" type="text/css" href="/WmRoot/top.css">
 		<link rel="stylesheet" type="text/css" href="styles.css">
-		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-		<!-- <meta http-equiv="refresh" content="30"> -->
+		<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v6.0.0-beta2/css/all.css">
+		<meta http-equiv="refresh" content="30">
 	</head>
 	<body>
-%invoke wx.service.alerts.record:getAnalytics%
+%invoke wx.service.alerts.record:getServiceAnalytics%
 	%loop results%
-	%loop computers%
-	%loop history%
+	%loop types%
 	<div style="margin-left: -5px; background-color: white">
-	  <div class="collapsible">%value id% <div style="float: right; font-weight: bold; margin-right: 40px">%value ../type% %value ../source% (%value ../uom%)</div></div>
+	  <div class="collapsible">%value name% %value source% (%value uom%)
+		  <div style="float: right; font-weight: bold; margin-top: -3px; margin-right: 40px; line-height: 25px; vertical-align: middle;">
+			%loop eventTypes%
+				<img src="images/pixel_%value color%.gif" width="10" height="10" alt="%value label%"/> %value label%
+			%endloop%	  
+	  	</div>
+	  </div>
 	  <div class="content" style="max-height: 300px; background-color: white; overflow-x: auto">
 
 	<!-- goes here -->
-		<table style="min-width: 100%; text-align: center;">
-			<tr>
-			  <td><img src="images/blank.gif" height="10" width="10"></td>
-			  <td colspan="24"></td>
-			</tr>
-			<tr>
-			  <td style="height: 200px">
-			  </td>
-			  <td></td>
-			  %loop values%
-				<td style="width: 10px; vertical-align: bottom; text-align: center">
-				  %ifvar value equals('0.0')%
-				  %else%
-					%ifvar didFire equals('true')%
-					  <p style="font-size: 8px; color: red">%value value%</p>
-					%else%
-					  <p style="font-size: 8px; color: gray">%value value%</p>
-					  %endif%
-				  %endif%
-				  <img src=%ifvar didFire equals('true')%"images/pixel_red.gif"%else%"images/pixel_green.gif"%endif%
-				   width="14"
-				   height="%value scaledValue%"
-				   alt="%value value%"/>
-				</td>
+		<div style="min-width: 100%; min-height: 200px; display: inline-flex; justify-content: flex-end; align-items: flex-end">
+			  %loop intervals%
+			  <div style="display: flex; flex-direction: column; justify-content: flex-end; text-align: center;">
+				<div style="display: inline-flex; justify-content: space-between; align-items: flex-end; border-bottom: 1px solid gray; margin-bottom: 10px; padding-right: 10px">
+					%loop values%
+					  <div style="padding-left: 5px;">
+				      %ifvar value equals('0.0')%
+				  	  %else%
+						%ifvar didFire equals('true')%
+					  	  <div style="width: 15px; text-align-center; color: gray; margin-bottom: 5px">
+								<i style="color: red" class="%ifvar violationLevel equals('0')%fa fa-info-square%endif%
+								%ifvar violationLevel equals('1')%fa fa-exclamation-triangle%endif%
+								%ifvar violationLevel equals('2')%fa fa-times-octagon%endif%" aria-hidden="true"></i>
+								<p style="font-size: 8px; margin-bottom: 1px;">%value value%</p>
+							</div>
+						%else%
+					  	  <p style="font-size: 8px; color: gray">%value value%</p>
+					  	%endif%
+				  	  %endif%
+				  	  	<img src="images/pixel_%value color%.gif" width="14" height="%value scaledValue%" alt="%value value%"/>
+				   	  </div>
+				   	%endloop%
+				</div>
+				<div style="margin-left: -25px; height: 40px; transform: rotate(60deg);"> %value time%</div>
+			  </div>
 			  %endloop%
-			<td></td>
-			</tr>
-			<tr>
-			  <td colspan="24"><hr/></td>
-			<tr>
-			  <td></td>
-			  <td></td>
-			  %loop values%
-				<td style="width: 10px" class="evenrowdata"><div style="margin-left:-15px; width: 40px; height: 40px; transform: rotate(60deg);"> %value time%</div></td>
-			  %endloop%
-			</tr>
-		  </table>
+		</div>
 		  
 	<!-- bam -->
 	  </div>

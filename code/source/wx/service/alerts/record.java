@@ -8,12 +8,11 @@ import com.wm.app.b2b.server.Service;
 import com.wm.app.b2b.server.ServiceException;
 // --- <<IS-START-IMPORTS>> ---
 import com.wm.app.b2b.server.ServerAPI;
-import com.jc.compute.ComputeMap;
+import com.jc.compute.AllComputers;
 import com.jc.compute.Computer;
 import com.jc.compute.Rule;
 import com.jc.compute.ServiceHistory;
 import com.jc.compute.Snapshot;
-import com.jc.compute.ComputeMap.ComputerSnapshot;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -42,67 +41,12 @@ public final class record
 
 
 
-	public static final void getAnalytics (IData pipeline)
+	public static final void clearRules (IData pipeline)
         throws ServiceException
 	{
-		// --- <<IS-START(getAnalytics)>> ---
+		// --- <<IS-START(clearRules)>> ---
 		// @sigtype java 3.5
-		// [i] field:0:optional eventType
-		// [i] field:0:optional filter
-		// [i] field:0:optional computeType
-		// [i] field:0:optional service
-		// [i] field:0:required summaryOnly {"true","false"}
-		// [i] field:0:optional yScale
-		// [o] record:1:required results
-		// [o] - record:1:required computers
-		// [o] -- field:0:required id
-		// [o] -- field:0:required types
-		// [o] -- record:1:required rules
-		// [o] --- field:0:required description
-		// [o] --- object:0:required didFire
-		// [o] -- record:1:required history
-		// [o] --- field:0:required id
-		// [o] --- record:1:required values
-		// [o] ---- field:0:required time
-		// [o] ---- object:0:required didFire
-		// [o] ---- object:0:required value
-		// [o] ---- object:0:required scaledValue
-		// pipeline in
-		
-		IDataCursor pipelineCursor = pipeline.getCursor();
-		String eventType = IDataUtil.getString(pipelineCursor, "eventType");
-		String filter = IDataUtil.getString(pipelineCursor, "filter");
-		String source = IDataUtil.getString(pipelineCursor, "computeSource");
-		String type = IDataUtil.getString(pipelineCursor, "computeType");
-		String service = IDataUtil.getString(pipelineCursor, "service");
-		String summaryOnlyStr = IDataUtil.getString(pipelineCursor, "summaryOnly");
-		String yscaleStr = IDataUtil.getString(pipelineCursor, "yScale");
-		
-		System.out.println("analytics - " + eventType + " / " + filter + " / " + source + " / " + type + " / " + service);
-		
-		// process
-		
-		long yscale = 200;
-		boolean summaryOnly = eventType != null ? false : true;
-		
-		try { yscale = Long.parseLong(yscaleStr); } catch(Exception e) {}
-		try { if (summaryOnlyStr != null) summaryOnly = Boolean.parseBoolean(summaryOnlyStr); } catch (Exception e) {}
-		
-		System.out.println("sum '" + summaryOnlyStr + "' /" + summaryOnly);
-		
-		ArrayList<IData> namespaces = new ArrayList<IData>();
-		
-		for (String id : _default.keySet()) {
-			
-			if (eventType == null || id.equals(eventType+filter)) {
-				populateAnalytics(id, source, type, service, yscale, namespaces, summaryOnly);
-			}
-		}
-		
-		// pipeline out
-		
-		IDataUtil.put(pipelineCursor, "results", namespaces.toArray(new IData[namespaces.size()]));
-		pipelineCursor.destroy();
+		AllComputers.instance.clear();
 			
 		// --- <<IS-END>> ---
 
@@ -116,31 +60,28 @@ public final class record
 	{
 		// --- <<IS-START(getServiceAnalytics)>> ---
 		// @sigtype java 3.5
+		// [i] field:0:optional service
+		// [i] field:0:optional type
+		// [i] field:0:required yscale
+		// [o] record:1:required results
 		// pipeline in 
 		
 		IDataCursor c = pipeline.getCursor();
+		String service = IDataUtil.getString(c, "service");
+		String type = IDataUtil.getString(c, "type");
 		
 		// process
 		
 		long yscale = 200;
 		
-		ArrayList<IData> namespaces = new ArrayList<IData>();
-				
-		for (String id : _default.keySet()) {
-					
-			Map<String, ServiceHistory> h = _default.get(id).getServiceHistory();
-			
-			IData ns = IDataFactory.create();
-			IDataCursor nsc = ns.getCursor();
-			
-			nsc.destroy();
-			namespaces.add(ns);
-		}
-				
+		if (service != null || type != null) {
+			IDataUtil.put(c, "results", AllComputers.instance.report(service, type, yscale));
+		} else {
+			IDataUtil.put(c, "results", AllComputers.instance.summary());
+		}	
 		// pipeline out
 				
-		IDataUtil.put(pipelineCursor, "results", namespaces.toArray(new IData[namespaces.size()]));
-		pipelineCursor.destroy();
+		c.destroy();
 			
 		// --- <<IS-END>> ---
 
@@ -161,7 +102,6 @@ public final class record
 		IDataCursor pipelineCursor = pipeline.getCursor();
 		String id = IDataUtil.getString(pipelineCursor, "TID");
 		String service = IDataUtil.getString(pipelineCursor, "service");
-		//String time = IDataUtil.getString(pipelineCursor, "time");
 		String result = IDataUtil.getString(pipelineCursor, "result");
 		
 		pipelineCursor.destroy();
@@ -170,11 +110,17 @@ public final class record
 		
 		System.out.println("<<<<<<<<<<<<<<<<<<<< recording end event 'duration' for " + service);
 		
-		applyComputers("Audit Event", id, service, "duration", time);
+		AllComputers.instance.record("Audit Event", id, service, "duration", time, false);
 		
-		System.out.println("<<<<<<<<<<<<<<<<<<<< recording end event 'count' for " + service);
+		if (time != -1) {
+						
+			System.out.println("<<<<<<<<<<<<<<<<<<<< recording end event 'count' for " + service);
+			AllComputers.instance.record("Audit Event", null, service, "count", 1, false);
 		
-		applyComputers("Audit Event", null, service, time > 0 ? "count" : "failed", 1);
+		} else {
+			//System.out.println("<<<<<<<<<<<<<<<<<<<< recording error event 'count' for " + service);
+			//AllComputers.instance.record("Exception Event", null, service, "count", 1, false);
+		}
 			
 		// --- <<IS-END>> ---
 
@@ -201,8 +147,7 @@ public final class record
 		
 		System.out.println(">>>>>>>>>>>>>>>>>>>>> recording start event 'duration' for " + service);
 		
-		applyComputers("Audit Event", id, service, "duration", time);
-			
+		AllComputers.instance.record("Audit Event", id, service, "duration", time, true);
 		// --- <<IS-END>> ---
 
                 
@@ -223,8 +168,7 @@ public final class record
 		
 		pipelineCursor.destroy();
 		
-		applyComputers("Exception Event", null, service, "count", 1);
-			
+		AllComputers.instance.record("Exception Event", null, service, "count", 1, false);
 		// --- <<IS-END>> ---
 
                 
@@ -237,6 +181,7 @@ public final class record
 	{
 		// --- <<IS-START(registerComputer)>> ---
 		// @sigtype java 3.5
+		// [i] field:0:required id
 		// [i] field:0:required eventType
 		// [i] field:0:required filter
 		// [i] field:0:required timeInterval
@@ -248,17 +193,24 @@ public final class record
 		IDataCursor pipelineCursor = pipeline.getCursor();
 		String eventType = IDataUtil.getString(pipelineCursor, "eventType");
 		String filter = IDataUtil.getString(pipelineCursor, "filter");
-		String timeInterval = IDataUtil.getString(pipelineCursor,"timeInterval");
-		String maxSlots = IDataUtil.getString(pipelineCursor, "maxSlots");
+		String timeIntervalStr = IDataUtil.getString(pipelineCursor,"timeInterval");
+		String maxSlotsStr = IDataUtil.getString(pipelineCursor, "maxSlots");
 		String countZerosS = IDataUtil.getString(pipelineCursor, "countZeros");
+		@SuppressWarnings("unchecked")
 		Computer<Double> c = (Computer<Double>) IDataUtil.get(pipelineCursor, "computer");
 		pipelineCursor.destroy();
 		
 		// process
 		
 		boolean countZeros = false;
+		long timeInterval = 0;
+		int maxSlots = 100;
 		
+		try { maxSlots = Integer.parseInt(maxSlotsStr); } catch (Exception e) {}
 		try { countZeros = Boolean.parseBoolean(countZerosS); } catch (Exception e) {}
+		try { timeInterval = Long.parseLong(timeIntervalStr); } catch (Exception e) {
+			throw new ServiceException("Provide a valid non zero time interval");
+		}
 		
 		if (filter.endsWith(".*")) {
 			filter = filter.substring(0, filter.length()-2);
@@ -266,15 +218,7 @@ public final class record
 			filter = filter.substring(0, filter.length()-1);
 		}
 		
-		ComputeMap ts = _default.get(eventType + filter);
-		
-		if (ts == null) {
-			
-			ts = new ComputeMap(filter, Long.parseLong(timeInterval), eventType, Integer.parseInt(maxSlots), countZeros, c);
-			_default.put(eventType + filter, ts);
-		} else {
-			ts.addComputer(c);
-		}
+		AllComputers.instance.add(timeInterval, maxSlots, countZeros, filter, c);
 		
 		// pipeline out
 		
@@ -314,24 +258,12 @@ public final class record
 		
 				IDataCursor sc = subscriber.getCursor();
 				String filter = IDataUtil.getString(sc, "Filter");
+				String service = IDataUtil.getString(sc, "Service");
+		
 				sc.destroy();
 				
-				String flt = eventType + filter;
-				
-				if (filter.endsWith(".*")) {
-					flt = eventType + filter.substring(0, filter.length()-2);
-				} else if (filter.endsWith("*")) {
-					flt = eventType + filter.substring(0, filter.length()-1);
-				}
-				
-				System.out.println("filter is " + flt + " / " + id);
-				
-				if (flt != null && _default.get(flt) != null) {
-					
-					System.out.println("removing computer");
-					
-					removeSubscriber(id, flt);
-				}
+				if (service.equals("wx.service.alerts.events:manageAuditEvents") || service.equals("wx.service.alerts.events:manageExceptionEvents"))
+					deleteSubscriber(eventType, id);
 			}
 		} while (c.next());
 			
@@ -342,178 +274,6 @@ public final class record
 
 	// --- <<IS-START-SHARED>> ---
 	
-	private static void populateAnalytics(String id, String source, String type, String service, long yscale, ArrayList<IData> namespaces, boolean summaryOnly) {
-	
-		List<ComputerSnapshot> cs =  _default.get(id).getComputers();
-		
-		IData out = IDataFactory.create();
-		IDataCursor cursor = out.getCursor();
-		IDataUtil.put(cursor, "id", _default.get(id).getId());
-		IDataUtil.put(cursor, "type", _default.get(id).eventType());
-		
-		ArrayList<IData> computers = new ArrayList<IData>();
-		
-		for (ComputerSnapshot c : cs) {
-			
-			if ((type == null || type.equals(c.type())) && (source == null || source.equals(c.source()))) {
-				IData computer = IDataFactory.create();
-				IDataCursor ccursor = computer.getCursor();
-		
-				if (summaryOnly) {
-					Set<String> services = c.getRecordedServices();
-					IDataUtil.put(ccursor, "type", c.type());
-					IDataUtil.put(ccursor, "source", c.source());
-					IDataUtil.put(ccursor, "services", services.toArray(new String[services.size()]));
-				
-				} else {
-					IDataUtil.put(ccursor, "source", c.source());
-					IDataUtil.put(ccursor, "type", c.type());
-					IDataUtil.put(ccursor, "uom", c.uom());
-					IDataUtil.put(ccursor, "rules", convertRulesToIDataList(c.getRules()));
-					IDataUtil.put(ccursor, "history", convertHistoryToIDataList(service, c.getHistory(), yscale));
-				}
-			
-				ccursor.destroy();
-			
-				computers.add(computer);
-			}
-		}
-		
-		IDataUtil.put(cursor, "computers", computers.toArray(new IData[computers.size()]));
-		cursor.destroy();
-		namespaces.add(out);
-	}
-	
-	private static IData[] convertRulesToIDataList(List<Rule<Double>> rules) {
-		
-		ArrayList<IData> list = new ArrayList<IData>();
-		
-		for (Rule<Double> r : rules) {
-			IData out = IDataFactory.create();
-			IDataCursor c = out.getCursor();
-			
-			IDataUtil.put(c, "description", r.description());
-			IDataUtil.put(c, "didFire", r.didFire());
-			c.destroy();
-			
-			list.add(out);
-		}
-		
-		return list.toArray(new IData[list.size()]);
-	}
-	
-	private static IData[] convertHistoryToIDataList(String service, Map<String, Stack<Snapshot<Double>>> history, long yscale) {
-		
-		ArrayList<IData> list = new ArrayList<IData>();
-		double max = 0;
-		
-		if (yscale > 0) {
-			max = getMaxValue(history);
-			
-			if (max > 0) {
-				max = max / yscale;
-			}
-		}
-		
-		for (String id : history.keySet()) {
-			
-			Stack<Snapshot<Double>> s = history.get(id);
-		
-			if (service == null || id.equals(service)) {
-				ArrayList<IData> values = new ArrayList<IData>();
-				
-				for (Snapshot<Double> p : s) {
-					IData v = IDataFactory.create();
-					IDataCursor vc = v.getCursor();
-					IDataUtil.put(vc, "time", formatTime(p.time));
-					IDataUtil.put(vc, "didFire", p.didFireARule);
-					IDataUtil.put(vc, "violationLevel", p.violationLevel);
-					IDataUtil.put(vc, "value", (long) Math.rint(p.value));
-	
-					if (max > 0 && p.value != 0) {
-						IDataUtil.put(vc, "scaledValue", p.value / max);
-					} else {
-						IDataUtil.put(vc, "scaledValue", p.value);
-					}
-				
-					vc.destroy();
-				
-					values.add(v);
-				}
-			
-				IData out = IDataFactory.create();
-				IDataCursor c = out.getCursor();
-		
-				IDataUtil.put(c, "id", id);
-				IDataUtil.put(c,  "values", values.toArray(new IData[values.size()]));
-			
-				c.destroy();
-			
-				list.add(out);
-			}
-		}
-		
-		return list.toArray(new IData[list.size()]);
-	}
-	
-	private static double getMaxValue(Map<String, Stack<Snapshot<Double>>> history) {
-				
-		double max = 0;
-		ArrayList<IData> list = new ArrayList<IData>();
-			
-		for (String id : history.keySet()) {
-				
-			Stack<Snapshot<Double>> s = history.get(id);			
-			for (Snapshot<Double> p : s) {
-				if (p.value > max) {
-					max = p.value;
-				}
-			}
-		}
-		
-		return max;
-	}
-	
-	private static String formatTime(Date date) {
-		
-		SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
-		
-		return sdf.format(date);
-	}
-	
-	private static void applyComputers(String type, String id, String service, String source, double i) {
-						
-		for (String c : _default.keySet()) {
-			
-			System.out.println("***************** Checking " + _default.get(c).getId());
-			
-			if (service.startsWith(_default.get(c).getId()) && _default.get(c).eventType().equals(type)) {
-						
-				System.out.println("***************** recording value " + i + " for " + source + " and " + service);
-	
-				(_default).get(c).add(id, service, source, i);
-			}
-		}
-	}
-	
-	private static void removeSubscriber(String id, String namespace) throws ServiceException {
-		
-		for (String n : _default.keySet()) {
-			
-			System.out.println("checking " + n);
-			
-			if (namespace.startsWith(n)) {
-						
-				System.out.println("removing " + namespace);
-				
-				ComputeMap c = (_default).remove(namespace);
-				c.stop();
-				
-				deleteSubscriber(c.eventType(), id);
-			}
-		}
-	}
-	
 	private static void deleteSubscriber(String eventType, String id) throws ServiceException {
 		
 		// input
@@ -523,7 +283,7 @@ public final class record
 		IDataUtil.put(c, "gID", id);
 	
 		try {
-			Service.doInvoke( "pub.event", "deleteSubscriber", pipeline);
+			Service.doInvoke("pub.event", "deleteSubscriber", pipeline);
 			
 			if (!IDataUtil.getString(c, "Result").equals("true")) {
 				throw new ServiceException("failed to delete subscriber " + id + " for type " + eventType);
@@ -534,13 +294,7 @@ public final class record
 		}
 		
 		c.destroy();
-	}
-	
-	private static final long FIVE_MINS_MS = 300000;
-	
-	private static Map<String, ComputeMap> _default = new HashMap<String, ComputeMap>();
-	
-	
+	}	
 		
 	// --- <<IS-END-SHARED>> ---
 }

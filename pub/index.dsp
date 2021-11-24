@@ -38,32 +38,30 @@
 	  </table>
     <div style="margin:20px;">
       
-      %invoke wx.service.alerts.record:getAnalytics%
+      %invoke wx.service.alerts.record:getServiceAnalytics%
       %ifvar results -notempty%
       %loop results%
       <div style="width: 100%; background-color: #777; margin-bottom: 15px">
-        <div class="collapsible">%value type% (%value id%)</div>
+        <div class="collapsible">%value name%</div>
         <div class="content">
-        %loop computers%
-          %ifvar services -notempty%
-            %loop services%
+        %ifvar types -notempty%
+        %loop types%
             <div style="margin-top:20px; background-color: white">
               <div style="position: relative; z-index: 99; float:right; width: 40px; height: 35px; color: white; vertical-align: middle; text-align: center;" onclick="toggleFrameSize(this.nextElementSibling, this.firstChild)"><img id="expander-icon" style="width: 20px; height: 20px; margin-top: 7px; filter: invert(42%) sepia(193%) saturate(1352%) hue-rotate(87deg) brightness(119%);" src="images/chevron-up-solid.svg"/></div>
-              <iframe style="width: 100%; height: 45px; border: none; margin-top: -35px; padding: 0px" src="services-stats.dsp?eventType=%value ../type%&filter=%value ../id%&&computeSource=%value source%&&computeType=%value type%&&service=%value services%"> 
+              <iframe style="width: 100%; height: 45px; border: none; margin-top: -35px; padding: 0px" src="services-stats.dsp?service=%value ../name%&&type=%value name%"> 
               </iframe>        
             </div>
-            %endloop%
-          %else%
-            <div style="height: 20px; text-align: center; vertical-align: center; padding: 20px">No data yet for %value type% %value source%...</div>
-          %endif%
         %endloop%
+        %else%
+          <div style="height: 20px; text-align: center; vertical-align: center; padding: 20px">No data yet for %value name% counter...</div>
+        %endif%
         </div>
       </div>
       %endloop%
       %else%
-      <center><h2>Nothing, nada!</h2>
+      <center><h2>Nothing to report, nada!</h2>
         <img src="images/empty.gif"/>
-        <h3>Configure some counters <a href="configuration.dsp">here</a>
+        <h3>Configure some service counters <a href="configuration.dsp">here</a>
       </center>
       %endif%
       %endinvoke%

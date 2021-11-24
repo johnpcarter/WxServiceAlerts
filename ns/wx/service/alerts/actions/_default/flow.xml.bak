@@ -72,7 +72,7 @@
           <value name="field_password">false</value>
         </record>
         <value name="is_public">false</value>
-        <value name="field_name">ruleType</value>
+        <value name="field_name">alertType</value>
         <value name="field_type">string</value>
         <value name="field_dim">0</value>
         <array name="field_options" type="value" depth="1">
@@ -128,16 +128,14 @@
         <value name="node_subtype">unknown</value>
         <value name="node_comment"></value>
         <record name="node_hints" javaclass="com.wm.util.Values">
-          <value name="field_usereditable">true</value>
           <value name="field_largerEditor">false</value>
           <value name="field_password">false</value>
         </record>
         <value name="is_public">false</value>
         <value name="field_name">lastValue</value>
-        <value name="field_type">string</value>
+        <value name="field_type">object</value>
         <value name="field_dim">0</value>
-        <array name="field_options" type="value" depth="1">
-        </array>
+        <value name="wrapper_type">java.lang.Double</value>
         <value name="nillable">true</value>
         <value name="form_qualified">false</value>
         <value name="is_global">false</value>
@@ -172,7 +170,7 @@
 
   <!-- nodes -->
 
-<MAPCOPY FROM="/ruleType;1;0" TO="/type;1;0">
+<MAPCOPY FROM="/alertType;1;0" TO="/type;1;0">
 </MAPCOPY>
 </MAP>
 </INVOKE>
@@ -417,7 +415,7 @@
           <value name="field_password">false</value>
         </record>
         <value name="is_public">false</value>
-        <value name="field_name">ruleType</value>
+        <value name="field_name">alertType</value>
         <value name="field_type">string</value>
         <value name="field_dim">0</value>
         <array name="field_options" type="value" depth="1">
@@ -473,16 +471,14 @@
         <value name="node_subtype">unknown</value>
         <value name="node_comment"></value>
         <record name="node_hints" javaclass="com.wm.util.Values">
-          <value name="field_usereditable">true</value>
           <value name="field_largerEditor">false</value>
           <value name="field_password">false</value>
         </record>
         <value name="is_public">false</value>
         <value name="field_name">lastValue</value>
-        <value name="field_type">string</value>
+        <value name="field_type">object</value>
         <value name="field_dim">0</value>
-        <array name="field_options" type="value" depth="1">
-        </array>
+        <value name="wrapper_type">java.lang.Double</value>
         <value name="nillable">true</value>
         <value name="form_qualified">false</value>
         <value name="is_global">false</value>
@@ -557,7 +553,7 @@
 <MAPCOPY FROM="/message;1;0" TO="/content;1;0">
 </MAPCOPY>
 
-<MAPCOPY FROM="/ruleType;1;0" TO="/subject;1;0">
+<MAPCOPY FROM="/alertType;1;0" TO="/subject;1;0">
 </MAPCOPY>
 </MAP>
 </INVOKE>

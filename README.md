@@ -23,6 +23,8 @@ You can then start configuring which services you want to monitor and trace via 
 
 http://localhost:5555/WxServiceAlerts
 
+You will need to enable auditing at the service level if you want to track service performance i.e. duration or execution count. You will need to do this in Designer and for each service. Ensure that you set the audit setting "Log on" to "Error, Success end Start". However, you do not have to configure service monitoring in order for this package to work.
+
 *Source code*
 
 webMethods services are directly editable. Supporting java library at code/jars/simple-rules.jar is in the

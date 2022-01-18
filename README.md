@@ -36,4 +36,4 @@ webMethods services are directly editable. Supporting java library at code/jars/
 git repository [WmServiceRules](https://github.com/johnpcarter/WmServiceRules).
 
 ---
-Package versioning and configuration can be referenced in the package [manifest](./manifest.v3)  file.
+> Package versioning and configuration can be referenced in the package [manifest](./manifest.v3)  file.

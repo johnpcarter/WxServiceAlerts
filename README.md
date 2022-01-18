@@ -34,3 +34,6 @@ Data is collated in memory and volatile, I would only recommend using 1 minute c
 
 webMethods services are directly editable. Supporting java library at code/jars/simple-rules.jar is in the
 git repository [WmServiceRules](https://github.com/johnpcarter/WmServiceRules).
+
+---
+Package versioning and configuration can be referenced in the package [manifest](./manifest.v3)  file.

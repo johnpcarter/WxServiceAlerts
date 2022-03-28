@@ -80,6 +80,30 @@ public final class _priv
 
 
 
+	public static final void getChannelId (IData pipeline)
+        throws ServiceException
+	{
+		// --- <<IS-START(getChannelId)>> ---
+		// @sigtype java 3.5
+		// [i] field:0:required type
+		// [o] object:0:required channelId
+		// pipeline in
+		
+		IDataCursor c = pipeline.getCursor();
+		String type = IDataUtil.getString(c, "type");
+		
+		// pipeline out
+		
+		IDataUtil.put(c, "channelId", _channels.get(type));
+		c.destroy(); 
+			
+		// --- <<IS-END>> ---
+
+                
+	}
+
+
+
 	public static final void readSetupFile (IData pipeline)
         throws ServiceException
 	{
@@ -89,6 +113,31 @@ public final class _priv
 		IDataCursor c = pipeline.getCursor();
 		IDataUtil.put(c, "content", new String(readFile(PROPS_FILE)));
 		c.destroy();
+		// --- <<IS-END>> ---
+
+                
+	}
+
+
+
+	public static final void recordChannelId (IData pipeline)
+        throws ServiceException
+	{
+		// --- <<IS-START(recordChannelId)>> ---
+		// @sigtype java 3.5
+		// [i] field:0:required type
+		// [i] object:0:required channelId
+		// pipeline in
+		
+		IDataCursor pipelineCursor = pipeline.getCursor();
+		String type = IDataUtil.getString(pipelineCursor, "type");
+		int id = (Integer) IDataUtil.get(pipelineCursor, "channelId");
+		pipelineCursor.destroy();
+		
+		// process
+		
+		_channels.put(type, id);
+			
 		// --- <<IS-END>> ---
 
                 
@@ -177,6 +226,8 @@ public final class _priv
 	}
 
 	// --- <<IS-START-SHARED>> ---
+	
+	private static HashMap<String, Integer> _channels = new HashMap<String, Integer>();
 	
 	private static String _taskId;
 	

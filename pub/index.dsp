@@ -18,9 +18,9 @@
   }
 </script>
 </head>
-<body style="overflow-y: scroll;padding: 0px" topmargin="0" leftmargin="0" marginwidth="0" marginheight="0">
+<body style="overflow-y: scroll; padding: 0px" topmargin="0" leftmargin="0" marginwidth="0" marginheight="0" onload="onLoad()">
     <div class="tdmasthead" id="top" height="50px">
-      <div style="float:right;padding: 10px">
+      <div style="float:right; padding: 10px">
           <img src="./resources/sag-logo-white@3x.png" height="25px"/>
       </div>
       <div class="saglogo" style="display: flex; align-items: center;">
@@ -37,77 +37,95 @@
       </tr>
 	  </table>
     <div style="margin:20px;">
+      <form id="form" action=".">
+        <input type="hidden" name="selectedTab" value="%value selectedTab%">
+        <div class="tab">
+          <button id="latestButton" class="tablinks" onclick="setTab('latest')">Recent</button>
+          <button id="historyButton" class="tablinks" onclick="setTab('history')">History</button>
+          </div>
       
-      %invoke wx.service.alerts.record:getServiceAnalytics%
-      %ifvar results -notempty%
-      %loop results%
-      <div style="width: 100%; background-color: #777; margin-bottom: 15px">
-        <div class="collapsible">%value name%</div>
-        <div class="content">
-        %ifvar types -notempty%
-        %loop types%
-            <div style="margin-top:20px; background-color: white">
-              <div style="position: relative; z-index: 99; float:right; width: 40px; height: 35px; color: white; vertical-align: middle; text-align: center;" onclick="toggleFrameSize(this.nextElementSibling, this.firstChild)"><img id="expander-icon" style="width: 20px; height: 20px; margin-top: 7px; filter: invert(42%) sepia(193%) saturate(1352%) hue-rotate(87deg) brightness(119%);" src="images/chevron-up-solid.svg"/></div>
-              <iframe style="width: 100%; height: 45px; border: none; margin-top: -35px; padding: 0px" src="services-stats.dsp?service=%value ../name%&&type=%value name%"> 
-              </iframe>        
-            </div>
-        %endloop%
-        %else%
-          <div style="height: 20px; text-align: center; vertical-align: center; padding: 20px">No data yet for %value name% counter...</div>
-        %endif%
+        <div id="latest" class="tabcontent">
+        
+          %ifvar selectedTab -notempty%
+            %ifvar selectedTab equals('latest')%
+              %include analytics-latest-frag.dsp%
+              %endif%
+          %else%
+            %include analytics-latest-frag.dsp%
+          %endif%
+          </div>
+      
+        <div id="history" class="tabcontent">
+          %ifvar selectedTab equals('history')%
+            %include analytics-history-frag.dsp%
+          %endif%
         </div>
-      </div>
-      %endloop%
-      %else%
-      <center><h2>Nothing to report, nada!</h2>
-        <img src="images/empty.gif"/>
-        <h3>Configure some service counters <a href="configuration.dsp">here</a>
-      </center>
-      %endif%
-      %endinvoke%
-    </div>
+    </form>
     <div style="float: right; margin-right: 20px;">
-      <a href="/invoke/wx.service.alerts.dsp/reload" class="pill-button" style="margin-top: 20px; background-color: red; color: white" onclick="return window.confirm('Configuration will be reloaded and all analysis will be voided ?');">Reset & reload</a>
+    <a href="/invoke/wx.service.alerts.dsp/reload" class="pill-button" style="margin-top: 20px; background-color: red; color: white" onclick="return window.confirm('Configuration will be reloaded and all analysis will be voided ?');">Reset & reload</a>
     </div>
-    <script>
+  </div>
+  <script>
+        
       var coll = document.getElementsByClassName("collapsible");
       var i;
-      
+  
       for (i = 0; i < coll.length; i++) {
         coll[i].addEventListener("click", function() {
-          //this.classList.toggle("active");
+        //this.classList.toggle("active");
           expandshrink(this.nextElementSibling);
         });
       }
+  
+    var iframes = document.getElementsByTagName("iframe");
+             
+    for (i = 0; i < iframes.length; i++) {
+    
+      const iframe = iframes[i];
+    
+      iframe.onload = function() {
+        //console.log("adjusted height is " + iframe.contentWindow.document.body.scrollHeight + 'px');
       
-      var iframes = document.getElementsByTagName("iframe");
-                 
-      for (i = 0; i < iframes.length; i++) {
-        
-        const iframe = iframes[i];
-        
-        iframe.onload = function() {
-          console.log("adjusted height is " + iframe.contentWindow.document.body.scrollHeight + 'px');
-          
-          if (iframe.style.height != '45px') {
-            iframe.style.height = iframe.contentWindow.document.body.scrollHeight + 'px';
-          }
-        }
-      }    
-      
-      function toggleFrameSize(iframe, image) {
-                      
-        if (iframe.style.height != "45px") {
-          iframe.style.height = "45px";
-          image.src = "images/chevron-down-solid.svg";
-        } else {
+        if (iframe.style.height != '45px') {
           iframe.style.height = iframe.contentWindow.document.body.scrollHeight + 'px';
-          image.src = "images/chevron-up-solid.svg";
         }
-        
-        const content = iframe.closest(".content");
-        content.style.maxHeight = content.scrollHeight + "px";
-      }     
-    </script>
+      }
+    }
+  
+    function setTab(label) {
+    
+      form = document.getElementById("form");
+      form.selectedTab.value = label;
+    }
+    
+    function showTab(label) {
+      // Declare all variables
+      var i, tabcontent, tablinks;
+  
+      // Get all elements with class="tabcontent" and hide them
+      tabcontent = document.getElementsByClassName("tabcontent");
+      for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+      }
+  
+    // Get all elements with class="tablinks" and remove the class "active"
+      tablinks = document.getElementsByClassName("tablinks");
+      for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+      }
+  
+    // Show the current tab, and add an "active" class to the button that opened the tab
+      document.getElementById(label).style.display = "block";
+      document.getElementById(label+"Button").className += " active";
+    }
+  
+    function onLoad() {
+      %ifvar selectedTab -notempty%
+        showTab('%value selectedTab%');
+      %else%
+        showTab('latest');
+      %endif%      
+    }  
+  </script>
 </body>
 </html>

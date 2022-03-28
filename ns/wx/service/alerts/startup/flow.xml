@@ -5,11 +5,15 @@
 
   <!-- nodes -->
 
-<INVOKE TIMEOUT="" SERVICE="wx.service.alerts.build:configureAlertChannels" VALIDATE-IN="$none" VALIDATE-OUT="$none">
+<INVOKE TIMEOUT="" SERVICE="wx.service.alerts.configuration:configureAlertChannels" VALIDATE-IN="$none" VALIDATE-OUT="$none">
   <COMMENT></COMMENT>
 </INVOKE>
 
 <INVOKE TIMEOUT="" SERVICE="wx.service.alerts.configuration:configure" VALIDATE-IN="$none" VALIDATE-OUT="$none">
+  <COMMENT></COMMENT>
+</INVOKE>
+
+<INVOKE TIMEOUT="" SERVICE="wx.service.alerts.record:startInvokeInterceptor" VALIDATE-IN="$none" VALIDATE-OUT="$none">
   <COMMENT></COMMENT>
 </INVOKE>
 </FLOW>

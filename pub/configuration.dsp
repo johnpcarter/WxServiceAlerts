@@ -47,51 +47,52 @@
               <div style="font-size: 10px">
                 %value maxSlots%
               </div>
+              <i class="fa-solid fa-hat-cowboy" style="color: %ifvar topLevelServiceOnly equals('true')%white%else%gray%endif%"></i>
+              <span style="font-size: smaller; font: monospace; color: %ifvar excludeWmServices equals('true')%gray%else%white%endif%">Wm</span>
               %ifvar countZeros equals('true')%
               <div>
                 <i class="fa-solid fa-empty-set"></i>
               </div>
               %endif%
             </div>
-            <div>%value eventType% (%value filter%)</div>
+            <div>%ifvar eventType equals('AuditEvent')%Service Executions%else%Exception Event%endif% (%value filter%)</div>
           </div>
           <div class="content">
             %loop computers%
-            <div> 
-            %ifvar active equals('true')%
-              <div class="collapsible" style="margin-top: 10px; background-color: color(srgb 0.378 0.3449 0.775)">%value type% %ifvar source equals('count')%count%else%duration%endif%</div>
-              <div style="width: 100%; display: inline-flex; justify-content: space-around">
-                %loop types%
-                  <div style="display: flex; flex-direction: column; justify-content: flex-start; align-items: center; text-align: center; font-weight: bold; min-width: 300px; margin-top: 20px">
-                    %value type%
-                    %ifvar active equals('true')%
-                      %ifvar rules -notempty%
-                        <div style="margin-top: 0px">
-                          %loop rules%
-                            %include rule-frag.dsp%
-                            %endloop%
-                        </div>
+              %ifvar active equals('true')%
+                <div class="collapsible" style="margin-top: 10px; background-color: color(srgb 0.378 0.3449 0.775)">%value type% %value source%</div>
+                <div style="width: 100%; display: inline-flex; justify-content: space-around">
+                  %loop types%
+                    <div style="display: flex; flex-direction: column; justify-content: flex-start; align-items: center; text-align: center; font-weight: bold; min-width: 300px; margin-top: 20px">
+                      %value type%
+                      %ifvar active equals('true')%
+                        %ifvar rules -notempty%
+                          <div style="margin-top: 0px">
+                            %loop rules%
+                              %include rule-frag.dsp%
+                              %endloop%
+                          </div>
+                        %else%
+                          <div style="margin-top: 10px; padding-top: 5px; height: 30px">
+                            %ifvar active equals('true')%<div style="text-align: center; font-weight: lighter"><u>active</u></div>%endif%
+                          </div>
+                        %endif%
                       %else%
-                        <div style="margin-top: 10px; padding-top: 5px; height: 30px">
-                          %ifvar active equals('true')%<div style="text-align: center; font-weight: lighter"><u>active</u></div>%endif%
-                        </div>
+                        <div style="margin-top: 20px; text-align: center; font-weight: lighter"><i>inactive</i></div>
                       %endif%
-                    %else%
-                      <div style="margin-top: 20px; text-align: center; font-weight: lighter"><i>inactive</i></div>
-                    %endif%
-                  </div>
-                %endloop%
-              </div>
-            %endif%
+                    </div>
+                  %endloop%
+                </div>
+              %endi%
             %endloop%
-            </div>
-            <div style="width: 100%; margin-top: 20px">
-              <div style="width: 100px; padding-bottom: 15px; float: right; text-align: right; display: inline-flex; gap: 20px; justify-content: flex-end">
-                <a href="edit.dsp?eventType=%value eventType%&filter=%value filter%"><i class="fa-solid fa-pen" style="color: gray"></i></a>
-                <i onclick="confirmDelete('%value eventType%', '%value filter%')" class="fa fa-trash" aria-hidden="true" style="color: gray"></i>
-              </div>
+          <div style="width: 100%; margin-top: 20px">
+            <div style="width: 100px; padding-bottom: 15px; float: right; text-align: right; display: inline-flex; gap: 20px; justify-content: flex-end">
+              <a href="edit.dsp?eventType=%value eventType%&filter=%value filter%"><i class="fa-solid fa-pen" style="color: gray"></i></a>
+              <i onclick="confirmDelete('%value eventType%', '%value filter%')" class="fa fa-trash" aria-hidden="true" style="color: gray"></i>
             </div>
           </div>
+          </div>
+
         </div>
       %endloop%
       %endinvoke%

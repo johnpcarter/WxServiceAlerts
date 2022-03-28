@@ -6,7 +6,7 @@
   <!-- nodes -->
 
 <MAP TIMEOUT="" MODE="STANDALONE">
-  <COMMENT></COMMENT>
+  <COMMENT>set default</COMMENT>
   <MAPTARGET>
 
 <Values version="2.0">
@@ -16,6 +16,7 @@
     <value name="is_public">false</value>
     <value name="field_type">record</value>
     <value name="field_dim">0</value>
+    <value name="wrapper_type">IData</value>
     <value name="nillable">true</value>
     <value name="form_qualified">false</value>
     <value name="is_global">false</value>
@@ -75,7 +76,7 @@
         <value name="form_qualified">false</value>
         <value name="is_global">false</value>
         <value name="modifiable">true</value>
-        <value name="rec_ref">wm.simplerules.alerts.configuration:Config</value>
+        <value name="rec_ref">wx.service.alerts.configuration:Config</value>
       </record>
       <record javaclass="com.wm.util.Values">
         <value name="node_type">unknown</value>
@@ -126,6 +127,48 @@
         </record>
         <value name="is_public">false</value>
         <value name="field_name">countZeros</value>
+        <value name="field_type">string</value>
+        <value name="field_dim">0</value>
+        <array name="field_options" type="value" depth="1">
+        </array>
+        <value name="nillable">true</value>
+        <value name="form_qualified">false</value>
+        <value name="is_global">false</value>
+      </record>
+      <record javaclass="com.wm.util.Values">
+        <value name="node_type">record</value>
+        <value name="node_subtype">unknown</value>
+        <value name="node_comment"></value>
+        <record name="node_hints" javaclass="com.wm.util.Values">
+          <value name="field_usereditable">false</value>
+          <value name="field_largerEditor">false</value>
+          <value name="field_password">false</value>
+        </record>
+        <value name="is_public">false</value>
+        <value name="field_name">traceType</value>
+        <value name="field_type">string</value>
+        <value name="field_dim">0</value>
+        <array name="field_options" type="value" depth="1">
+          <value>all</value>
+          <value>allx</value>
+          <value>top</value>
+          <value>topx</value>
+        </array>
+        <value name="nillable">true</value>
+        <value name="form_qualified">false</value>
+        <value name="is_global">false</value>
+      </record>
+      <record javaclass="com.wm.util.Values">
+        <value name="node_type">record</value>
+        <value name="node_subtype">unknown</value>
+        <value name="node_comment"></value>
+        <record name="node_hints" javaclass="com.wm.util.Values">
+          <value name="field_usereditable">true</value>
+          <value name="field_largerEditor">false</value>
+          <value name="field_password">false</value>
+        </record>
+        <value name="is_public">false</value>
+        <value name="field_name">transactionDuration</value>
         <value name="field_type">string</value>
         <value name="field_dim">0</value>
         <array name="field_options" type="value" depth="1">
@@ -225,7 +268,7 @@
         <value name="is_soap_array_encoding_used">false</value>
         <value name="rec_closed">true</value>
         <value name="modifiable">true</value>
-        <value name="rec_ref">wm.simplerules.alerts.dsp:dspComputer</value>
+        <value name="rec_ref">wx.service.alerts.dsp:dspComputer</value>
       </record>
     </array>
     <value name="modifiable">true</value>
@@ -241,6 +284,7 @@
     <value name="is_public">false</value>
     <value name="field_type">record</value>
     <value name="field_dim">0</value>
+    <value name="wrapper_type">IData</value>
     <value name="nillable">true</value>
     <value name="form_qualified">false</value>
     <value name="is_global">false</value>
@@ -300,7 +344,7 @@
         <value name="form_qualified">false</value>
         <value name="is_global">false</value>
         <value name="modifiable">true</value>
-        <value name="rec_ref">wm.simplerules.alerts.configuration:Config</value>
+        <value name="rec_ref">wx.service.alerts.configuration:Config</value>
       </record>
       <record javaclass="com.wm.util.Values">
         <value name="node_type">unknown</value>
@@ -351,6 +395,48 @@
         </record>
         <value name="is_public">false</value>
         <value name="field_name">countZeros</value>
+        <value name="field_type">string</value>
+        <value name="field_dim">0</value>
+        <array name="field_options" type="value" depth="1">
+        </array>
+        <value name="nillable">true</value>
+        <value name="form_qualified">false</value>
+        <value name="is_global">false</value>
+      </record>
+      <record javaclass="com.wm.util.Values">
+        <value name="node_type">record</value>
+        <value name="node_subtype">unknown</value>
+        <value name="node_comment"></value>
+        <record name="node_hints" javaclass="com.wm.util.Values">
+          <value name="field_usereditable">false</value>
+          <value name="field_largerEditor">false</value>
+          <value name="field_password">false</value>
+        </record>
+        <value name="is_public">false</value>
+        <value name="field_name">traceType</value>
+        <value name="field_type">string</value>
+        <value name="field_dim">0</value>
+        <array name="field_options" type="value" depth="1">
+          <value>all</value>
+          <value>allx</value>
+          <value>top</value>
+          <value>topx</value>
+        </array>
+        <value name="nillable">true</value>
+        <value name="form_qualified">false</value>
+        <value name="is_global">false</value>
+      </record>
+      <record javaclass="com.wm.util.Values">
+        <value name="node_type">record</value>
+        <value name="node_subtype">unknown</value>
+        <value name="node_comment"></value>
+        <record name="node_hints" javaclass="com.wm.util.Values">
+          <value name="field_usereditable">true</value>
+          <value name="field_largerEditor">false</value>
+          <value name="field_password">false</value>
+        </record>
+        <value name="is_public">false</value>
+        <value name="field_name">transactionDuration</value>
         <value name="field_type">string</value>
         <value name="field_dim">0</value>
         <array name="field_options" type="value" depth="1">
@@ -450,7 +536,7 @@
         <value name="is_soap_array_encoding_used">false</value>
         <value name="rec_closed">true</value>
         <value name="modifiable">true</value>
-        <value name="rec_ref">wm.simplerules.alerts.dsp:dspComputer</value>
+        <value name="rec_ref">wx.service.alerts.dsp:dspComputer</value>
       </record>
     </array>
     <value name="modifiable">true</value>
@@ -460,19 +546,25 @@
 
   <!-- nodes -->
 
-<MAPCOPY FROM="/timeInterval;1;0" TO="/filterSetup;4;0;wm.simplerules.alerts.configuration:Config/timeInterval;1;0">
+<MAPCOPY FROM="/filter;1;0" TO="/filterSetup;4;0;wx.service.alerts.configuration:Config/filter;1;0">
 </MAPCOPY>
 
-<MAPCOPY FROM="/maxSlots;1;0" TO="/filterSetup;4;0;wm.simplerules.alerts.configuration:Config/maxSlots;1;0">
+<MAPCOPY FROM="/timeInterval;1;0" TO="/filterSetup;4;0;wx.service.alerts.configuration:Config/timeInterval;1;0">
 </MAPCOPY>
 
-<MAPCOPY FROM="/countZeros;1;0" TO="/filterSetup;4;0;wm.simplerules.alerts.configuration:Config/countZeros;1;0">
+<MAPCOPY FROM="/maxSlots;1;0" TO="/filterSetup;4;0;wx.service.alerts.configuration:Config/maxSlots;1;0">
 </MAPCOPY>
 
-<MAPCOPY FROM="/eventType;1;0" TO="/filterSetup;4;0;wm.simplerules.alerts.configuration:Config/eventType;1;0">
+<MAPCOPY FROM="/countZeros;1;0" TO="/filterSetup;4;0;wx.service.alerts.configuration:Config/countZeros;1;0">
 </MAPCOPY>
 
-<MAPCOPY FROM="/filter;1;0" TO="/filterSetup;4;0;wm.simplerules.alerts.configuration:Config/filter;1;0">
+<MAPCOPY FROM="/traceType;1;0" TO="/filterSetup;4;0;wx.service.alerts.configuration:Config/traceType;1;0">
+</MAPCOPY>
+
+<MAPCOPY FROM="/transactionDuration;1;0" TO="/filterSetup;4;0;wx.service.alerts.configuration:Config/transactionDuration;1;0">
+</MAPCOPY>
+
+<MAPCOPY FROM="/eventType;1;0" TO="/filterSetup;4;0;wx.service.alerts.configuration:Config/eventType;1;0">
 </MAPCOPY>
 </MAP>
 
@@ -487,6 +579,7 @@
     <value name="is_public">false</value>
     <value name="field_type">record</value>
     <value name="field_dim">0</value>
+    <value name="wrapper_type">IData</value>
     <value name="nillable">true</value>
     <value name="form_qualified">false</value>
     <value name="is_global">false</value>
@@ -546,7 +639,7 @@
         <value name="form_qualified">false</value>
         <value name="is_global">false</value>
         <value name="modifiable">true</value>
-        <value name="rec_ref">wm.simplerules.alerts.configuration:Config</value>
+        <value name="rec_ref">wx.service.alerts.configuration:Config</value>
       </record>
       <record javaclass="com.wm.util.Values">
         <value name="node_type">unknown</value>
@@ -597,6 +690,48 @@
         </record>
         <value name="is_public">false</value>
         <value name="field_name">countZeros</value>
+        <value name="field_type">string</value>
+        <value name="field_dim">0</value>
+        <array name="field_options" type="value" depth="1">
+        </array>
+        <value name="nillable">true</value>
+        <value name="form_qualified">false</value>
+        <value name="is_global">false</value>
+      </record>
+      <record javaclass="com.wm.util.Values">
+        <value name="node_type">record</value>
+        <value name="node_subtype">unknown</value>
+        <value name="node_comment"></value>
+        <record name="node_hints" javaclass="com.wm.util.Values">
+          <value name="field_usereditable">false</value>
+          <value name="field_largerEditor">false</value>
+          <value name="field_password">false</value>
+        </record>
+        <value name="is_public">false</value>
+        <value name="field_name">traceType</value>
+        <value name="field_type">string</value>
+        <value name="field_dim">0</value>
+        <array name="field_options" type="value" depth="1">
+          <value>all</value>
+          <value>allx</value>
+          <value>top</value>
+          <value>topx</value>
+        </array>
+        <value name="nillable">true</value>
+        <value name="form_qualified">false</value>
+        <value name="is_global">false</value>
+      </record>
+      <record javaclass="com.wm.util.Values">
+        <value name="node_type">record</value>
+        <value name="node_subtype">unknown</value>
+        <value name="node_comment"></value>
+        <record name="node_hints" javaclass="com.wm.util.Values">
+          <value name="field_usereditable">true</value>
+          <value name="field_largerEditor">false</value>
+          <value name="field_password">false</value>
+        </record>
+        <value name="is_public">false</value>
+        <value name="field_name">transactionDuration</value>
         <value name="field_type">string</value>
         <value name="field_dim">0</value>
         <array name="field_options" type="value" depth="1">
@@ -663,6 +798,19 @@
       <record javaclass="com.wm.util.Values">
         <value name="node_type">record</value>
         <value name="node_subtype">unknown</value>
+        <value name="is_public">false</value>
+        <value name="field_name">copy</value>
+        <value name="field_type">recref</value>
+        <value name="field_dim">0</value>
+        <value name="nillable">true</value>
+        <value name="form_qualified">false</value>
+        <value name="is_global">false</value>
+        <value name="modifiable">true</value>
+        <value name="rec_ref">wx.service.alerts.configuration:Config</value>
+      </record>
+      <record javaclass="com.wm.util.Values">
+        <value name="node_type">record</value>
+        <value name="node_subtype">unknown</value>
         <value name="node_comment"></value>
         <record name="node_hints" javaclass="com.wm.util.Values">
           <value name="field_largerEditor">false</value>
@@ -696,20 +844,7 @@
         <value name="is_soap_array_encoding_used">false</value>
         <value name="rec_closed">true</value>
         <value name="modifiable">true</value>
-        <value name="rec_ref">wm.simplerules.alerts.dsp:dspComputer</value>
-      </record>
-      <record javaclass="com.wm.util.Values">
-        <value name="node_type">record</value>
-        <value name="node_subtype">unknown</value>
-        <value name="is_public">false</value>
-        <value name="field_name">copy</value>
-        <value name="field_type">recref</value>
-        <value name="field_dim">0</value>
-        <value name="nillable">true</value>
-        <value name="form_qualified">false</value>
-        <value name="is_global">false</value>
-        <value name="modifiable">true</value>
-        <value name="rec_ref">wm.simplerules.alerts.configuration:Config</value>
+        <value name="rec_ref">wx.service.alerts.dsp:dspComputer</value>
       </record>
     </array>
     <value name="modifiable">true</value>
@@ -725,6 +860,7 @@
     <value name="is_public">false</value>
     <value name="field_type">record</value>
     <value name="field_dim">0</value>
+    <value name="wrapper_type">IData</value>
     <value name="nillable">true</value>
     <value name="form_qualified">false</value>
     <value name="is_global">false</value>
@@ -784,7 +920,7 @@
         <value name="form_qualified">false</value>
         <value name="is_global">false</value>
         <value name="modifiable">true</value>
-        <value name="rec_ref">wm.simplerules.alerts.configuration:Config</value>
+        <value name="rec_ref">wx.service.alerts.configuration:Config</value>
       </record>
       <record javaclass="com.wm.util.Values">
         <value name="node_type">unknown</value>
@@ -835,6 +971,48 @@
         </record>
         <value name="is_public">false</value>
         <value name="field_name">countZeros</value>
+        <value name="field_type">string</value>
+        <value name="field_dim">0</value>
+        <array name="field_options" type="value" depth="1">
+        </array>
+        <value name="nillable">true</value>
+        <value name="form_qualified">false</value>
+        <value name="is_global">false</value>
+      </record>
+      <record javaclass="com.wm.util.Values">
+        <value name="node_type">record</value>
+        <value name="node_subtype">unknown</value>
+        <value name="node_comment"></value>
+        <record name="node_hints" javaclass="com.wm.util.Values">
+          <value name="field_usereditable">false</value>
+          <value name="field_largerEditor">false</value>
+          <value name="field_password">false</value>
+        </record>
+        <value name="is_public">false</value>
+        <value name="field_name">traceType</value>
+        <value name="field_type">string</value>
+        <value name="field_dim">0</value>
+        <array name="field_options" type="value" depth="1">
+          <value>all</value>
+          <value>allx</value>
+          <value>top</value>
+          <value>topx</value>
+        </array>
+        <value name="nillable">true</value>
+        <value name="form_qualified">false</value>
+        <value name="is_global">false</value>
+      </record>
+      <record javaclass="com.wm.util.Values">
+        <value name="node_type">record</value>
+        <value name="node_subtype">unknown</value>
+        <value name="node_comment"></value>
+        <record name="node_hints" javaclass="com.wm.util.Values">
+          <value name="field_usereditable">true</value>
+          <value name="field_largerEditor">false</value>
+          <value name="field_password">false</value>
+        </record>
+        <value name="is_public">false</value>
+        <value name="field_name">transactionDuration</value>
         <value name="field_type">string</value>
         <value name="field_dim">0</value>
         <array name="field_options" type="value" depth="1">
@@ -934,7 +1112,7 @@
         <value name="is_soap_array_encoding_used">false</value>
         <value name="rec_closed">true</value>
         <value name="modifiable">true</value>
-        <value name="rec_ref">wm.simplerules.alerts.dsp:dspComputer</value>
+        <value name="rec_ref">wx.service.alerts.dsp:dspComputer</value>
       </record>
     </array>
     <value name="modifiable">true</value>
@@ -944,19 +1122,25 @@
 
   <!-- nodes -->
 
-<MAPCOPY FROM="/filterSetup;4;0;wm.simplerules.alerts.configuration:Config/eventType;1;0" TO="/copy;4;0;wm.simplerules.alerts.configuration:Config/eventType;1;0">
+<MAPCOPY FROM="/filterSetup;4;0;wx.service.alerts.configuration:Config/eventType;1;0" TO="/copy;4;0;wx.service.alerts.configuration:Config/eventType;1;0">
 </MAPCOPY>
 
-<MAPCOPY FROM="/filterSetup;4;0;wm.simplerules.alerts.configuration:Config/filter;1;0" TO="/copy;4;0;wm.simplerules.alerts.configuration:Config/filter;1;0">
+<MAPCOPY FROM="/filterSetup;4;0;wx.service.alerts.configuration:Config/filter;1;0" TO="/copy;4;0;wx.service.alerts.configuration:Config/filter;1;0">
 </MAPCOPY>
 
-<MAPCOPY FROM="/filterSetup;4;0;wm.simplerules.alerts.configuration:Config/timeInterval;1;0" TO="/copy;4;0;wm.simplerules.alerts.configuration:Config/timeInterval;1;0">
+<MAPCOPY FROM="/filterSetup;4;0;wx.service.alerts.configuration:Config/timeInterval;1;0" TO="/copy;4;0;wx.service.alerts.configuration:Config/timeInterval;1;0">
 </MAPCOPY>
 
-<MAPCOPY FROM="/filterSetup;4;0;wm.simplerules.alerts.configuration:Config/maxSlots;1;0" TO="/copy;4;0;wm.simplerules.alerts.configuration:Config/maxSlots;1;0">
+<MAPCOPY FROM="/filterSetup;4;0;wx.service.alerts.configuration:Config/maxSlots;1;0" TO="/copy;4;0;wx.service.alerts.configuration:Config/maxSlots;1;0">
 </MAPCOPY>
 
-<MAPCOPY FROM="/filterSetup;4;0;wm.simplerules.alerts.configuration:Config/countZeros;1;0" TO="/copy;4;0;wm.simplerules.alerts.configuration:Config/countZeros;1;0">
+<MAPCOPY FROM="/filterSetup;4;0;wx.service.alerts.configuration:Config/countZeros;1;0" TO="/copy;4;0;wx.service.alerts.configuration:Config/countZeros;1;0">
+</MAPCOPY>
+
+<MAPCOPY FROM="/filterSetup;4;0;wx.service.alerts.configuration:Config/transactionDuration;1;0" TO="/copy;4;0;wx.service.alerts.configuration:Config/transactionDuration;1;0">
+</MAPCOPY>
+
+<MAPCOPY FROM="/filterSetup;4;0;wx.service.alerts.configuration:Config/traceType;1;0" TO="/copy;4;0;wx.service.alerts.configuration:Config/traceType;1;0">
 </MAPCOPY>
 </MAP>
 
@@ -1035,7 +1219,7 @@
         <value name="form_qualified">false</value>
         <value name="is_global">false</value>
         <value name="modifiable">true</value>
-        <value name="rec_ref">wm.simplerules.alerts.configuration:Config</value>
+        <value name="rec_ref">wx.service.alerts.configuration:Config</value>
       </record>
       <record javaclass="com.wm.util.Values">
         <value name="node_type">unknown</value>
@@ -1185,7 +1369,7 @@
         <value name="is_soap_array_encoding_used">false</value>
         <value name="rec_closed">true</value>
         <value name="modifiable">true</value>
-        <value name="rec_ref">wm.simplerules.alerts.dsp:dspComputer</value>
+        <value name="rec_ref">wx.service.alerts.dsp:dspComputer</value>
       </record>
       <record javaclass="com.wm.util.Values">
         <value name="node_type">record</value>
@@ -1198,7 +1382,7 @@
         <value name="form_qualified">false</value>
         <value name="is_global">false</value>
         <value name="modifiable">true</value>
-        <value name="rec_ref">wm.simplerules.alerts.configuration:Config</value>
+        <value name="rec_ref">wx.service.alerts.configuration:Config</value>
       </record>
     </array>
     <value name="modifiable">true</value>
@@ -1331,7 +1515,7 @@
         <value name="form_qualified">false</value>
         <value name="is_global">false</value>
         <value name="modifiable">true</value>
-        <value name="rec_ref">wm.simplerules.alerts.configuration:Config</value>
+        <value name="rec_ref">wx.service.alerts.configuration:Config</value>
       </record>
       <record javaclass="com.wm.util.Values">
         <value name="node_type">unknown</value>
@@ -1481,7 +1665,7 @@
         <value name="is_soap_array_encoding_used">false</value>
         <value name="rec_closed">true</value>
         <value name="modifiable">true</value>
-        <value name="rec_ref">wm.simplerules.alerts.dsp:dspComputer</value>
+        <value name="rec_ref">wx.service.alerts.dsp:dspComputer</value>
       </record>
       <record javaclass="com.wm.util.Values">
         <value name="node_type">record</value>
@@ -1494,7 +1678,7 @@
         <value name="form_qualified">false</value>
         <value name="is_global">false</value>
         <value name="modifiable">true</value>
-        <value name="rec_ref">wm.simplerules.alerts.configuration:Config</value>
+        <value name="rec_ref">wx.service.alerts.configuration:Config</value>
       </record>
     </array>
     <value name="modifiable">true</value>
@@ -1693,7 +1877,7 @@
         <value name="form_qualified">false</value>
         <value name="is_global">false</value>
         <value name="modifiable">true</value>
-        <value name="rec_ref">wm.simplerules.alerts.configuration:Config</value>
+        <value name="rec_ref">wx.service.alerts.configuration:Config</value>
       </record>
       <record javaclass="com.wm.util.Values">
         <value name="node_type">unknown</value>
@@ -1841,7 +2025,7 @@
         <value name="is_soap_array_encoding_used">false</value>
         <value name="rec_closed">true</value>
         <value name="modifiable">true</value>
-        <value name="rec_ref">wm.simplerules.alerts.dsp:dspComputer</value>
+        <value name="rec_ref">wx.service.alerts.dsp:dspComputer</value>
       </record>
       <record javaclass="com.wm.util.Values">
         <value name="node_type">record</value>
@@ -1854,7 +2038,7 @@
         <value name="form_qualified">false</value>
         <value name="is_global">false</value>
         <value name="modifiable">true</value>
-        <value name="rec_ref">wm.simplerules.alerts.configuration:Config</value>
+        <value name="rec_ref">wx.service.alerts.configuration:Config</value>
       </record>
       <record javaclass="com.wm.util.Values">
         <value name="node_type">unknown</value>
@@ -1990,7 +2174,7 @@
         <value name="form_qualified">false</value>
         <value name="is_global">false</value>
         <value name="modifiable">true</value>
-        <value name="rec_ref">wm.simplerules.alerts.configuration:Config</value>
+        <value name="rec_ref">wx.service.alerts.configuration:Config</value>
       </record>
       <record javaclass="com.wm.util.Values">
         <value name="node_type">unknown</value>
@@ -2138,7 +2322,7 @@
         <value name="is_soap_array_encoding_used">false</value>
         <value name="rec_closed">true</value>
         <value name="modifiable">true</value>
-        <value name="rec_ref">wm.simplerules.alerts.dsp:dspComputer</value>
+        <value name="rec_ref">wx.service.alerts.dsp:dspComputer</value>
       </record>
       <record javaclass="com.wm.util.Values">
         <value name="node_type">unknown</value>
@@ -2173,7 +2357,7 @@
         <value name="form_qualified">false</value>
         <value name="is_global">false</value>
         <value name="modifiable">true</value>
-        <value name="rec_ref">wm.simplerules.alerts.configuration:Config</value>
+        <value name="rec_ref">wx.service.alerts.configuration:Config</value>
       </record>
       <record javaclass="com.wm.util.Values">
         <value name="node_type">field</value>
@@ -2403,7 +2587,7 @@
         <value name="form_qualified">false</value>
         <value name="is_global">false</value>
         <value name="modifiable">true</value>
-        <value name="rec_ref">wm.simplerules.alerts.configuration:Config</value>
+        <value name="rec_ref">wx.service.alerts.configuration:Config</value>
       </record>
       <record javaclass="com.wm.util.Values">
         <value name="node_type">unknown</value>
@@ -2551,7 +2735,7 @@
         <value name="is_soap_array_encoding_used">false</value>
         <value name="rec_closed">true</value>
         <value name="modifiable">true</value>
-        <value name="rec_ref">wm.simplerules.alerts.dsp:dspComputer</value>
+        <value name="rec_ref">wx.service.alerts.dsp:dspComputer</value>
       </record>
       <record javaclass="com.wm.util.Values">
         <value name="node_type">unknown</value>
@@ -2586,7 +2770,7 @@
         <value name="form_qualified">false</value>
         <value name="is_global">false</value>
         <value name="modifiable">true</value>
-        <value name="rec_ref">wm.simplerules.alerts.configuration:Config</value>
+        <value name="rec_ref">wx.service.alerts.configuration:Config</value>
       </record>
       <record javaclass="com.wm.util.Values">
         <value name="node_type">unknown</value>
@@ -2607,10 +2791,10 @@
 
   <!-- nodes -->
 
-<MAPCOPY FROM="/filterSetup;4;0;wm.simplerules.alerts.configuration:Config/computers;4;0;wm.simplerules.alerts.configuration:Computer" TO="/fromItem;2;0">
+<MAPCOPY FROM="/filterSetup;4;0;wx.service.alerts.configuration:Config/computers;4;0;wx.service.alerts.configuration:Computer" TO="/fromItem;2;0">
 </MAPCOPY>
 
-<MAPCOPY FROM="/copy;4;0;wm.simplerules.alerts.configuration:Config/computers;4;1;wm.simplerules.alerts.configuration:Computer" TO="/fromList;2;1">
+<MAPCOPY FROM="/copy;4;0;wx.service.alerts.configuration:Config/computers;4;1;wx.service.alerts.configuration:Computer" TO="/fromList;2;1">
 </MAPCOPY>
 </MAP>
 
@@ -2712,7 +2896,7 @@
         <value name="form_qualified">false</value>
         <value name="is_global">false</value>
         <value name="modifiable">true</value>
-        <value name="rec_ref">wm.simplerules.alerts.configuration:Config</value>
+        <value name="rec_ref">wx.service.alerts.configuration:Config</value>
       </record>
       <record javaclass="com.wm.util.Values">
         <value name="node_type">unknown</value>
@@ -2860,7 +3044,7 @@
         <value name="is_soap_array_encoding_used">false</value>
         <value name="rec_closed">true</value>
         <value name="modifiable">true</value>
-        <value name="rec_ref">wm.simplerules.alerts.dsp:dspComputer</value>
+        <value name="rec_ref">wx.service.alerts.dsp:dspComputer</value>
       </record>
       <record javaclass="com.wm.util.Values">
         <value name="node_type">unknown</value>
@@ -2895,7 +3079,7 @@
         <value name="form_qualified">false</value>
         <value name="is_global">false</value>
         <value name="modifiable">true</value>
-        <value name="rec_ref">wm.simplerules.alerts.configuration:Config</value>
+        <value name="rec_ref">wx.service.alerts.configuration:Config</value>
       </record>
       <record javaclass="com.wm.util.Values">
         <value name="node_type">record</value>
@@ -2965,7 +3149,7 @@
 
   <!-- nodes -->
 
-<MAPCOPY FROM="/toList;2;1" TO="/copy;4;0;wm.simplerules.alerts.configuration:Config/computers;4;1;wm.simplerules.alerts.configuration:Computer">
+<MAPCOPY FROM="/toList;2;1" TO="/copy;4;0;wx.service.alerts.configuration:Config/computers;4;1;wx.service.alerts.configuration:Computer">
 </MAPCOPY>
 
 <MAPDELETE FIELD="/fromList;2;1">
@@ -3168,7 +3352,7 @@
         <value name="form_qualified">false</value>
         <value name="is_global">false</value>
         <value name="modifiable">true</value>
-        <value name="rec_ref">wm.simplerules.alerts.configuration:Config</value>
+        <value name="rec_ref">wx.service.alerts.configuration:Config</value>
       </record>
       <record javaclass="com.wm.util.Values">
         <value name="node_type">unknown</value>
@@ -3316,7 +3500,7 @@
         <value name="is_soap_array_encoding_used">false</value>
         <value name="rec_closed">true</value>
         <value name="modifiable">true</value>
-        <value name="rec_ref">wm.simplerules.alerts.dsp:dspComputer</value>
+        <value name="rec_ref">wx.service.alerts.dsp:dspComputer</value>
       </record>
       <record javaclass="com.wm.util.Values">
         <value name="node_type">unknown</value>
@@ -3351,7 +3535,7 @@
         <value name="form_qualified">false</value>
         <value name="is_global">false</value>
         <value name="modifiable">true</value>
-        <value name="rec_ref">wm.simplerules.alerts.configuration:Config</value>
+        <value name="rec_ref">wx.service.alerts.configuration:Config</value>
       </record>
       <record javaclass="com.wm.util.Values">
         <value name="node_type">unknown</value>
@@ -3383,7 +3567,7 @@
 
   <!-- nodes -->
 
-<MAPCOPY FROM="/copy;4;0;wm.simplerules.alerts.configuration:Config/computers;4;1;wm.simplerules.alerts.configuration:Computer" TO="/fromList;2;1">
+<MAPCOPY FROM="/copy;4;0;wx.service.alerts.configuration:Config/computers;4;1;wx.service.alerts.configuration:Computer" TO="/fromList;2;1">
 </MAPCOPY>
 
 <MAPCOPY FROM="/type;1;0" TO="/fromItem;2;0/type;1;0">
@@ -3513,7 +3697,7 @@
         <value name="form_qualified">false</value>
         <value name="is_global">false</value>
         <value name="modifiable">true</value>
-        <value name="rec_ref">wm.simplerules.alerts.configuration:Config</value>
+        <value name="rec_ref">wx.service.alerts.configuration:Config</value>
       </record>
       <record javaclass="com.wm.util.Values">
         <value name="node_type">unknown</value>
@@ -3661,7 +3845,7 @@
         <value name="is_soap_array_encoding_used">false</value>
         <value name="rec_closed">true</value>
         <value name="modifiable">true</value>
-        <value name="rec_ref">wm.simplerules.alerts.dsp:dspComputer</value>
+        <value name="rec_ref">wx.service.alerts.dsp:dspComputer</value>
       </record>
       <record javaclass="com.wm.util.Values">
         <value name="node_type">unknown</value>
@@ -3696,7 +3880,7 @@
         <value name="form_qualified">false</value>
         <value name="is_global">false</value>
         <value name="modifiable">true</value>
-        <value name="rec_ref">wm.simplerules.alerts.configuration:Config</value>
+        <value name="rec_ref">wx.service.alerts.configuration:Config</value>
       </record>
       <record javaclass="com.wm.util.Values">
         <value name="node_type">unknown</value>
@@ -3766,7 +3950,7 @@
 
   <!-- nodes -->
 
-<MAPCOPY FROM="/toList;2;1" TO="/copy;4;0;wm.simplerules.alerts.configuration:Config/computers;4;1;wm.simplerules.alerts.configuration:Computer">
+<MAPCOPY FROM="/toList;2;1" TO="/copy;4;0;wx.service.alerts.configuration:Config/computers;4;1;wx.service.alerts.configuration:Computer">
 </MAPCOPY>
 
 <MAPDELETE FIELD="/fromList;2;1">
@@ -3868,7 +4052,7 @@
         <value name="form_qualified">false</value>
         <value name="is_global">false</value>
         <value name="modifiable">true</value>
-        <value name="rec_ref">wm.simplerules.alerts.configuration:Config</value>
+        <value name="rec_ref">wx.service.alerts.configuration:Config</value>
       </record>
       <record javaclass="com.wm.util.Values">
         <value name="node_type">unknown</value>
@@ -4016,7 +4200,7 @@
         <value name="is_soap_array_encoding_used">false</value>
         <value name="rec_closed">true</value>
         <value name="modifiable">true</value>
-        <value name="rec_ref">wm.simplerules.alerts.dsp:dspComputer</value>
+        <value name="rec_ref">wx.service.alerts.dsp:dspComputer</value>
       </record>
       <record javaclass="com.wm.util.Values">
         <value name="node_type">unknown</value>
@@ -4051,7 +4235,7 @@
         <value name="form_qualified">false</value>
         <value name="is_global">false</value>
         <value name="modifiable">true</value>
-        <value name="rec_ref">wm.simplerules.alerts.configuration:Config</value>
+        <value name="rec_ref">wx.service.alerts.configuration:Config</value>
       </record>
       <record javaclass="com.wm.util.Values">
         <value name="node_type">unknown</value>
@@ -4124,7 +4308,7 @@
         <value name="form_qualified">false</value>
         <value name="is_global">false</value>
         <value name="modifiable">true</value>
-        <value name="rec_ref">wm.simplerules.alerts.configuration:Config</value>
+        <value name="rec_ref">wx.service.alerts.configuration:Config</value>
       </record>
       <record javaclass="com.wm.util.Values">
         <value name="node_type">record</value>
@@ -4145,7 +4329,7 @@
         <value name="is_soap_array_encoding_used">false</value>
         <value name="rec_closed">true</value>
         <value name="modifiable">true</value>
-        <value name="rec_ref">wm.simplerules.alerts.dsp:dspComputer</value>
+        <value name="rec_ref">wx.service.alerts.dsp:dspComputer</value>
       </record>
     </array>
     <value name="modifiable">true</value>
@@ -4220,7 +4404,7 @@
         <value name="form_qualified">false</value>
         <value name="is_global">false</value>
         <value name="modifiable">true</value>
-        <value name="rec_ref">wm.simplerules.alerts.configuration:Config</value>
+        <value name="rec_ref">wx.service.alerts.configuration:Config</value>
       </record>
       <record javaclass="com.wm.util.Values">
         <value name="node_type">unknown</value>
@@ -4370,7 +4554,7 @@
         <value name="is_soap_array_encoding_used">false</value>
         <value name="rec_closed">true</value>
         <value name="modifiable">true</value>
-        <value name="rec_ref">wm.simplerules.alerts.dsp:dspComputer</value>
+        <value name="rec_ref">wx.service.alerts.dsp:dspComputer</value>
       </record>
       <record javaclass="com.wm.util.Values">
         <value name="node_type">unknown</value>
@@ -4405,7 +4589,7 @@
         <value name="form_qualified">false</value>
         <value name="is_global">false</value>
         <value name="modifiable">true</value>
-        <value name="rec_ref">wm.simplerules.alerts.configuration:Config</value>
+        <value name="rec_ref">wx.service.alerts.configuration:Config</value>
       </record>
     </array>
     <value name="modifiable">true</value>
@@ -4415,10 +4599,10 @@
 
   <!-- nodes -->
 
-<MAPCOPY FROM="/copy;4;0;wm.simplerules.alerts.configuration:Config" TO="/filterSetup;4;0;wm.simplerules.alerts.configuration:Config">
+<MAPCOPY FROM="/copy;4;0;wx.service.alerts.configuration:Config" TO="/filterSetup;4;0;wx.service.alerts.configuration:Config">
 </MAPCOPY>
 
-<MAPDELETE FIELD="/copy;4;0;wm.simplerules.alerts.configuration:Config">
+<MAPDELETE FIELD="/copy;4;0;wx.service.alerts.configuration:Config">
 </MAPDELETE>
 
 <MAPDELETE FIELD="/eventType;1;0">
@@ -4762,6 +4946,7 @@
     <value name="is_public">false</value>
     <value name="field_type">record</value>
     <value name="field_dim">0</value>
+    <value name="wrapper_type">IData</value>
     <value name="nillable">true</value>
     <value name="form_qualified">false</value>
     <value name="is_global">false</value>
@@ -4783,7 +4968,30 @@
         <value name="form_qualified">false</value>
         <value name="is_global">false</value>
         <value name="modifiable">true</value>
-        <value name="rec_ref">wm.simplerules.alerts.configuration:Config</value>
+        <value name="rec_ref">wx.service.alerts.configuration:Config</value>
+      </record>
+      <record javaclass="com.wm.util.Values">
+        <value name="node_type">record</value>
+        <value name="node_subtype">unknown</value>
+        <value name="node_comment"></value>
+        <record name="node_hints" javaclass="com.wm.util.Values">
+          <value name="field_usereditable">false</value>
+          <value name="field_largerEditor">false</value>
+          <value name="field_password">false</value>
+        </record>
+        <value name="is_public">false</value>
+        <value name="field_name">traceType</value>
+        <value name="field_type">string</value>
+        <value name="field_dim">0</value>
+        <array name="field_options" type="value" depth="1">
+          <value>all</value>
+          <value>allx</value>
+          <value>top</value>
+          <value>topx</value>
+        </array>
+        <value name="nillable">true</value>
+        <value name="form_qualified">false</value>
+        <value name="is_global">false</value>
       </record>
       <record javaclass="com.wm.util.Values">
         <value name="node_type">record</value>
@@ -4803,7 +5011,7 @@
         <value name="is_global">false</value>
         <value name="rec_closed">true</value>
         <value name="modifiable">true</value>
-        <value name="rec_ref">wm.simplerules.alerts.dsp:dspComputer</value>
+        <value name="rec_ref">wx.service.alerts.dsp:dspComputer</value>
       </record>
       <record javaclass="com.wm.util.Values">
         <value name="node_type">unknown</value>
@@ -4824,13 +5032,13 @@
 
   <!-- nodes -->
 
-<MAPCOPY FROM="/computers;4;0;wm.simplerules.alerts.dsp:dspComputer/source;1;0" TO="/source;1;0">
+<MAPCOPY FROM="/computers;4;0;wx.service.alerts.dsp:dspComputer/source;1;0" TO="/source;1;0">
 </MAPCOPY>
 
-<MAPCOPY FROM="/computers;4;0;wm.simplerules.alerts.dsp:dspComputer/types;2;0/rules;4;1;wm.simplerules.alerts.dsp:dspRule" TO="/rules;2;1">
+<MAPCOPY FROM="/computers;4;0;wx.service.alerts.dsp:dspComputer/types;2;0/rules;4;1;wx.service.alerts.dsp:dspRule" TO="/rules;2;1">
 </MAPCOPY>
 
-<MAPCOPY FROM="/computers;4;0;wm.simplerules.alerts.dsp:dspComputer/types;2;0/type;1;0" TO="/type;1;0">
+<MAPCOPY FROM="/computers;4;0;wx.service.alerts.dsp:dspComputer/types;2;0/type;1;0" TO="/type;1;0">
 </MAPCOPY>
 </MAP>
 
@@ -4844,6 +5052,7 @@
     <value name="is_public">false</value>
     <value name="field_type">record</value>
     <value name="field_dim">0</value>
+    <value name="wrapper_type">IData</value>
     <value name="nillable">true</value>
     <value name="form_qualified">false</value>
     <value name="is_global">false</value>
@@ -4865,7 +5074,7 @@
         <value name="form_qualified">false</value>
         <value name="is_global">false</value>
         <value name="modifiable">true</value>
-        <value name="rec_ref">wm.simplerules.alerts.configuration:Config</value>
+        <value name="rec_ref">wx.service.alerts.configuration:Config</value>
       </record>
       <record javaclass="com.wm.util.Values">
         <value name="node_type">unknown</value>
@@ -4896,6 +5105,7 @@
         <value name="field_name">rules</value>
         <value name="field_type">record</value>
         <value name="field_dim">1</value>
+        <value name="wrapper_type">IData</value>
         <value name="nillable">true</value>
         <value name="form_qualified">false</value>
         <value name="is_global">false</value>
@@ -4903,6 +5113,29 @@
         <array name="rec_fields" type="record" depth="1">
         </array>
         <value name="modifiable">true</value>
+      </record>
+      <record javaclass="com.wm.util.Values">
+        <value name="node_type">record</value>
+        <value name="node_subtype">unknown</value>
+        <value name="node_comment"></value>
+        <record name="node_hints" javaclass="com.wm.util.Values">
+          <value name="field_usereditable">false</value>
+          <value name="field_largerEditor">false</value>
+          <value name="field_password">false</value>
+        </record>
+        <value name="is_public">false</value>
+        <value name="field_name">traceType</value>
+        <value name="field_type">string</value>
+        <value name="field_dim">0</value>
+        <array name="field_options" type="value" depth="1">
+          <value>all</value>
+          <value>allx</value>
+          <value>top</value>
+          <value>topx</value>
+        </array>
+        <value name="nillable">true</value>
+        <value name="form_qualified">false</value>
+        <value name="is_global">false</value>
       </record>
       <record javaclass="com.wm.util.Values">
         <value name="node_type">record</value>
@@ -4922,7 +5155,7 @@
         <value name="is_global">false</value>
         <value name="rec_closed">true</value>
         <value name="modifiable">true</value>
-        <value name="rec_ref">wm.simplerules.alerts.dsp:dspComputer</value>
+        <value name="rec_ref">wx.service.alerts.dsp:dspComputer</value>
       </record>
     </array>
     <value name="modifiable">true</value>
@@ -5016,7 +5249,7 @@
         <value name="form_qualified">false</value>
         <value name="is_global">false</value>
         <value name="modifiable">true</value>
-        <value name="rec_ref">wm.simplerules.alerts.configuration:Config</value>
+        <value name="rec_ref">wx.service.alerts.configuration:Config</value>
       </record>
       <record javaclass="com.wm.util.Values">
         <value name="node_type">record</value>
@@ -5037,7 +5270,7 @@
         <value name="is_soap_array_encoding_used">false</value>
         <value name="rec_closed">true</value>
         <value name="modifiable">true</value>
-        <value name="rec_ref">wm.simplerules.alerts.dsp:dspComputer</value>
+        <value name="rec_ref">wx.service.alerts.dsp:dspComputer</value>
       </record>
     </array>
     <value name="modifiable">true</value>
@@ -5047,7 +5280,13 @@
 
   <!-- nodes -->
 
-<MAPDELETE FIELD="/computers;4;1;wm.simplerules.alerts.dsp:dspComputer">
+<MAPDELETE FIELD="/computers;4;1;wx.service.alerts.dsp:dspComputer">
+</MAPDELETE>
+
+<MAPDELETE FIELD="/traceType;1;0">
+</MAPDELETE>
+
+<MAPDELETE FIELD="/transactionDuration;1;0">
 </MAPDELETE>
 </MAP>
 </FLOW>

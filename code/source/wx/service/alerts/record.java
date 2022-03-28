@@ -13,6 +13,9 @@ import com.jc.compute.Computer;
 import com.jc.compute.Rule;
 import com.jc.compute.ServiceHistory;
 import com.jc.compute.Snapshot;
+import com.jc.compute.Computer.Source;
+import com.jc.compute.ComputersForNamespace.EventType;
+import com.jc.service.ServiceInterceptor;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -61,7 +64,7 @@ public final class record
 		// --- <<IS-START(getServiceAnalytics)>> ---
 		// @sigtype java 3.5
 		// [i] field:0:optional service
-		// [i] field:0:optional type
+		// [i] field:0:optional source
 		// [i] field:0:required yscale
 		// [o] record:1:required results
 		// [o] - field:0:required name
@@ -85,17 +88,19 @@ public final class record
 		
 		IDataCursor c = pipeline.getCursor();
 		String service = IDataUtil.getString(c, "service");
-		String type = IDataUtil.getString(c, "type");
+		String source = IDataUtil.getString(c, "source");
 		
 		// process
 		
 		long yscale = 200; 
 		
-		if (service != null || type != null) {
-			IDataUtil.put(c, "results", AllComputers.instance.report(service, type, yscale));
+		Source src = source != null ? Source.valueOf(source) : null;
+		
+		if (service != null) {
+			IDataUtil.put(c, "results", AllComputers.instance.serviceStatisticsFor(service, src, yscale));
 		} else {
-			IDataUtil.put(c, "results", AllComputers.instance.summary());
-		}	
+			IDataUtil.put(c, "results", AllComputers.instance.servicesFor(src));
+		}
 		
 		// pipeline out
 				
@@ -108,104 +113,20 @@ public final class record
 
 
 
-	public static final void recordAuditEndEvent (IData pipeline)
-        throws ServiceException
-	{
-		// --- <<IS-START(recordAuditEndEvent)>> ---
-		// @sigtype java 3.5
-		// [i] field:0:required TID
-		// [i] field:0:required service
-		// [i] field:0:required time
-		// [i] field:0:required result
-		IDataCursor pipelineCursor = pipeline.getCursor();
-		String id = IDataUtil.getString(pipelineCursor, "TID");
-		String service = IDataUtil.getString(pipelineCursor, "service");
-		String result = IDataUtil.getString(pipelineCursor, "result");
-		
-		pipelineCursor.destroy();
-		
-		long time = result == "Ended" ? new Date().getTime() : -1;
-		
-		System.out.println("<<<<<<<<<<<<<<<<<<<< recording end event 'duration' for " + service);
-		
-		AllComputers.instance.record("Audit Event", id, service, "duration", time, false);
-		
-		if (time != -1) {
-						
-			System.out.println("<<<<<<<<<<<<<<<<<<<< recording end event 'count' for " + service);
-			AllComputers.instance.record("Audit Event", null, service, "count", 1, false);
-		
-		} else {
-			//System.out.println("<<<<<<<<<<<<<<<<<<<< recording error event 'count' for " + service);
-			//AllComputers.instance.record("Exception Event", null, service, "count", 1, false);
-		}
-			
-		// --- <<IS-END>> ---
-
-                
-	}
-
-
-
-	public static final void recordAuditStartEvent (IData pipeline)
-        throws ServiceException
-	{
-		// --- <<IS-START(recordAuditStartEvent)>> ---
-		// @sigtype java 3.5
-		// [i] field:0:required TID
-		// [i] field:0:required service
-		// [i] field:0:required time
-		IDataCursor pipelineCursor = pipeline.getCursor();
-		String id = IDataUtil.getString(pipelineCursor, "TID");
-		String service = IDataUtil.getString(pipelineCursor, "service");
-		//String time = IDataUtil.getString(pipelineCursor, "time");
-		pipelineCursor.destroy();
-		
-		long time = new Date().getTime();
-		
-		System.out.println(">>>>>>>>>>>>>>>>>>>>> recording start event 'duration' for " + service);
-		
-		AllComputers.instance.record("Audit Event", id, service, "duration", time, true);
-		// --- <<IS-END>> ---
-
-                
-	}
-
-
-
-	public static final void recordExceptionEvent (IData pipeline)
-        throws ServiceException
-	{
-		// --- <<IS-START(recordExceptionEvent)>> ---
-		// @sigtype java 3.5
-		// [i] field:0:required service
-		// [i] field:0:optional error
-		IDataCursor pipelineCursor = pipeline.getCursor();
-		String service = IDataUtil.getString(pipelineCursor, "service");
-		String error = IDataUtil.getString(pipelineCursor, "error");
-		
-		pipelineCursor.destroy();
-		
-		AllComputers.instance.record("Exception Event", null, service, "count", 1, false);
-		// --- <<IS-END>> ---
-
-                
-	}
-
-
-
 	public static final void registerComputer (IData pipeline)
         throws ServiceException
 	{
 		// --- <<IS-START(registerComputer)>> ---
 		// @sigtype java 3.5
-		// [i] field:0:required id
 		// [i] field:0:required eventType
 		// [i] field:0:required filter
 		// [i] field:0:required timeInterval
 		// [i] field:0:required maxSlots
 		// [i] field:0:optional countZeros {"false","true"}
+		// [i] field:0:required transactionDuration
+		// [i] field:0:required traceType {"all","allx","top","topx"}
 		// [i] object:0:required computer
+		// [i] field:0:optional persistService
 		// pipeline in
 		
 		IDataCursor pipelineCursor = pipeline.getCursor();
@@ -214,14 +135,22 @@ public final class record
 		String timeIntervalStr = IDataUtil.getString(pipelineCursor,"timeInterval");
 		String maxSlotsStr = IDataUtil.getString(pipelineCursor, "maxSlots");
 		String countZerosS = IDataUtil.getString(pipelineCursor, "countZeros");
+		String transactionDurationStr = IDataUtil.getString(pipelineCursor,"transactionDuration");
+		String traceType = IDataUtil.getString(pipelineCursor, "traceType");
+		String persistService = IDataUtil.getString(pipelineCursor, "persistService");
+		
 		@SuppressWarnings("unchecked")
-		Computer<Double> c = (Computer<Double>) IDataUtil.get(pipelineCursor, "computer");
+		Computer<Number> c = (Computer<Number>) IDataUtil.get(pipelineCursor, "computer");
 		pipelineCursor.destroy();
 		
 		// process
 		
 		boolean countZeros = false;
+		boolean topLevelOnly = false;
+		String[] excludeList = null;
+		String[] includeList = null;
 		long timeInterval = 0;
+		long transactionDuration = 3000;
 		int maxSlots = 100;
 		
 		try { maxSlots = Integer.parseInt(maxSlotsStr); } catch (Exception e) {}
@@ -229,6 +158,7 @@ public final class record
 		try { timeInterval = Long.parseLong(timeIntervalStr); } catch (Exception e) {
 			throw new ServiceException("Provide a valid non zero time interval");
 		}
+		try { transactionDuration = Long.parseLong(transactionDurationStr); } catch (Exception e) {}
 		
 		if (filter.endsWith(".*")) {
 			filter = filter.substring(0, filter.length()-2);
@@ -236,11 +166,91 @@ public final class record
 			filter = filter.substring(0, filter.length()-1);
 		}
 		
-		AllComputers.instance.add(timeInterval, maxSlots, countZeros, filter, c);
+		if (traceType != null) {
+			switch (traceType) {
+			case "allx":
+				excludeList = EXCLUDE_WM_SERVICES;
+				break;
+			case "top":
+				topLevelOnly = true;
+				break;
+			case "topx":
+				topLevelOnly = true;
+				excludeList = EXCLUDE_WM_SERVICES;
+				break;
+			default:
+				break;
+			}
+		}
+		
+		AllComputers.instance.add(timeInterval, EventType.valueOf(eventType), topLevelOnly, maxSlots, countZeros, filter, c, excludeList, includeList, transactionDuration, persistService);
 		
 		// pipeline out
 		
 		pipelineCursor.destroy();
+		// --- <<IS-END>> ---
+
+                
+	}
+
+
+
+	public static final void serviceTotals (IData pipeline)
+        throws ServiceException
+	{
+		// --- <<IS-START(serviceTotals)>> ---
+		// @sigtype java 3.5
+		// [i] field:0:optional filter
+		// [o] record:0:required results
+		// [o] - record:1:required rows
+		// [o] -- field:0:required name
+		// [o] -- field:0:required averageDuration
+		// [o] -- field:0:required totalCount
+		// [o] -- field:0:required totalErrors
+		// [o] -- field:0:required totalTransactions
+		// [o] - field:0:required trackedServices
+		// [o] - field:0:required totalCount
+		// [o] - field:0:required totalErrors
+		// [o] - field:0:required totalTransactions
+		// [o] - object:0:required fromDate
+		// [o] - field:0:required from
+		// [o] - object:0:required toDate
+		// [o] - field:0:required to
+		IDataCursor c = pipeline.getCursor();
+		String filter = IDataUtil.getString(c, "filter");
+		
+		// process
+		
+		IDataUtil.put(c, "results",  AllComputers.instance.totalsFor(filter));
+		c.destroy();
+		// --- <<IS-END>> ---
+
+                
+	}
+
+
+
+	public static final void startInvokeInterceptor (IData pipeline)
+        throws ServiceException
+	{
+		// --- <<IS-START(startInvokeInterceptor)>> ---
+		// @sigtype java 3.5
+		ServiceInterceptor.register(AllComputers.instance);
+			
+		// --- <<IS-END>> ---
+
+                
+	}
+
+
+
+	public static final void stopInvokeInterceptor (IData pipeline)
+        throws ServiceException
+	{
+		// --- <<IS-START(stopInvokeInterceptor)>> ---
+		// @sigtype java 3.5
+		ServiceInterceptor.unregister();
+			
 		// --- <<IS-END>> ---
 
                 
@@ -292,9 +302,12 @@ public final class record
 
 	// --- <<IS-START-SHARED>> ---
 	
+	private static final String[] EXCLUDE_WM_SERVICES = {"wm.", "pub.", "com."};
+	
 	private static void deleteSubscriber(String eventType, String id) throws ServiceException {
 		
 		// input
+		
 		IData pipeline = IDataFactory.create();
 		IDataCursor c = pipeline.getCursor();
 		IDataUtil.put(c, "EventType", eventType);

@@ -33,7 +33,7 @@
 </div>
 <div>
   <button class="plain-button hovertext" data-hover="Cancel changes"><i class="fas fa-undo" onclick="editRuleId.value=null" style="color: orange"></i></button>
-  <button class="plain-button hovertext" data-hover="Confirm updates for rule" id="save-rule-button" name="saveRuleButton" onclick="editRuleId.value='%value id%'; editRuleComputerType.value='%value computeType%'; this.value='true'" disabled><i class="fas fa-save"></i></button>
+  <button class="plain-button hovertext" data-hover="Save rule" id="save-rule-button" name="saveRuleButton" onclick="editRuleId.value='%value id%'; editRuleComputerType.value='%value computeType%'; this.value='true'" disabled><i class="fas fa-save"></i></button>
   <button class="plain-button hovertext" data-hover="Remove rule from counter" name="removeRuleButton" onclick="editRuleComputerType.value='%value computeType%'; editRuleId.value='%value id%'; this.value='true'" %ifvar value -notempty%%else%disabled%endif%><i class="fa fa-trash" aria-hidden="true" style="color: %ifvar value -notempty%black%else%gray%endif%"></i></button>
 </div>
 </div>

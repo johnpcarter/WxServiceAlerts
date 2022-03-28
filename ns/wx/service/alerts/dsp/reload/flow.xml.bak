@@ -103,7 +103,7 @@
   <array name="xml" type="record" depth="1">
     <record javaclass="com.wm.util.Values">
       <value name="fieldName">location</value>
-      <value name="fieldValue">/WxServiceAlerts/configuration.dsp</value>
+      <value name="fieldValue">/WxServiceAlerts/index.dsp</value>
     </record>
   </array>
   <record name="type" javaclass="com.wm.util.Values">

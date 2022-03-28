@@ -57,12 +57,23 @@
 			</td>
 			<td style="width: 190px">
 			  <select class="filter-select" name="eventType" value="%value eventType%">
-				<option value="Exception Event">Exception</option>
-				<option value="Audit Event" %ifvar eventType equals('Audit Event')%selected%endif%>Audit</option>
+				<option value="ExceptionEvent">Exception</option>
+				<option value="AuditEvent" %ifvar eventType equals('AuditEvent')%selected%endif%>Audit</option>
+			</select>
+			</td>
+			<td style="width: 90px; text-align: right; padding-right: 10px">
+			  Trace
+			</td>
+			<td style="width: 190px">
+			  <select class="filter-select" style="width: 250px;" name="traceType" value="%value traceType%">
+				<option value="all" %ifvar traceType equals('all')%selected%endif%>All service</option>
+				<option value="allx" %ifvar traceType equals('allx')%selected%endif%>All service (Exclude wm services)</option>
+				<option value="top" %ifvar traceType equals('top')%selected%endif%>Top level services only</option>
+				<option value="topx" %ifvar traceType equals('topx')%selected%endif%>Top level services only (Exclude wm services)</option>
 			</select>
 			</td>
 			<td style="width: 120px; text-align: right; padding-right: 10px">
-			  Filter 
+			  Filter (Optional) 
 			</td>
 			<td>
 			  <input type="text" name="filter" value="%value filter%" length="50" onchange="checkValidityButtons('count'); checkValidityButtons('duration')" />
@@ -72,7 +83,7 @@
 			<td style="text-align: right; padding-right: 10px">Time interval</td>
 			<td>
 			  <select class="filter-select" name="timeInterval" value="%value timeInterval%">
-				<option value="30000" %ifvar timeInterval  equals('30000')%selected%endif%>every minute</option>
+				<option value="60000" %ifvar timeInterval  equals('30000')%selected%endif%>every minute</option>
 				<option value="300000" %ifvar timeInterval  equals('300000')%selected%endif%>5 minutes</option>
 				<option value="600000" %ifvar timeInterval equals('600000')%selected%endif%>10 minutes</option>
 				<option value="900000" %ifvar timeInterval equals('900000')%selected%endif%>15 minutes</option>
@@ -82,8 +93,6 @@
 				<option value="86400000" %ifvar timeInterval equals('86400000')%selected%endif%>24 hour</option>
 			  </select>
 			</td>
-		  </tr>
-		  <tr>
 			<td style="text-align: right; padding-right: 10px">
 			  Max slots
 			</td>
@@ -93,26 +102,32 @@
 			<td style="width: 90px; text-align: right; padding-right: 10px">
 			  Include empty slots
 			</td>
-			<td>
+			<td style="width: 250px">
 			  <select class="filter-select" name="countZeros">
 				<option value="false">No</option>
 				<option value="true" %ifvar countZeros equals('true')%selected%endif%>Yes</option>
 			</select>
 			</td>
+			<td style="width: 120px; text-align: right; padding-right: 10px">
+				Transaction duration (ms)
+			</td>
+			<td>
+			  <input type="number" name="transactionDuration" value="%value transactionDuration%" style="width: 50px"/>
+			</td>
 		  </tr>
 		  <tr>
-			<td colspan="4">
+			<td colspan="8">
 			  <hr>
 			</td>
 		  </tr>
 		  <tr>
-			<td colspan="4">
+			<td colspan="8">
 			  <h2>Counters</h2>
 			  <input type="hidden" name="editRuleId" value="%value editRuleId%"/>
 			  <input type="hidden" name="editRuleSource" value="%value editRuleSource%"/>
 			  <input type="hidden" name="editRuleComputerType" value="%value editRuleComputerType%"/>
 			  %loop computers%
-				<div style="border: 1.5px solid #cccccc; border-radius: 6px;margin-top: 10px; margin-bottom: 10px">
+				<div style="border: 1.5px solid #cccccc; border-radius: 6px; margin-top: 10px; margin-bottom: 10px">
 					<div style="margin: auto; width: 50%; text-align: center">
 						<div style="display: inline-flex; align-items: center; gap: 5px">
 							<h2>%value source% </h2>

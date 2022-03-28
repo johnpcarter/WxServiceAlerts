@@ -7,6 +7,7 @@ import com.wm.util.Values;
 import com.wm.app.b2b.server.Service;
 import com.wm.app.b2b.server.ServiceException;
 // --- <<IS-START-IMPORTS>> ---
+import com.jc.compute.ComputersForNamespace.EventType;
 import com.jc.compute.Rule;
 import com.jc.compute.rules.MaxValueExceededRule;
 import com.jc.compute.rules.PercentageExceededRule;
@@ -71,7 +72,7 @@ public final class rules
 			throw new ServiceException("please provide a valid value for threshhold: " + value);
 		}
 		
-		Rule<Double> r = new MaxValueExceededRule(eventType, alertType, serviceToCall, minO, valueD, stickyB, levelInt, sendMailB);
+		Rule<Number> r = new MaxValueExceededRule(EventType.valueOf(eventType), alertType, serviceToCall, minO, valueD, stickyB, levelInt, sendMailB);
 		
 		// pipeline out
 		
@@ -136,7 +137,7 @@ public final class rules
 			throw new ServiceException("please provide a valid value for threshhold: " + value);
 		}
 		
-		Rule<Double> r = new PercentageExceededRule(eventType, alertType, serviceToCall, minO, valueD, stickyB, levelInt, sendMailB);
+		Rule<Number> r = new PercentageExceededRule(EventType.valueOf(eventType), alertType, serviceToCall, minO, valueD, stickyB, levelInt, sendMailB);
 		
 		// pipeline out
 		

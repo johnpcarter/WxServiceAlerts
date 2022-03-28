@@ -8,6 +8,7 @@ import com.wm.app.b2b.server.Service;
 import com.wm.app.b2b.server.ServiceException;
 // --- <<IS-START-IMPORTS>> ---
 import com.jc.compute.Rule;
+import com.jc.compute.Computer.Source;
 import com.jc.compute.computers.Average;
 import com.jc.compute.computers.Difference;
 import com.jc.compute.computers.Total;
@@ -47,7 +48,7 @@ public final class computers
 		
 		// process
 		
-		Average av = new Average(source, uom, 0);
+		Average av = new Average(Source.valueOf(source), uom, 0);
 		
 		if (rules != null) {
 			for (Object rule : rules) {
@@ -85,11 +86,11 @@ public final class computers
 		
 		// process
 		
-		Difference dt = new Difference(source, uom, 0);
+		Difference dt = new Difference(Source.valueOf(source), uom, 0);
 		
 		if (rules != null) {
 			for (Object rule : rules) {
-				dt.addRule((Rule<Double>) rule);
+				dt.addRule((Rule<Long>) rule);
 			}
 		}
 		
@@ -124,11 +125,11 @@ public final class computers
 		
 		// process
 		
-		Total tc = new Total(source, uom, 0);
+		Total tc = new Total(Source.valueOf(source), uom, 0);
 		
 		if (rules != null) {
 			for (Object rule : rules) {
-				tc.addRule((Rule<Double>) rule);
+				tc.addRule((Rule<Long>) rule);
 			}
 		}
 		
@@ -141,5 +142,13 @@ public final class computers
 
                 
 	}
+
+	// --- <<IS-START-SHARED>> ---
+	
+	private static final String[] EXCLUDE = {"wm.", "pub.", "com."};
+	private static final String[] INCLUDE = null;
+		
+		
+	// --- <<IS-END-SHARED>> ---
 }
 

@@ -5,17 +5,18 @@
   <value name="node_subtype">unknown</value>
   <value name="node_nsName">wx.service.alerts.record</value>
   <value name="is_public">false</value>
-  <value name="shared">CnByaXZhdGUgc3RhdGljIHZvaWQgZGVsZXRlU3Vic2NyaWJlcihTdHJpbmcgZXZlbnRUeXBlLCBT
-dHJpbmcgaWQpIHRocm93cyBTZXJ2aWNlRXhjZXB0aW9uIHsKCQoJLy8gaW5wdXQKCUlEYXRhIHBp
-cGVsaW5lID0gSURhdGFGYWN0b3J5LmNyZWF0ZSgpOwoJSURhdGFDdXJzb3IgYyA9IHBpcGVsaW5l
-LmdldEN1cnNvcigpOwoJSURhdGFVdGlsLnB1dChjLCAiRXZlbnRUeXBlIiwgZXZlbnRUeXBlKTsK
-CUlEYXRhVXRpbC5wdXQoYywgImdJRCIsIGlkKTsKCgl0cnkgewoJCVNlcnZpY2UuZG9JbnZva2Uo
-InB1Yi5ldmVudCIsICJkZWxldGVTdWJzY3JpYmVyIiwgcGlwZWxpbmUpOwoJCQoJCWlmICghSURh
-dGFVdGlsLmdldFN0cmluZyhjLCAiUmVzdWx0IikuZXF1YWxzKCJ0cnVlIikpIHsKCQkJdGhyb3cg
-bmV3IFNlcnZpY2VFeGNlcHRpb24oImZhaWxlZCB0byBkZWxldGUgc3Vic2NyaWJlciAiICsgaWQg
-KyAiIGZvciB0eXBlICIgKyBldmVudFR5cGUpOwoJCX0KCgl9IGNhdGNoIChFeGNlcHRpb24gZSkg
-ewoJCXRocm93IG5ldyBTZXJ2aWNlRXhjZXB0aW9uKGUpOwoJfQoJCgljLmRlc3Ryb3koKTsKfQkK
-CQ==</value>
+  <value name="shared">CnByaXZhdGUgc3RhdGljIGZpbmFsIFN0cmluZ1tdIEVYQ0xVREVfV01fU0VSVklDRVMgPSB7Indt
+LiIsICJwdWIuIiwgImNvbS4ifTsKCnByaXZhdGUgc3RhdGljIHZvaWQgZGVsZXRlU3Vic2NyaWJl
+cihTdHJpbmcgZXZlbnRUeXBlLCBTdHJpbmcgaWQpIHRocm93cyBTZXJ2aWNlRXhjZXB0aW9uIHsK
+CQoJLy8gaW5wdXQKCQoJSURhdGEgcGlwZWxpbmUgPSBJRGF0YUZhY3RvcnkuY3JlYXRlKCk7CglJ
+RGF0YUN1cnNvciBjID0gcGlwZWxpbmUuZ2V0Q3Vyc29yKCk7CglJRGF0YVV0aWwucHV0KGMsICJF
+dmVudFR5cGUiLCBldmVudFR5cGUpOwoJSURhdGFVdGlsLnB1dChjLCAiZ0lEIiwgaWQpOwoKCXRy
+eSB7CgkJU2VydmljZS5kb0ludm9rZSgicHViLmV2ZW50IiwgImRlbGV0ZVN1YnNjcmliZXIiLCBw
+aXBlbGluZSk7CgkJCgkJaWYgKCFJRGF0YVV0aWwuZ2V0U3RyaW5nKGMsICJSZXN1bHQiKS5lcXVh
+bHMoInRydWUiKSkgewoJCQl0aHJvdyBuZXcgU2VydmljZUV4Y2VwdGlvbigiZmFpbGVkIHRvIGRl
+bGV0ZSBzdWJzY3JpYmVyICIgKyBpZCArICIgZm9yIHR5cGUgIiArIGV2ZW50VHlwZSk7CgkJfQoK
+CX0gY2F0Y2ggKEV4Y2VwdGlvbiBlKSB7CgkJdGhyb3cgbmV3IFNlcnZpY2VFeGNlcHRpb24oZSk7
+Cgl9CgkKCWMuZGVzdHJveSgpOwp9CQoJ</value>
   <value name="encodeutf8">true</value>
   <value name="extends"></value>
   <array name="implements" type="value" depth="1">
@@ -27,6 +28,9 @@ CQ==</value>
     <value>com.jc.compute.Rule</value>
     <value>com.jc.compute.ServiceHistory</value>
     <value>com.jc.compute.Snapshot</value>
+    <value>com.jc.compute.Computer.Source</value>
+    <value>com.jc.compute.ComputersForNamespace.EventType</value>
+    <value>com.jc.service.ServiceInterceptor</value>
     <value>java.text.DateFormat</value>
     <value>java.text.SimpleDateFormat</value>
     <value>java.util.ArrayList</value>

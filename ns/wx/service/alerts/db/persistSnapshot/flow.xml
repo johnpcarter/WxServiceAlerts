@@ -148,7 +148,7 @@
   <!-- nodes -->
 
 <MAP TIMEOUT="" MODE="STANDALONE">
-  <COMMENT></COMMENT>
+  <COMMENT>set defaults</COMMENT>
   <MAPTARGET>
 
 <Values version="2.0">
@@ -589,7 +589,7 @@
 </MAPSET>
 </MAP>
 
-<INVOKE TIMEOUT="" SERVICE="wx.service.alerts.db:addRow" VALIDATE-IN="$none" VALIDATE-OUT="$none">
+<INVOKE TIMEOUT="" SERVICE="wx.service.alerts.db:addTotal" VALIDATE-IN="$none" VALIDATE-OUT="$none">
   <COMMENT></COMMENT>
 
   <!-- nodes -->
@@ -602,7 +602,7 @@
     <value name="node_type">record</value>
     <value name="node_subtype">unknown</value>
     <value name="is_public">false</value>
-    <value name="field_name">addRowInput</value>
+    <value name="field_name">addTotalInput</value>
     <value name="field_type">record</value>
     <value name="field_dim">0</value>
     <value name="wrapper_type">IData</value>
@@ -614,7 +614,7 @@
         <value name="node_type">record</value>
         <value name="node_subtype">unknown</value>
         <value name="is_public">false</value>
-        <value name="field_name">addRowInput</value>
+        <value name="field_name">addTotalInput</value>
         <value name="field_type">record</value>
         <value name="field_dim">0</value>
         <value name="wrapper_type">IData</value>
@@ -686,17 +686,6 @@
             <value name="node_type">unknown</value>
             <value name="node_subtype">unknown</value>
             <value name="is_public">false</value>
-            <value name="field_name">AVG_DURATION</value>
-            <value name="field_type">string</value>
-            <value name="field_dim">0</value>
-            <value name="nillable">true</value>
-            <value name="form_qualified">false</value>
-            <value name="is_global">false</value>
-          </record>
-          <record javaclass="com.wm.util.Values">
-            <value name="node_type">unknown</value>
-            <value name="node_subtype">unknown</value>
-            <value name="is_public">false</value>
             <value name="field_name">TRANSACTION_COUNT</value>
             <value name="field_type">string</value>
             <value name="field_dim">0</value>
@@ -708,7 +697,7 @@
             <value name="node_type">unknown</value>
             <value name="node_subtype">unknown</value>
             <value name="is_public">false</value>
-            <value name="field_name">TOTAL_TRANSACTIONS</value>
+            <value name="field_name">AVG_DURATION</value>
             <value name="field_type">string</value>
             <value name="field_dim">0</value>
             <value name="nillable">true</value>
@@ -1054,22 +1043,22 @@
 
   <!-- nodes -->
 
-<MAPCOPY FROM="/rows;2;0/name;1;0" TO="/addRowInput;2;0/SERVICE_NAME;1;0">
+<MAPCOPY FROM="/rows;2;0/name;1;0" TO="/addTotalInput;2;0/SERVICE_NAME;1;0">
 </MAPCOPY>
 
-<MAPCOPY FROM="/rows;2;0/averageDuration;1;0" TO="/addRowInput;2;0/AVG_DURATION;1;0">
+<MAPCOPY FROM="/rows;2;0/averageDuration;1;0" TO="/addTotalInput;2;0/AVG_DURATION;1;0">
 </MAPCOPY>
 
-<MAPCOPY FROM="/rows;2;0/totalCount;1;0" TO="/addRowInput;2;0/TOTAL_COUNT;1;0">
+<MAPCOPY FROM="/rows;2;0/totalCount;1;0" TO="/addTotalInput;2;0/TOTAL_COUNT;1;0">
 </MAPCOPY>
 
-<MAPCOPY FROM="/rows;2;0/totalErrors;1;0" TO="/addRowInput;2;0/ERROR_COUNT;1;0">
+<MAPCOPY FROM="/rows;2;0/totalErrors;1;0" TO="/addTotalInput;2;0/ERROR_COUNT;1;0">
 </MAPCOPY>
 
-<MAPCOPY FROM="/toDate;3.9;0" TO="/addRowInput;2;0/TRACK_DATE;3.9;0">
+<MAPCOPY FROM="/rows;2;0/totalTransactions;1;0" TO="/addTotalInput;2;0/TRANSACTION_COUNT;1;0">
 </MAPCOPY>
 
-<MAPCOPY FROM="/rows;2;0/totalTransactions;1;0" TO="/addRowInput;2;0/TRANSACTION_COUNT;1;0">
+<MAPCOPY FROM="/toDate;3.9;0" TO="/addTotalInput;2;0/TRACK_DATE;3.9;0">
 </MAPCOPY>
 </MAP>
 </INVOKE>

@@ -1,3 +1,0 @@
-01 Mar 12:00,31 Mar 11:59
-name,success,fail,transactions,avg_duration
-jc.alerts.demo.services:throwsErrorOccasionally,7,3,18,6890.333333333333

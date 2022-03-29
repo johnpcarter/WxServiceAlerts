@@ -3,5 +3,6 @@
 <Values version="2.0">
   <value name="name">stopInvokeInterceptor</value>
   <value name="encodeutf8">true</value>
-  <value name="body">U2VydmljZUludGVyY2VwdG9yLnVucmVnaXN0ZXIoKTsKCQ==</value>
+  <value name="body">U2VydmljZUludGVyY2VwdG9yLnVucmVnaXN0ZXIoKTsKQWxsQ29tcHV0ZXJzLmluc3RhbmNlLmNs
+ZWFyKCk7Cgk=</value>
 </Values>

@@ -310,9 +310,6 @@ h1 {
 	font-weight: bolder;
 	color : color(srgb 0.178 0 0.696);
 }
-p {
-  margin-left: 15px;
-}
 a {
 	color: color(srgb 0.178 0 0.696);
 	text-decoration: none !important;

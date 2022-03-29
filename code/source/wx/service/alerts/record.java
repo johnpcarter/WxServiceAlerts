@@ -63,6 +63,7 @@ public final class record
 	{
 		// --- <<IS-START(getServiceAnalytics)>> ---
 		// @sigtype java 3.5
+		// [i] field:0:optional filter
 		// [i] field:0:optional service
 		// [i] field:0:optional source
 		// [i] field:0:required yscale
@@ -87,6 +88,7 @@ public final class record
 		// pipeline in 
 		
 		IDataCursor c = pipeline.getCursor();
+		String filter = IDataUtil.getString(c, "filter");
 		String service = IDataUtil.getString(c, "service");
 		String source = IDataUtil.getString(c, "source");
 		
@@ -94,12 +96,16 @@ public final class record
 		
 		long yscale = 200; 
 		
+		if (filter != null && filter.length() == 0) {
+			filter = null;
+		}
+		
 		Source src = source != null ? Source.valueOf(source) : null;
 		
 		if (service != null) {
 			IDataUtil.put(c, "results", AllComputers.instance.serviceStatisticsFor(service, src, yscale));
 		} else {
-			IDataUtil.put(c, "results", AllComputers.instance.servicesFor(src));
+			IDataUtil.put(c, "results", AllComputers.instance.servicesFor(src, filter));
 		}
 		
 		// pipeline out
@@ -170,6 +176,7 @@ public final class record
 			switch (traceType) {
 			case "allx":
 				excludeList = EXCLUDE_WM_SERVICES;
+				includeList = INCLUDE_WM_SERVICES;
 				break;
 			case "top":
 				topLevelOnly = true;
@@ -177,6 +184,7 @@ public final class record
 			case "topx":
 				topLevelOnly = true;
 				excludeList = EXCLUDE_WM_SERVICES;
+				includeList = INCLUDE_WM_SERVICES;
 				break;
 			default:
 				break;
@@ -235,7 +243,7 @@ public final class record
 	{
 		// --- <<IS-START(startInvokeInterceptor)>> ---
 		// @sigtype java 3.5
-		ServiceInterceptor.register(AllComputers.instance);
+		ServiceInterceptor.register(); 
 			
 		// --- <<IS-END>> ---
 
@@ -250,6 +258,7 @@ public final class record
 		// --- <<IS-START(stopInvokeInterceptor)>> ---
 		// @sigtype java 3.5
 		ServiceInterceptor.unregister();
+		AllComputers.instance.clear();
 			
 		// --- <<IS-END>> ---
 
@@ -302,7 +311,48 @@ public final class record
 
 	// --- <<IS-START-SHARED>> ---
 	
-	private static final String[] EXCLUDE_WM_SERVICES = {"wm.", "pub.", "com."};
+	private static final String[] EXCLUDE_WM_SERVICES = {
+			"wm.", 
+			"pub.", 
+			"com."
+			};
+	
+	private static final String[] INCLUDE_WM_SERVICES = {
+			"wm.tn:receive",
+			"wm.tn.doc.xml:routeXml",
+			"wm.EDIINT:receive",
+			"wm.prt.dispatch:handlePublishedInput",
+			"wm.prt.dispatch:handleSubprocessStart",
+			"wm.prt.dispatch:handleCallActivityStart",
+			"wm.prt.dispatch:handleEDAEvent",
+			"wm.prt.dispatch:handleRequestReply",
+			"wm.prt.dispatch:invokeCallActivityStart",
+			"wm.prt.dispatch:invokeSubprocessStart",
+			"pub.prt.tn:handleBizDoc",
+			"pub.sap.client:invokeTransaction",
+			"pub.sap.client:sendIDoc",
+			"pub.sap.bapi:commit",
+			"pub.sap.transport.ALE:OutboundProcess",
+			"wm.ach.tn.trp:receive",
+			"wm.ach.trp:receive",
+			"wm.ach.trp:receiveStream",
+			"wm.ip.hl7.tn.service:receive",
+			"pub.estd.hipaa:receive",
+			"pub.estd.rosettaNet:receive",
+			"/ws/msh/receive",
+			"wm.ip.rn:receive",
+			"wm.ip.ebxml.MSH:receive",
+			"pub.estd.chem:receive",
+			"wm.b2b.io.core:submit",
+			"wm.b2b.cxml:receiveCXML",
+			"wm.channels.services:gateway",
+			"wm.cloudstreams.listener.event:invokeService",
+			"wm.oftp.gateway.Gw:fetchAndUpdateStatus",
+			"wm.oftp.tn:receiveOftp",
+			"wm.oftp.tn:deliverOftp",
+			"wm.x400.tn:receiveX400",
+			"wm.x400.gateway.Gw:sendAndFetch"
+			};
 	
 	private static void deleteSubscriber(String eventType, String id) throws ServiceException {
 		

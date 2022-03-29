@@ -21,8 +21,8 @@
   <div style="margin-left: 5px; margin-top: 20px; margin-bottom: 20px; padding: 30px; border: 1px solid #eeeeee; display: flex; justify-content: space-between;">
 	<div style="width: 50%">
 		<h1>%value timePeriodLabel%</h1>
-		<p>From: <b>%value results/from%</b></p>
-		<p>To: <b>%value results/to%</b></p>
+		<p style="margin-left: 15px">From: <b>%value results/from%</b></p>
+		<p style="margin-left: 15px">To: <b>%value results/to%</b></p>
 	</div>
 	<div style="width: 50%">
 		<p>Tracked services: <b>%value results/trackedServices%</b></p>

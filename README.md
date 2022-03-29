@@ -20,15 +20,26 @@ or if you are not, then simply clone the repository
 
 $ git clone https://github.com/johnpcarter/WxServiceAlerts.git
 
+You will also need the package JcPublicTools via
+
+$ git clone https://github.com/johnpcarter/JcPublicTools.git
+
 *Setup*
 
 You can then start configuring which services you want to monitor and trace via the package home directory.
 
 http://localhost:5555/WxServiceAlerts
 
-You will need to enable auditing at the service level if you want to track service performance i.e. duration or execution count. You will need to do this in Designer and for each service. Ensure that you set the audit setting "Log on" to "Error, Success end Start". However, you do not have to configure service monitoring in order for this package to work.
+Data is collated in memory and volatile, I would only recommend using 1 minute collection intervals for testing purposes. In real world settings use a much larger interval and with a small number of permissible slots in order to ensure that you do not use too much memory. The goal of this package is not to trace historical data but to instead detect performance/issues with service execution and trigger an alert.
 
-Data is collated in memory and volatile, I would only recommend using 1 minute collection intervals for testing purposes. In real world settings use a much larger interval and with a small number of permissable slots in order to ensure that you do use too much memory. THe goal of this package is not to trace historical data but to instead detect performance/issues with service execution and trigger an alert.
+A database table is created at startup called 'wx_servicealerts_history' if the JDBC connection 'wx.service.alerts.db:conn' has been set appropriately. Reload the package after updating the connection to ensure that the table gets created in the current schema.
+
+*Transaction Monitoring*
+
+I have now introduced transaction counting, and added persistent support for tracking totals over time via the aforementioned datavbase table. Totals for each service are written to the database with each interval. Counts be viewed online and downloaded in CSV format from;
+
+http://localhost:5555/WxServiceAlerts/?selectedTab=history
+
 
 *Source code*
 

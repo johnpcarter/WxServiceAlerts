@@ -48,7 +48,7 @@ public final class computers
 		
 		// process
 		
-		Average av = new Average(Source.valueOf(source), uom, 0);
+		Average av = new Average(Source.valueOf(source));
 		
 		if (rules != null) {
 			for (Object rule : rules) {
@@ -81,12 +81,11 @@ public final class computers
 		
 		IDataCursor c = pipeline.getCursor();
 		String source = IDataUtil.getString(c, "source");
-		String uom = IDataUtil.getString(c, "uom");
 		Object[] rules = (Object[]) IDataUtil.get(c, "rules");
 		
 		// process
 		
-		Difference dt = new Difference(Source.valueOf(source), uom, 0);
+		Difference dt = new Difference(Source.valueOf(source));
 		
 		if (rules != null) {
 			for (Object rule : rules) {
@@ -119,13 +118,12 @@ public final class computers
 		
 		IDataCursor c = pipeline.getCursor();
 		String source = IDataUtil.getString(c, "source");
-		String uom = IDataUtil.getString(c, "uom");
 		
 		Object[] rules = (Object[]) IDataUtil.get(c, "rules");
 		
 		// process
 		
-		Total tc = new Total(Source.valueOf(source), uom, 0);
+		Total tc = new Total(Source.valueOf(source));
 		
 		if (rules != null) {
 			for (Object rule : rules) {

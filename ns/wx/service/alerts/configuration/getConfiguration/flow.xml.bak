@@ -5,7 +5,7 @@
 
   <!-- nodes -->
 
-<INVOKE TIMEOUT="" SERVICE="wx.service.alerts.configuration:readSetupFile" VALIDATE-IN="$none" VALIDATE-OUT="$none">
+<INVOKE TIMEOUT="" SERVICE="wx.service.alerts.configuration._priv:readSetupFile" VALIDATE-IN="$none" VALIDATE-OUT="$none">
   <COMMENT></COMMENT>
 
   <!-- nodes -->

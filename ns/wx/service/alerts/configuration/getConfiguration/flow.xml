@@ -312,6 +312,7 @@
     <value name="is_public">false</value>
     <value name="field_type">record</value>
     <value name="field_dim">0</value>
+    <value name="wrapper_type">IData</value>
     <value name="nillable">true</value>
     <value name="form_qualified">false</value>
     <value name="is_global">false</value>
@@ -330,6 +331,17 @@
         <value name="modifiable">true</value>
         <value name="rec_ref">wx.service.alerts.configuration:Config</value>
       </record>
+      <record javaclass="com.wm.util.Values">
+        <value name="node_type">record</value>
+        <value name="node_subtype">unknown</value>
+        <value name="is_public">false</value>
+        <value name="field_name">ff</value>
+        <value name="field_type">string</value>
+        <value name="field_dim">0</value>
+        <value name="nillable">true</value>
+        <value name="form_qualified">false</value>
+        <value name="is_global">false</value>
+      </record>
     </array>
     <value name="modifiable">true</value>
   </record>
@@ -344,6 +356,7 @@
     <value name="is_public">false</value>
     <value name="field_type">record</value>
     <value name="field_dim">0</value>
+    <value name="wrapper_type">IData</value>
     <value name="nillable">true</value>
     <value name="form_qualified">false</value>
     <value name="is_global">false</value>
@@ -355,6 +368,7 @@
         <value name="field_name">document</value>
         <value name="field_type">record</value>
         <value name="field_dim">0</value>
+        <value name="wrapper_type">IData</value>
         <value name="nillable">true</value>
         <value name="form_qualified">false</value>
         <value name="is_global">false</value>

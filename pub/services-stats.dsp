@@ -12,7 +12,7 @@
 	%loop results%
 	%loop types%
 	<div style="margin-left: -5px; background-color: white">
-	  <div class="collapsible">%value name% %value source% (%value uom%)
+	  <div class="collapsible">%value source%
 		<div style="float: right; font-weight: bold; 5px; margin-top: -3px; margin-right: 40px; line-height: 20px; vertical-align: middle;">
 			%loop eventTypes%
 				<img src="images/pixel_%value color%.gif" width="10" height="10" alt="%value label%" style="margin-left: 10px;"/> %value label%

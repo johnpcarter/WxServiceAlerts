@@ -18,9 +18,9 @@
   </div>
     <table width="100%">
       <tr>
-        <td class="menu-navigator" style="border:none" colspan=2>packages &gt; WxServiceAlerts  &gt; <b>Configuration</b>
+        <td class="menu-navigator" style="border:none" colspan=2>packages &gt; WxServiceAlerts  &gt; <b>Configuration</b> &gt; <a href="./help.dsp">Help</a>
           <div style="float:right">
-            <a href="./index.dsp">Analytics</a> 
+            <a style="margin-left: 10px" href="./index.dsp">Analytics</a> 
           </div>
         </td>
       </tr>

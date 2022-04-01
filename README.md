@@ -1,6 +1,6 @@
 # WxServiceAlerts
 
-webMethods package to allow alerts to be triggered based on service usage i.e. number of executions, average delay and/or number of errors.
+webMethods package to provide metrics on service usage and provide alerts based on number of executions, average delay and/or number of errors.
 
 *local installation*
 
@@ -40,6 +40,11 @@ I have now introduced transaction counting, and added persistent support for tra
 
 http://localhost:5555/WxServiceAlerts/?selectedTab=history
 
+*Usage*
+
+Online documentation is provided by the package here
+
+http://localhost:5555/WxServiceAlerts/help.dsp
 
 *Source code*
 

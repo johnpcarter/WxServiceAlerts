@@ -44,6 +44,22 @@ public final class record
 
 
 
+	public static final void alerts (IData pipeline)
+        throws ServiceException
+	{
+		// --- <<IS-START(alerts)>> ---
+		// @sigtype java 3.5
+		IDataCursor c = pipeline.getCursor();
+		IDataUtil.put(c, "rules", AllComputers.instance.firedRules());
+		c.destroy();
+			
+		// --- <<IS-END>> ---
+
+                
+	}
+
+
+
 	public static final void clearRules (IData pipeline)
         throws ServiceException
 	{

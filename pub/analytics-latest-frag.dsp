@@ -1,7 +1,6 @@
 <form action=".">
-</form>
-		<input class="searchTerm" style="margin-left: 5px; margin-right: 5px" type="text" placeholder="service name" name="filter" value="%value filter%">
-		<button class="pill-button" type="submit">filter</button>
+	<input class="searchTerm" style="margin-left: 5px; margin-right: 5px" type="text" placeholder="service name" name="filter" value="%value filter%">
+	<button class="pill-button" type="submit">filter</button>
 </form>
 %invoke wx.service.alerts.record:getServiceAnalytics%
   %ifvar results -notempty%

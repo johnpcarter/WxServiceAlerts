@@ -39,10 +39,18 @@
     <div style="margin:20px;">
       <form id="form" action=".">
         <input type="hidden" name="selectedTab" value="%value selectedTab%">
-        <div class="tab">
-          <button id="latestButton" class="tablinks" onclick="setTab('latest')">Recent</button>
-          <button id="historyButton" class="tablinks" onclick="setTab('history')">History</button>
-          </div>
+        <div class="tab" style="display: flex">
+            <button id="latestButton" class="tablinks" onclick="setTab('latest')">
+              <i class="fa fa-chart-bar" style="line-height: 25px; color: darkgray"></i> Recent
+            </button>
+            <button id="historyButton" class="tablinks" onclick="setTab('history')">
+              <i class="fa fa-list" style="line-height: 25px; color: darkgray"></i> History
+            </button>
+            <!-- <button id="alertsButton" class="tablinks" onclick="setTab('alerts')">
+              <i class="fa fa-exclamation-triangle" style="line-height: 25px; color: darkgray"></i>
+ Alerts
+            </button> -->
+          </div> 
       
         <div id="latest" class="tabcontent">
         
@@ -60,6 +68,13 @@
             %include analytics-history-frag.dsp%
           %endif%
         </div>
+        
+        <!-- <div id="alerts" class="tabcontent">
+          %ifvar selectedTab equals('alerts')%
+            %include alerts-frag.dsp%
+          %endif%
+        </div> -->
+        
     </form>
     <div style="float: right; margin-right: 20px;">
     <a href="/invoke/wx.service.alerts.dsp/reload" class="pill-button" style="margin-top: 20px; background-color: red; color: white" onclick="return window.confirm('Configuration will be reloaded and all analysis will be voided ?');">Reset & reload</a>

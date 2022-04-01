@@ -5,6 +5,23 @@
   margin: 10px;
   font-size: 12pt;
 }
+h2 {
+  margin-top: 30px;
+}
+p {
+  font-size: 13px;
+  background-color: transparent;
+}
+b {
+  background: transparent;
+}
+.quote {
+  max-width: 1200px;
+  margin-left: 30px;
+  padding: 10px;
+  background: lightcyan;
+  border-left: lightgray solid 1px;
+}
 .header {
   background-color: rgba(165, 188, 228, 0.362);
   color: gray;

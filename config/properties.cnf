@@ -1,51 +1,67 @@
 {
     "filters": [
         {
-            "countZeros": "false",
-            "timeInterval": "900000",
-            "eventType": "Audit Event",
-            "maxSlots": "12",
+            "eventType": "AuditEvent",
             "filter": "*",
+            "timeInterval": "60000",
+            "maxSlots": "10",
+            "countZeros": "false",
+            "transactionDuration": "3000",
+            "traceType": "topx",
             "computers": [
                 {
                     "type": "total",
-                    "source": "count"
+                    "source": "Count"
                 },
-				{
-					"type": "total",
-					"source": "transaction",
-					"rules": [
-					{
-						"id": "00",
-						"type": "maxValue",
-						"value": "3000",
-						"minOccurrences": "1",
-						"sticky": "",
-						"level": "0",
-						"sendEmail": ""
-					}]
-				},
                 {
                     "type": "average",
-                    "source": "duration"
+                    "source": "Duration",
+                    "rules": [
+                        {
+                            "id": "00",
+                            "type": "maxValue",
+                            "value": "3000",
+                            "minOccurrences": "1",
+                            "sticky": "",
+                            "level": "1",
+                            "sendEmail": ""
+                        }
+                    ]
+                },
+                {
+                    "type": "total",
+                    "source": "Transaction"
                 }
             ]
         },
         {
-            "timeInterval": "900000",
+            "eventType": "ExceptionEvent",
             "filter": "*",
+            "timeInterval": "60000",
+            "maxSlots": "10",
             "countZeros": "false",
-            "eventType": "Exception Event",
-            "maxSlots": "12",
+            "transactionDuration": "3000",
+            "traceType": "topx",
             "computers": [
                 {
-					"type": "total",
-					"source": "count"
-				},
-				{
-					"type": "total",
-					"source": "transaction"
-				}
+                    "type": "total",
+                    "source": "Count",
+                    "rules": [
+                        {
+                            "id": "00",
+                            "type": "maxValue",
+                            "value": "2",
+                            "minOccurrences": "1",
+                            "sticky": "",
+                            "level": "1",
+                            "sendEmail": ""
+                        }
+                    ]
+                },
+                {
+                    "type": "total",
+                    "source": "Transaction"
+                }
             ]
         }
     ]

@@ -34,7 +34,7 @@
             <div style="float: right; display: inline-flex; align-items: center; gap: 10px">
               <div><i class="fas fa-clock"></i></div>
               <div style="font-size: 10px;">
-                %ifvar timeInterval equals('30000')%1 minute%endif%
+                %ifvar timeInterval equals('60000')%1 minute%endif%
                 %ifvar timeInterval equals('300000')%5 minutes%endif%
                 %ifvar timeInterval equals('600000')%10 minutes%endif%
                 %ifvar timeInterval equals('900000')%15 minutes%endif%

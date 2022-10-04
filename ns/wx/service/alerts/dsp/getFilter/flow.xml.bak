@@ -4023,9 +4023,6 @@
 <MAPDELETE FIELD="/types;1;1">
 </MAPDELETE>
 
-<MAPDELETE FIELD="/editRuleType;1;0">
-</MAPDELETE>
-
 <MAPDELETE FIELD="/removeRuleId;1;0">
 </MAPDELETE>
 
@@ -4033,15 +4030,6 @@
 </MAPDELETE>
 
 <MAPDELETE FIELD="/type-switchList;1;1">
-</MAPDELETE>
-
-<MAPDELETE FIELD="/editRuleId;1;0">
-</MAPDELETE>
-
-<MAPDELETE FIELD="/editRuleComputerType;1;0">
-</MAPDELETE>
-
-<MAPDELETE FIELD="/editRuleSource;1;0">
 </MAPDELETE>
 </MAP>
 </FLOW>

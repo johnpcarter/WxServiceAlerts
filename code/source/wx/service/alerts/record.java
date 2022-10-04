@@ -8,14 +8,6 @@ import com.wm.app.b2b.server.Service;
 import com.wm.app.b2b.server.ServiceException;
 // --- <<IS-START-IMPORTS>> ---
 import com.wm.app.b2b.server.ServerAPI;
-import com.jc.compute.AllComputers;
-import com.jc.compute.Computer;
-import com.jc.compute.Rule;
-import com.jc.compute.ServiceHistory;
-import com.jc.compute.Snapshot;
-import com.jc.compute.Computer.Source;
-import com.jc.compute.ComputersForNamespace.EventType;
-import com.jc.service.ServiceInterceptor;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -26,6 +18,14 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.Stack;
+import com.jc.compute.AllComputers;
+import com.jc.compute.Computer;
+import com.jc.compute.Rule;
+import com.jc.compute.ServiceHistory;
+import com.jc.compute.Snapshot;
+import com.jc.compute.Computer.Source;
+import com.jc.compute.ComputersForNamespace.EventType;
+import com.jc.service.ServiceInterceptor;
 // --- <<IS-END-IMPORTS>> ---
 
 public final class record
@@ -154,6 +154,7 @@ public final class record
 		IDataCursor pipelineCursor = pipeline.getCursor();
 		String eventType = IDataUtil.getString(pipelineCursor, "eventType");
 		String filter = IDataUtil.getString(pipelineCursor, "filter");
+		String pipelineAttribute = IDataUtil.getString(pipelineCursor, "pipelineAttribute");
 		String timeIntervalStr = IDataUtil.getString(pipelineCursor,"timeInterval");
 		String maxSlotsStr = IDataUtil.getString(pipelineCursor, "maxSlots");
 		String countZerosS = IDataUtil.getString(pipelineCursor, "countZeros");
@@ -207,7 +208,7 @@ public final class record
 			}
 		}
 		
-		AllComputers.instance.add(timeInterval, EventType.valueOf(eventType), topLevelOnly, maxSlots, countZeros, filter, c, excludeList, includeList, transactionDuration, persistService);
+		AllComputers.instance.add(timeInterval, EventType.valueOf(eventType), topLevelOnly, maxSlots, countZeros, filter, pipelineAttribute, c, excludeList, includeList, transactionDuration, persistService);
 		
 		// pipeline out
 		

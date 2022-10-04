@@ -44,14 +44,6 @@ KTsKfQkKCQ==</value>
   </array>
   <array name="imports" type="value" depth="1">
     <value>com.wm.app.b2b.server.ServerAPI</value>
-    <value>com.jc.compute.AllComputers</value>
-    <value>com.jc.compute.Computer</value>
-    <value>com.jc.compute.Rule</value>
-    <value>com.jc.compute.ServiceHistory</value>
-    <value>com.jc.compute.Snapshot</value>
-    <value>com.jc.compute.Computer.Source</value>
-    <value>com.jc.compute.ComputersForNamespace.EventType</value>
-    <value>com.jc.service.ServiceInterceptor</value>
     <value>java.text.DateFormat</value>
     <value>java.text.SimpleDateFormat</value>
     <value>java.util.ArrayList</value>
@@ -62,5 +54,13 @@ KTsKfQkKCQ==</value>
     <value>java.util.Map</value>
     <value>java.util.Set</value>
     <value>java.util.Stack</value>
+    <value>com.jc.compute.AllComputers</value>
+    <value>com.jc.compute.Computer</value>
+    <value>com.jc.compute.Rule</value>
+    <value>com.jc.compute.ServiceHistory</value>
+    <value>com.jc.compute.Snapshot</value>
+    <value>com.jc.compute.Computer.Source</value>
+    <value>com.jc.compute.ComputersForNamespace.EventType</value>
+    <value>com.jc.service.ServiceInterceptor</value>
   </array>
 </Values>

@@ -78,6 +78,12 @@
 			<td>
 			  <input type="text" name="filter" value="%value filter%" length="50" onchange="checkValidityButtons('count'); checkValidityButtons('duration')" />
 			</td>
+			<td style="width: 180px; text-align: right; padding-right: 10px">
+			  Pipeline attribute (Optional) 
+			</td>
+			<td>
+			  <input type="text" name="pipelineAttribute" value="%value pipelineAttribute%" length="50" onchange="checkValidityButtons('count'); checkValidityButtons('duration')" />
+			</td>
 		  </tr>
 		  <tr>
 			<td style="text-align: right; padding-right: 10px">Time interval</td>

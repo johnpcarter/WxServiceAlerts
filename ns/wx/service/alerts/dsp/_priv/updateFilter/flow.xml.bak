@@ -5285,5 +5285,8 @@
 
 <MAPDELETE FIELD="/traceType;1;0">
 </MAPDELETE>
+
+<MAPDELETE FIELD="/transactionDuration;1;0">
+</MAPDELETE>
 </MAP>
 </FLOW>

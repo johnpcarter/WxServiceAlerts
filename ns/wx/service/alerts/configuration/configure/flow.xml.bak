@@ -340,7 +340,12 @@
 </MAP>
 </BRANCH>
 
-<LOOP TIMEOUT="" IN-ARRAY="/setup/computers/rules">
+<BRANCH TIMEOUT="" SWITCH="/isAlertingAvailable">
+  <COMMENT></COMMENT>
+
+  <!-- nodes -->
+
+<LOOP NAME="true" TIMEOUT="" IN-ARRAY="/setup/computers/rules">
   <COMMENT></COMMENT>
 
   <!-- nodes -->
@@ -2157,6 +2162,7 @@
 </MAP>
 </INVOKE>
 </LOOP>
+</BRANCH>
 
 <BRANCH TIMEOUT="" SWITCH="/setup/computers/type">
   <COMMENT></COMMENT>

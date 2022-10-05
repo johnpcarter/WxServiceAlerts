@@ -142,6 +142,7 @@ public final class record
 		// @sigtype java 3.5
 		// [i] field:0:required eventType
 		// [i] field:0:required filter
+		// [i] field:0:optional pipelineAttribute
 		// [i] field:0:required timeInterval
 		// [i] field:0:required maxSlots
 		// [i] field:0:optional countZeros {"false","true"}
@@ -207,7 +208,7 @@ public final class record
 				break;
 			}
 		}
-		
+				
 		AllComputers.instance.add(timeInterval, EventType.valueOf(eventType), topLevelOnly, maxSlots, countZeros, filter, pipelineAttribute, c, excludeList, includeList, transactionDuration, persistService);
 		
 		// pipeline out

@@ -623,18 +623,6 @@
             <value name="node_type">unknown</value>
             <value name="node_subtype">unknown</value>
             <value name="is_public">false</value>
-            <value name="field_name">TRACK_DATE</value>
-            <value name="field_type">object</value>
-            <value name="field_dim">0</value>
-            <value name="wrapper_type">java.util.Date</value>
-            <value name="nillable">true</value>
-            <value name="form_qualified">false</value>
-            <value name="is_global">false</value>
-          </record>
-          <record javaclass="com.wm.util.Values">
-            <value name="node_type">unknown</value>
-            <value name="node_subtype">unknown</value>
-            <value name="is_public">false</value>
             <value name="field_name">TOTAL_COUNT</value>
             <value name="field_type">string</value>
             <value name="field_dim">0</value>
@@ -1004,9 +992,6 @@
 </MAPCOPY>
 
 <MAPCOPY FROM="/rows;2;0/totalTransactions;1;0" TO="/addTotalInput;2;0/TRANSACTION_COUNT;1;0">
-</MAPCOPY>
-
-<MAPCOPY FROM="/toDate;3.9;0" TO="/addTotalInput;2;0/TRACK_DATE;3.9;0">
 </MAPCOPY>
 </MAP>
 </INVOKE>

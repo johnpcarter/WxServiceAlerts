@@ -369,7 +369,8 @@ public final class record
 			"wm.oftp.tn:receiveOftp",
 			"wm.oftp.tn:deliverOftp",
 			"wm.x400.tn:receiveX400",
-			"wm.x400.gateway.Gw:sendAndFetch"
+			"wm.x400.gateway.Gw:sendAndFetch",
+			"wm.prt.dispatch:handleTransition"
 			};
 	
 	private static void deleteSubscriber(String eventType, String id) throws ServiceException {

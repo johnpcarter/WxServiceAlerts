@@ -34,6 +34,6 @@
 	<classpathentry kind="var" path="ECLIPSE_E4_MWB"/>
 	<classpathentry kind="var" path="ECLIPSE_OSGI_SVC"/>
 	<classpathentry kind="var" path="ECLIPSE_E4_CORE"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/WmServiceRules"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/JcServiceStatistics"/>
 	<classpathentry kind="output" path="code/classes"/>
 </classpath>

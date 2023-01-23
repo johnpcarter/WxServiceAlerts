@@ -80,6 +80,44 @@ public final class _priv
 
 
 
+	public static final void channels (IData pipeline)
+        throws ServiceException
+	{
+		// --- <<IS-START(channels)>> ---
+		// @sigtype java 3.5
+		// [o] record:1:optional channels
+		// [o] object:0:required isAvailable
+		IData[] channels = null;
+		
+		try {
+			
+			IData results = Service.doInvoke("pub.alert", "pub.alert:channels", IDataFactory.create());
+			IDataCursor rc = results.getCursor();
+			channels = IDataUtil.getIDataArray(rc, "channels");
+			rc.destroy();
+			
+		} catch(Exception e) {
+			// do now't
+		}
+		
+		IDataCursor c = pipeline.getCursor();
+		
+		if (channels != null) {
+			
+			IDataUtil.put(c, "channels", channels);
+			IDataUtil.put(c, "isAvailable", true);
+		} else {
+			IDataUtil.put(c, "isAvailable", false);
+		}
+		
+		c.destroy();
+		// --- <<IS-END>> ---
+
+                
+	}
+
+
+
 	public static final void getChannelId (IData pipeline)
         throws ServiceException
 	{

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Values version="2.0">
+  <value name="name">channels</value>
+  <value name="encodeutf8">true</value>
+  <value name="body">SURhdGFbXSBjaGFubmVscyA9IG51bGw7Cgp0cnkgewoJCglJRGF0YSByZXN1bHRzID0gU2Vydmlj
+ZS5kb0ludm9rZSgicHViLmFsZXJ0IiwgInB1Yi5hbGVydDpjaGFubmVscyIsIElEYXRhRmFjdG9y
+eS5jcmVhdGUoKSk7CglJRGF0YUN1cnNvciByYyA9IHJlc3VsdHMuZ2V0Q3Vyc29yKCk7CgljaGFu
+bmVscyA9IElEYXRhVXRpbC5nZXRJRGF0YUFycmF5KHJjLCAiY2hhbm5lbHMiKTsKCXJjLmRlc3Ry
+b3koKTsKCQp9IGNhdGNoKEV4Y2VwdGlvbiBlKSB7CgkvLyBkbyBub3cndAp9CgpJRGF0YUN1cnNv
+ciBjID0gcGlwZWxpbmUuZ2V0Q3Vyc29yKCk7CgppZiAoY2hhbm5lbHMgIT0gbnVsbCkgewoJCglJ
+RGF0YVV0aWwucHV0KGMsICJjaGFubmVscyIsIGNoYW5uZWxzKTsKCUlEYXRhVXRpbC5wdXQoYywg
+ImlzQXZhaWxhYmxlIiwgdHJ1ZSk7Cn0gZWxzZSB7CglJRGF0YVV0aWwucHV0KGMsICJpc0F2YWls
+YWJsZSIsIGZhbHNlKTsKfQoKYy5kZXN0cm95KCk7</value>
+</Values>

@@ -1,6 +1,7 @@
 # WxServiceAlerts
 
-webMethods package to provide metrics on service usage and provide alerts based on number of executions, average delay and/or number of errors.
+webMethods package to provide metrics on service usage and allows you configure alert rules based alerts based on the number of executions, 
+average delay and/or number of errors.
 
 *local installation*
 
@@ -30,15 +31,34 @@ You can then start configuring which services you want to monitor and trace via 
 
 http://localhost:5555/WxServiceAlerts
 
-Data is collated in memory and volatile, I would only recommend using 1 minute collection intervals for testing purposes. In real world settings use a much larger interval and with a small number of permissible slots in order to ensure that you do not use too much memory. The goal of this package is not to trace historical data but to instead detect performance/issues with service execution and trigger an alert.
+Data is collated in memory and volatile, I would only recommend using 1 minute collection intervals for testing purposes. 
+In real world settings use a much larger interval and with a small number of permissible slots in order to ensure that you do not use too much memory. 
+The goal of this package is not to trace individual transactions but to track .
 
-A database table is created at startup called 'wx_servicealerts_history' if the JDBC connection 'wx.service.alerts.db:conn' has been set appropriately. Reload the package after updating the connection to ensure that the table gets created in the current schema.
+An optional database table is created at startup called 'wx_servicealerts_history' if the JDBC connection 'wx.service.alerts.db:conn' 
+has been set appropriately and that you haven't configured the extended setting 'wx.service.alerts.configuration:persistServiceSignature' (see below). 
+
+Do not forget to reload the package after updating the connection to ensure that the table gets created.
 
 *Transaction Monitoring*
 
-I have now introduced transaction counting, and added persistent support for tracking totals over time via the aforementioned datavbase table. Totals for each service are written to the database with each interval. Counts be viewed online and downloaded in CSV format from;
+Transaction totals for services are collated based on the collection interval and then persisted via the service 'wx.service.alerts.db:persistSnapshot'.
+You can replace this persistence service with your own by setting the extended setting 'watt.service.alerts.snapshot.service'. Your service should implement
+the specification 'wx.service.alerts.configuration:persistServiceSignature'.
+
+You can view the service analytics directly for each service from the page home page of the package
+
+http://localhost:5555/WxServiceAlerts
+
+Alternatively if you want too see only the transaction totals for each service then an online transaction report is also available
 
 http://localhost:5555/WxServiceAlerts/?selectedTab=history
+
+The report can be downloaded as a CSV file.
+
+NOTE: Any time period other than "since last restart" requires the aforementioned database and so won't provide any results if you have configured your 
+own persistence service.
+
 
 *Usage*
 

@@ -3,7 +3,8 @@
 <Values version="2.0">
   <value name="enabled">yes</value>
   <value name="system_package">no</value>
-  <value name="version">1.0</value>
+  <value name="target_server_version">10.5</value>
+  <value name="version">2.0</value>
   <record name="startup_services" javaclass="com.wm.util.Values">
     <null name="wx.service.alerts:startup"/>
   </record>

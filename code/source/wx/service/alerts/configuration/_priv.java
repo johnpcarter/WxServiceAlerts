@@ -7,6 +7,8 @@ import com.wm.util.Values;
 import com.wm.app.b2b.server.Service;
 import com.wm.app.b2b.server.ServiceException;
 // --- <<IS-START-IMPORTS>> ---
+import com.wm.util.GlobalVariables;
+import com.wm.app.b2b.server.globalvariables.GlobalVariablesManager;
 import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
@@ -94,6 +96,32 @@ public final class _priv
 		
 		IDataUtil.put(c, "channelId", _channels.get(type));
 		c.destroy(); 
+			
+		// --- <<IS-END>> ---
+
+                
+	}
+
+
+
+	public static final void getPersistServiceToInvoke (IData pipeline)
+        throws ServiceException
+	{
+		// --- <<IS-START(getPersistServiceToInvoke)>> ---
+		// @sigtype java 3.5
+		// [i] field:0:required defaultService
+		// [o] field:0:required persistService
+		// pipeline in 
+		IDataCursor cursor = pipeline.getCursor(); 
+		String service = IDataUtil.getString(cursor, "defaultService"); 
+		
+		String alt = System.getProperty("watt.service.alerts.snapshot.service");
+		
+		if (alt != null)
+			service = alt;
+		
+		IDataUtil.put(cursor, "persistService", service);
+		cursor.destroy();
 			
 		// --- <<IS-END>> ---
 

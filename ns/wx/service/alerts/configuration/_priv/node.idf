@@ -36,6 +36,8 @@ CQl0aHJvdyBuZXcgU2VydmljZUV4Y2VwdGlvbihlKTsKCX0KCn0=</value>
   <array name="implements" type="value" depth="1">
   </array>
   <array name="imports" type="value" depth="1">
+    <value>com.wm.util.GlobalVariables</value>
+    <value>com.wm.app.b2b.server.globalvariables.GlobalVariablesManager</value>
     <value>java.io.BufferedReader</value>
     <value>java.io.ByteArrayInputStream</value>
     <value>java.io.IOException</value>

@@ -63,6 +63,7 @@ NOTE: Any time period other than "since last restart" requires the aforementione
 own persistence service.
 
 *Alerts*
+
 This feature is only available to webMethods 10.7 or better. You can configure rules to detect trends and hence trigger system alerts to detect services 
 that are slowing or being invoked too often. You can then in turn subscribe to these alerts to implement custom actions if required. Refer to the usage guide for more info.
 

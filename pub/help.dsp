@@ -57,7 +57,10 @@
         A database table is created automatically when the package is first loaded if the JDBC connection 'wx.service.alerts.db:conn' has been set appropriately. Once you have configured the connection, reload the package and check that the table 'wx_servicealerts_history' has been created in the schema that you selected in your connection.
       </p>
       <p><b>NOTE: </b> Both mysql 5.4+ and postgres 10.6+ have been tested with this package. Alerting system is only available if running the package in webMethods 10.11 or better.
-
+      <p>
+        You can replace the default persistence with a service of your own via the extended setting "watt.service.alerts.snapshot.service".
+        Your service should then implement the specification "wx.service.alerts.configuration:persistServiceSignature"
+      </p>
       <h1>Usage</h1>
       <p>
         A service filter has to be created in order to track services, you can do this online via the package's home screen
@@ -85,6 +88,9 @@
       <p>
         <b>Filter</b> - Additional filter combined with 'Trace' to further isolate the services to track i.e. the service name's will have to start with the filter e.g. 'jc.pub' would only filter services beginning with this string such as 'jc.pub.orders:validate'
       </p>
+      <p>
+        <b>Pipeline attribute (Optional)</b> - Allows you to extract an additional attribute from the input of the service that will be appended to the service name. The attribute can contain '.' notation to specify a child attribute of a complex type.
+        Effectively allows you to trace transactions independently for the same service sliced by a business KPI . 
       <p>
         <b>Time interval</b> - Determines the time interval between rule evaluation and persistent to the history table.
       </p>

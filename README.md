@@ -31,20 +31,22 @@ You can then start configuring which services you want to monitor and trace via 
 
 http://localhost:5555/WxServiceAlerts
 
-Data is collated in memory and volatile, I would only recommend using 1 minute collection intervals for testing purposes. 
-In real world settings use a much larger interval and with a small number of permissible slots in order to ensure that you do not use too much memory. 
-The goal of this package is not to trace individual transactions but to track .
+Data is collated in memory and persisted based on the time interval configured by you. I would only recommend using 1 minute collection intervals for testing purposes. 
+In real world settings use a much larger interval along with a small number of permissible historical slots to ensure that you do not use too much memory. 
+The goal of this package is not to trace individual transactions but to track trends and allow you to fire rules based on these activities.
 
-An optional database table is created at startup called 'wx_servicealerts_history' if the JDBC connection 'wx.service.alerts.db:conn' 
-has been set appropriately and that you haven't configured the extended setting 'wx.service.alerts.configuration:persistServiceSignature' (see below). 
+Persistence is performed by a the service 'wx.service.alerts.db:persistSnapshot' and the data is written to a database table that is created at startup called 'wx_servicealerts_history'.
+This requires that you have configured the JDBC connection 'wx.service.alerts.db:conn' correctly. Make sure to reload the package after configuring the
+connection to a database of your choice. The package has been tested with mySQL 8.x, postgres 10.6, and Microsoft SQL Server.
 
-Do not forget to reload the package after updating the connection to ensure that the table gets created.
+*Customising the persistence service*
 
-*Transaction Monitoring*
+You can choose to persist the service statistics to an alternative service of your choice (e.g. redirect trace to ELK via an API call for instance), by creating a service that implemented the specification 'wx.service.alerts.configuration:persistServiceSignature'
+and then configuring the extended setting 'watt.service.alerts.snapshot.service' to register your service with the package. Don't forget to reload the 
+package afterwards. The database connection will not be required afterwards and can be disabled. The startup service will no longer attempt to create the database
+table if you have set this setting. 
 
-Transaction totals for services are collated based on the collection interval and then persisted via the service 'wx.service.alerts.db:persistSnapshot'.
-You can replace this persistence service with your own by setting the extended setting 'watt.service.alerts.snapshot.service'. Your service should implement
-the specification 'wx.service.alerts.configuration:persistServiceSignature'.
+*Online Analytics*
 
 You can view the service analytics directly for each service from the page home page of the package
 
@@ -59,6 +61,9 @@ The report can be downloaded as a CSV file.
 NOTE: Any time period other than "since last restart" requires the aforementioned database and so won't provide any results if you have configured your 
 own persistence service.
 
+*Alerts*
+This feature is only available to webMethods 10.7 or better. You can configure rules to detect trends and hence trigger system alerts to detect services 
+that are slowing or being invoked too often. You can then in turn subscribe to these alerts to implement custom actions if required. Refer to the usage guide for more info.
 
 *Usage*
 

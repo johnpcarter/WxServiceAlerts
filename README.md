@@ -42,8 +42,9 @@ connection to a database of your choice. The package has been tested with mySQL 
 *Customising the persistence service*
 
 You can choose to persist the service statistics to an alternative service of your choice (e.g. redirect trace to ELK via an API call for instance), by creating a service that implemented the specification 'wx.service.alerts.configuration:persistServiceSignature'
-and then configuring the extended setting 'watt.service.alerts.snapshot.service' to register your service with the package. Don't forget to reload the 
-package afterwards. The database connection will not be required afterwards and can be disabled. The startup service will no longer attempt to create the database
+and then configuring the extended setting 'watt.service.alerts.snapshot.service' to register your service with the package. 
+
+Don't forget to reload the package afterwards. The database connection will not be required afterwards and can be disabled. The startup service will no longer attempt to create the database
 table if you have set this setting. 
 
 *Online Analytics*

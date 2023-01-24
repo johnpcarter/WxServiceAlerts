@@ -91,7 +91,7 @@ public final class _priv
 		
 		try {
 			
-			IData results = Service.doInvoke("pub.alert", "pub.alert:channels", IDataFactory.create());
+			IData results = Service.doInvoke("pub.alert", "channels", IDataFactory.create());
 			IDataCursor rc = results.getCursor();
 			channels = IDataUtil.getIDataArray(rc, "channels");
 			rc.destroy();

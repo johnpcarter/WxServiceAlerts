@@ -220,7 +220,7 @@
 
   <!-- nodes -->
 
-<SEQUENCE NAME="%persistService% != &#39;xx&#39;" TIMEOUT="" EXIT-ON="SUCCESS">
+<SEQUENCE NAME="%persistService% == &#39;xx&#39;" TIMEOUT="" EXIT-ON="SUCCESS">
   <COMMENT>only create DB if using our default persist service</COMMENT>
 
   <!-- nodes -->

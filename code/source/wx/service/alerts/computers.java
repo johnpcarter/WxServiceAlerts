@@ -46,7 +46,7 @@ public final class computers
 		String uom = IDataUtil.getString(c, "uom");
 		Object[] rules = (Object[]) IDataUtil.get(c, "rules");
 		
-		// process
+		// create new Average rule java Object to use with a computer
 		
 		Average av = new Average(Source.valueOf(source));
 		

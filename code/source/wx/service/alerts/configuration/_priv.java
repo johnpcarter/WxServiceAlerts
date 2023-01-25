@@ -57,8 +57,11 @@ public final class _priv
 		Object[] toList = null;
 		
 		if (fromList == null) {
+			// create new array
 			toList = new Object[1];
 		} else {
+			// create new array with old items + new 
+			
 			toList = new Object[fromList.length+1];
 			int i = 0;
 			

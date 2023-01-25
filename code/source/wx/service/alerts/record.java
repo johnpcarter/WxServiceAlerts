@@ -49,6 +49,8 @@ public final class record
 	{
 		// --- <<IS-START(alerts)>> ---
 		// @sigtype java 3.5
+		// pipeline in
+		
 		IDataCursor c = pipeline.getCursor();
 		IDataUtil.put(c, "rules", AllComputers.instance.firedRules());
 		c.destroy();
@@ -330,7 +332,7 @@ public final class record
 	// --- <<IS-START-SHARED>> ---
 	
 	private static final String[] EXCLUDE_WM_SERVICES = {
-			"wm.", 
+			"wm.",
 			"pub.", 
 			"com."
 			};

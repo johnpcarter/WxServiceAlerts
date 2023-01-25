@@ -71,6 +71,8 @@ public final class _priv
 		
 		pipelineCursor.destroy();
 		
+		// process 
+		
 		Date start = null;
 		Date end = null;
 		String label = null;

@@ -57,6 +57,7 @@ public final class rules
 		
 		// process
 		
+		// set defaults
 		int minO = 0;
 		boolean stickyB = false;
 		double valueD = -1;

@@ -34,11 +34,12 @@ public final class _priv
 		// [i] recref:1:required inList wm_1.simplerules.alerts.dsp:dspComputer
 		// [o] recref:1:required outList wm_1.simplerules.alerts.dsp:dspComputer
 		// pipeline in
+		
 		IDataCursor c = pipeline.getCursor();
 		String index = IDataUtil.getString(c, "index");
 		IData[] inList = IDataUtil.getIDataArray(c, "inList");
 		
-		// process
+		// processing
 		
 		int i = -1;
 		IData[] outList = inList;

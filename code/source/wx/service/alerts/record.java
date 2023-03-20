@@ -182,7 +182,7 @@ public final class record
 		try { maxSlots = Integer.parseInt(maxSlotsStr); } catch (Exception e) {}
 		try { countZeros = Boolean.parseBoolean(countZerosS); } catch (Exception e) {}
 		try { timeInterval = Long.parseLong(timeIntervalStr); } catch (Exception e) {
-			throw new ServiceException("Provi****de a valid non zero time interval");
+			throw new ServiceException("Provide a valid non zero time interval");
 		}
 		try { transactionDuration = Long.parseLong(transactionDurationStr); } catch (Exception e) {}
 		

@@ -55,8 +55,6 @@ public final class rules
 		String level = IDataUtil.getString(c, "level");
 		String sendMail = IDataUtil.getString(c, "sendEmail");
 		
-		// process
-		
 		// set defaults
 		int minO = 0;
 		boolean stickyB = false;

@@ -191,6 +191,58 @@ public final class _priv
 
 
 
+	public static final void getMeteringSettings (IData pipeline)
+        throws ServiceException
+	{
+		// --- <<IS-START(getMeteringSettings)>> ---
+		// @sigtype java 3.5
+		// [i] field:0:optional defaultName
+		// [o] field:0:optional meteringFile
+		// [o] field:0:required entity
+		// [o] field:0:required product
+		// [o] field:0:required runtimeId
+		// pipeline in 
+		
+		IDataCursor cursor = pipeline.getCursor(); 
+		String defaultName = IDataUtil.getString(cursor, "defaultName");
+		
+		// process
+		
+		String meteringFile = System.getProperty("watt.service.alerts.metering.file");
+		String entity = System.getProperty("watt.service.alerts.metering.entity");
+		String product = System.getProperty("watt.service.alerts.metering.product");
+		String runtimeId = System.getProperty("watt.service.alerts.metering.runtimeId");
+		
+		// pipeline out
+		
+		if (product != null)
+			IDataUtil.put(cursor, "product", product);
+		else
+			IDataUtil.put(cursor, "product", "PIE");
+		
+		if (entity != null)
+			IDataUtil.put(cursor, "entity", entity);
+		else
+			IDataUtil.put(cursor, "entity", "not set - please provide extended setting watt.service.alerts.metering.entity");
+		
+		if (runtimeId != null)
+			IDataUtil.put(cursor, "runtimeId", runtimeId);
+		else
+			IDataUtil.put(cursor, "runtimeId", "not set - please provide extended setting watt.service.alerts.metering.runtimeId");
+		if (meteringFile != null)
+			IDataUtil.put(cursor, "meteringFile", meteringFile);
+		else
+			IDataUtil.put(cursor, "meteringFile", defaultName);
+		
+		cursor.destroy();
+			
+		// --- <<IS-END>> ---
+
+                
+	}
+
+
+
 	public static final void readFile (IData pipeline)
         throws ServiceException
 	{

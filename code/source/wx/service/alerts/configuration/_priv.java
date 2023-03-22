@@ -358,7 +358,6 @@ public final class _priv
 			
 			throw new ServiceException(e);
 		}
-	
 	}
 	// --- <<IS-END-SHARED>> ---
 }

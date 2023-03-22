@@ -32,6 +32,7 @@
           <value name="field_opt">true</value>
           <array name="field_options" type="value" depth="1">
             <value>TODAY</value>
+            <value>YESTERDAY</value>
             <value>CURRENT_WEEK</value>
             <value>CURRENT_MONTH</value>
             <value>LAST_WEEK</value>

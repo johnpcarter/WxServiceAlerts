@@ -14,7 +14,7 @@
     <div>
 	  <button class="pill-button" type="submit">filter</button>
 	  <a href="/invoke/wx.service.alerts.db:archive?timePeriod=%value timePeriod%&download=true" class="pill-button" style="background-color: orange">Download</a>
-	 </div>
+	</div>
 </div>
 %invoke wx.service.alerts.dsp:serviceTotals%
   %ifvar results -notempty%

@@ -39,13 +39,16 @@
     <div style="margin:20px;">
       <form id="form" action=".">
         <input type="hidden" name="selectedTab" value="%value selectedTab%">
-        <div class="tab" style="display: flex">
+        <div class="tab" style="display: inline-block; width: 100%">
             <button id="latestButton" class="tablinks" onclick="setTab('latest')">
               <i class="fa fa-chart-bar" style="line-height: 25px; color: darkgray"></i> Recent
             </button>
             <button id="historyButton" class="tablinks" onclick="setTab('history')">
               <i class="fa fa-list" style="line-height: 25px; color: darkgray"></i> History
             </button>
+            <div style="float: right; vertical-align: middle">
+              <a style="margin-top: 10px; margin-right: 5px; background-color: orange" href="/invoke/wx.service.alerts:exportMonthlyTotals" class="pill-button">Download Metering Totals</a>
+            </div>
             <!-- <button id="alertsButton" class="tablinks" onclick="setTab('alerts')">
               <i class="fa fa-exclamation-triangle" style="line-height: 25px; color: darkgray"></i>
  Alerts

@@ -53,6 +53,22 @@ public final class _priv
 
 
 
+	public static final void currentYear (IData pipeline)
+        throws ServiceException
+	{
+		// --- <<IS-START(currentYear)>> ---
+		// @sigtype java 3.5
+		// [o] field:0:required currentYear
+		IDataCursor cursor = pipeline.getCursor();
+		IDataUtil.put(cursor, "currentYear", "" + java.time.Year.now().getValue());
+		cursor.destroy();
+		// --- <<IS-END>> ---
+
+                
+	}
+
+
+
 	public static final void dateTimeRangeForDayDate (IData pipeline)
         throws ServiceException
 	{
@@ -243,6 +259,54 @@ public final class _priv
 
 
 
+	public static final void incrementDate (IData pipeline)
+        throws ServiceException
+	{
+		// --- <<IS-START(incrementDate)>> ---
+		// @sigtype java 3.5
+		// [i] object:0:optional date
+		// [i] field:0:optional days
+		// [i] field:0:optional hours
+		// [i] field:0:optional minutes
+		// [i] field:0:optional seconds
+		// [o] object:0:required date
+		// pipeline in
+		
+		IDataCursor pipelineCursor = pipeline.getCursor();
+		Date date = (Date) IDataUtil.get(pipelineCursor, "date");
+		String days = IDataUtil.getString(pipelineCursor, "days");
+		String hours = IDataUtil.getString(pipelineCursor, "hours");
+		String minutes = IDataUtil.getString(pipelineCursor, "minutes");
+		String seconds = IDataUtil.getString(pipelineCursor, "seconds");
+		pipelineCursor.destroy();
+		
+		// process
+		
+		int hoursInt = 0;
+		int minsInt = 0;
+		int secsInt = 0;
+		
+		try { hoursInt = Integer.parseInt(days) * 24;} catch(Exception e){}
+		try { hoursInt += Integer.parseInt(hours);} catch(Exception e){}
+		try { minsInt = Integer.parseInt(minutes);} catch(Exception e){}
+		try { secsInt = Integer.parseInt(seconds);} catch(Exception e){}
+		
+		if (date == null)
+			date = new Date();
+		
+		date = DateTimeUtils.sumTimeToDate(date, hoursInt, minsInt, secsInt);
+		
+		// pipeline out
+		
+		IDataUtil.put(pipelineCursor, "date", date);
+		pipelineCursor.destroy();
+		// --- <<IS-END>> ---
+
+                
+	}
+
+
+
 	public static final void readFile (IData pipeline)
         throws ServiceException
 	{
@@ -296,6 +360,51 @@ public final class _priv
 		} else {
 			IDataUtil.put(c, "stream", in);
 		}
+		// --- <<IS-END>> ---
+
+                
+	}
+
+
+
+	public static final void stringToDate (IData pipeline)
+        throws ServiceException
+	{
+		// --- <<IS-START(stringToDate)>> ---
+		// @sigtype java 3.5
+		// [i] field:0:required string
+		// [i] field:0:required pattern
+		// [o] object:0:required date
+		// pipeline in
+		
+		IDataCursor pipelineCursor = pipeline.getCursor();
+		String string = IDataUtil.getString(pipelineCursor, "string");
+		String pattern = IDataUtil.getString(pipelineCursor, "pattern");
+		
+		// process
+		
+		if (pattern == null)
+			throw new ServiceException("Please provide a valid date pattern");
+		
+		Date date = null;
+		
+		if (string == null)
+		{
+			date = new Date();
+		}
+		else
+		{
+			try {
+				date = new SimpleDateFormat(pattern).parse(string);
+			} catch (ParseException e) {
+				throw new ServiceException(e);
+			}
+		}
+		
+		// pipeline out
+		
+		IDataUtil.put(pipelineCursor, "date", date);
+		pipelineCursor.destroy();
 		// --- <<IS-END>> ---
 
                 

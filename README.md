@@ -21,10 +21,6 @@ or if you are not, then simply clone the repository
 
 $ git clone https://github.com/johnpcarter/WxServiceAlerts.git
 
-You will also need the package JcPublicTools via
-
-$ git clone https://github.com/johnpcarter/JcPublicTools.git
-
 *Setup*
 
 You can then start configuring which services you want to monitor and trace via the package home directory.

@@ -334,7 +334,8 @@ public final class record
 	private static final String[] EXCLUDE_WM_SERVICES = {
 			"wm.",
 			"pub.", 
-			"com."
+			"com.",
+			"ws."
 			};
 	
 	private static final String[] INCLUDE_WM_SERVICES = {

@@ -21,6 +21,15 @@ or if you are not, then simply clone the repository
 
 $ git clone https://github.com/johnpcarter/WxServiceAlerts.git
 
+*Upgrading to 3.x*
+
+If you are upgrading from 2.x to 3.x then you will need to run the following script on your database as the table has been updated
+with a new required field called host_name.
+
+```
+ALTER TABLE WX_SERVICEALERTS_HISTORY ADD HOST_NAME VARCHAR(256) NOT NULL DEFAULT 'none';
+```
+
 *Setup*
 
 You can then start configuring which services you want to monitor and trace via the package home directory.

@@ -47,19 +47,19 @@ public final class _priv
 		try { i = Integer.parseInt(index) - 1; } catch (Exception e) {}
 		
 		if (inList != null && i >=0 && i < inList.length) {
-			
-			if (inList.length == 1) {
-				outList = new IData[0];
-			} else {
-				outList = new IData[inList.length-1];
-				int z = 0;
-				for (int q = 0; q < inList.length; q++) {
-					
-					if (q != i) {
-						outList[z++] = inList[q];
-					}
-				}
-			}
+		
+		if (inList.length == 1) {
+		outList = new IData[0];
+		} else {
+		outList = new IData[inList.length-1];
+		int z = 0;
+		for (int q = 0; q < inList.length; q++) {
+		
+		if (q != i) {
+			outList[z++] = inList[q];
+		}
+		}
+		}
 		}
 		
 		// pipeline out

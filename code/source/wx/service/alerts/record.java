@@ -54,7 +54,6 @@ public final class record
 		IDataCursor c = pipeline.getCursor();
 		IDataUtil.put(c, "rules", AllComputers.instance.firedRules());
 		c.destroy();
-			
 		// --- <<IS-END>> ---
 
                 

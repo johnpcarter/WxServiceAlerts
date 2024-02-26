@@ -68,7 +68,7 @@ public final class rules
 		try { sendMailB = Boolean.parseBoolean(sendMail); } catch(Exception e) {}
 		
 		try { valueD = Double.parseDouble(value); } catch(Exception e) {
-			throw new ServiceException("please provide a valid value for threshhold: " + value);
+		throw new ServiceException("please provide a valid value for threshhold: " + value);
 		}
 		
 		Rule<Number> r = new MaxValueExceededRule(EventType.valueOf(eventType), alertType, serviceToCall, minO, valueD, stickyB, levelInt, sendMailB);
@@ -77,7 +77,6 @@ public final class rules
 		
 		IDataUtil.put(c, "rule", r);
 		c.destroy();
-			
 		// --- <<IS-END>> ---
 
                 

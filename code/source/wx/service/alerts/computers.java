@@ -126,16 +126,15 @@ public final class computers
 		Total tc = new Total(Source.valueOf(source));
 		
 		if (rules != null) {
-			for (Object rule : rules) {
-				tc.addRule((Rule<Long>) rule);
-			}
+		for (Object rule : rules) {
+		tc.addRule((Rule<Long>) rule);
+		}
 		}
 		
 		// pipeline out
 		
 		IDataUtil.put(c, "computeTotal", tc);
 		c.destroy();
-			
 		// --- <<IS-END>> ---
 
                 

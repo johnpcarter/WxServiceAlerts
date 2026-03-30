@@ -5,7 +5,7 @@
   <value name="system_package">no</value>
   <null name="target_server_version"/>
   <value name="version">3.1.0</value>
-  <value name="buld">103</value>
+  <value name="buld">104</value>
   <record name="startup_services" javaclass="com.wm.util.Values">
     <null name="wx.service.alerts:startup"/>
   </record>

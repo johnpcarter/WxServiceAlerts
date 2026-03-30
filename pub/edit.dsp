@@ -15,9 +15,9 @@
   </div>
     <table width="100%">
       <tr>
-        <td class="menu-navigator" style="border:none" colspan=2>packages &gt; WxServiceAlerts &gt; <a href="./configuration.dsp">Configuration</a> &gt; <b>%ifvar filter -notempty% Edit filter %else% New filter%endif%</b>
+        <td class="menu-navigator" style="border:none" colspan=2>packages &gt; WxServiceAlerts &gt; <a href="./configuration.dsp" style="color: blue">Configuration</a> &gt; <b>%ifvar filter -notempty% Edit filter %else% New filter%endif%</b>
         <div style="float:right">
-          <a href="./index.dsp">Analytics</a> 
+          <a href="./index.dsp" style="color: blue">Analytics</a> 
         </div>
         </td>
       </tr>

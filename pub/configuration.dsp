@@ -8,19 +8,16 @@
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v6.0.0-beta2/css/all.css">
 </head>
 <body style="overflow-y: scroll;padding: 0px" topmargin="0" leftmargin="0" marginwidth="0" marginheight="0">
-    <div class="tdmasthead" id="top" height="50px">
-      <div style="float:right;padding: 10px">
-          <img src="./resources/sag-logo-white@3x.png" height="25px"/>
-      </div>
-      <div class="saglogo" style="display: flex; align-items: center;">
-          <img src="./resources/wm-microservice-runtime.svg" height="50px" alt="Micro Service Runtime"/>
+    <div class="tdmasthead" id="top" style="background-color: #000000; height: 50px; display: flex; align-items: center; padding: 0 20px;">
+      <div style="display: flex; align-items: center;">
+          <img src="images/ibm-logo.jpg" height="50px" alt="IBM"/>
       </div>
   </div>
     <table width="100%">
       <tr>
-        <td class="menu-navigator" style="border:none" colspan=2>packages &gt; WxServiceAlerts  &gt; <b>Configuration</b> &gt; <a href="./help.dsp">Help</a>
+        <td class="menu-navigator" style="border:none" colspan=2>packages &gt; WxServiceAlerts  &gt; <b>Configuration</b> &gt; <a href="./help.dsp" style="color: blue">Help</a>
           <div style="float:right">
-            <a style="margin-left: 10px" href="./index.dsp">Analytics</a> 
+            <a style="margin-left: 10px; color: black; text-decoration: underline" href="./index.dsp">Analytics</a> 
           </div>
         </td>
       </tr>
@@ -30,7 +27,7 @@
       %invoke wx.service.alerts.dsp:getFilters%
       %loop filters%
         <div class="sag-content">
-          <div class="collapsible" style="margin-top: 10px; background-color: color(srgb 0.378 0.3449 0.775)">
+          <div class="collapsible" style="margin-top: 10px;">
             <div style="float: right; display: inline-flex; align-items: center; gap: 10px">
               <div><i class="fas fa-clock"></i></div>
               <div style="font-size: 10px;">
@@ -60,7 +57,7 @@
           <div class="content">
             %loop computers%
               %ifvar active equals('true')%
-                <div class="collapsible" style="margin-top: 10px; background-color: color(srgb 0.378 0.3449 0.775)">%value type% %value source%</div>
+                <div class="collapsible" style="margin-top: 10px;">%value type% %value source%</div>
                 <div style="width: 100%; display: inline-flex; justify-content: space-around">
                   %loop types%
                     <div style="display: flex; flex-direction: column; justify-content: flex-start; align-items: center; text-align: center; font-weight: bold; min-width: 300px; margin-top: 20px">

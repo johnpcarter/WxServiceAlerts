@@ -8,12 +8,9 @@
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v6.0.0-beta2/css/all.css">
 </head>
 <body style="overflow-y: scroll;padding: 0px" topmargin="0" leftmargin="0" marginwidth="0" marginheight="0">
-    <div class="tdmasthead" id="top" height="50px">
-      <div style="float:right;padding: 10px">
-          <img src="./resources/sag-logo-white@3x.png" height="25px"/>
-      </div>
-      <div class="saglogo" style="display: flex; align-items: center;">
-          <img src="./resources/wm-microservice-runtime.svg" height="50px" alt="Micro Service Runtime"/>
+    <div class="tdmasthead" id="top" style="background-color: #000000; height: 50px; display: flex; align-items: center; padding: 0 20px;">
+      <div style="display: flex; align-items: center;">
+          <img src="images/ibm-logo.jpg" height="50px" alt="IBM"/>
       </div>
   </div>
     <table width="100%">

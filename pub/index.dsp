@@ -19,19 +19,16 @@
 </script>
 </head>
 <body style="overflow-y: scroll; padding: 0px" topmargin="0" leftmargin="0" marginwidth="0" marginheight="0" onload="onLoad()">
-    <div class="tdmasthead" id="top" height="50px">
-      <div style="float:right; padding: 10px">
-          <img src="./resources/sag-logo-white@3x.png" height="25px"/>
-      </div>
-      <div class="saglogo" style="display: flex; align-items: center;">
-          <img src="./resources/wm-microservice-runtime.svg" height="50px" alt="Micro Service Runtime"/>
+    <div class="tdmasthead" id="top" style="background-color: #000000; height: 50px; display: flex; align-items: center; padding: 0 20px;">
+      <div style="display: flex; align-items: center;">
+          <img src="images/ibm-logo.jpg" height="50px" alt="IBM"/>
       </div>
   </div>
     <table width="100%">
       <tr>
-        <td class="menu-navigator" style="border:none" colspan=2>packages &gt; WxServiceAlerts &gt; <b>Analytics</b>
+        <td class="menu-navigator" style="color: black; border:none" colspan=2>packages &gt; WxServiceAlerts &gt; <b>Analytics</b>
           <div style="float:right">
-            <a href="./configuration.dsp">Configuration</a> 
+            <a href="./configuration.dsp" style="color: black; text-decoration: underline">Configuration</a> 
           </div>
         </td>
       </tr>
@@ -47,7 +44,7 @@
               <i class="fa fa-list" style="line-height: 25px; color: darkgray"></i> History
             </button>
             <div style="float: right; vertical-align: middle">
-              <a style="margin-top: 10px; margin-right: 5px; background-color: orange" href="/invoke/wx.service.alerts:exportMonthlyTotals" class="pill-button">Download Metering Totals</a>
+              <a style="margin-top: 10px; margin-right: 5px; background-color: #0F62FE" href="/invoke/wx.service.alerts:exportMonthlyTotals" class="pill-button">Download Metering Totals</a>
             </div>
             <!-- <button id="alertsButton" class="tablinks" onclick="setTab('alerts')">
               <i class="fa fa-exclamation-triangle" style="line-height: 25px; color: darkgray"></i>

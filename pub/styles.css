@@ -1,5 +1,14 @@
 /* Specific */
 
+/* IBM Branding - Masthead */
+.tdmasthead {
+  background-color: #000000 !important;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+}
+
 .textInput {
   padding: 10px;
   margin: 10px;
@@ -33,15 +42,15 @@ b {
   font-size: 12px;
 }
 .header-selected {
-  background-color: cornflowerblue;
+  background-color: #36454F;
   color: white;
 }
 .header:hover {
-  background-color: cornflowerblue;
+  background-color: #36454F;
   color: white;
 }
 .collapsible {
-	background-color: cornflowerblue;
+	background-color: #36454F;
 	color: white;
 	cursor: pointer;
 	padding: 10px;
@@ -52,7 +61,7 @@ b {
   }
   
   .active, .collapsible:hover {
-	background-color: cornflowerblue;
+	background-color: #36454F;
   }
   .visible-content {
   padding: 0 18px;
@@ -70,16 +79,16 @@ b {
   }
   
   .pill-button {
-	background-color: #3774b9;
-	border: none;
-	color: white;
-	padding: 10px 20px;
-	text-align: center;
-	text-decoration: none;
-	display: inline-block;
-	margin: 4px 2px;
-	cursor: pointer;
-	border-radius: 16px;
+ background-color: #0F62FE;
+ border: none;
+ color: white;
+ padding: 10px 20px;
+ text-align: center;
+ text-decoration: none;
+ display: inline-block;
+ margin: 4px 2px;
+ cursor: pointer;
+ border-radius: 0;
   }
   .pill-button:disabled {
 	background: lightgray;
@@ -332,7 +341,7 @@ a {
 	text-decoration: none !important;
 }
 a:visited {
-	color: color(srgb 0.178 0 0.696);
+	color: white;
 }
 
 div.mat-expansion-panel-body {
@@ -399,7 +408,7 @@ div.mat-expansion-panel-body {
 	border-top-right-radius: 0px !important;
 }
 .mat-menu-content {
-	background-color: rgb(23, 115, 187) !important;
+	background-color: #36454F !important;
 }
 .mat-tab-body-wrapper {
 	height: 100%;
@@ -459,7 +468,7 @@ div.mat-expansion-panel-body {
 	font-size: 14px;
 	line-height:16px;
 	color: white;
-	background-color: rgb(53,118,185);
+	background-color: #36454F;
 	border-radius: 4px;
 	padding-left: 10px;
 	padding-right: 10px;

@@ -5,7 +5,7 @@
   <value name="system_package">no</value>
   <null name="target_server_version"/>
   <value name="version">3.1.1</value>
-  <value name="buld">105</value>
+  <value name="buld">104</value>
   <record name="startup_services" javaclass="com.wm.util.Values">
     <null name="wx.service.alerts:startup"/>
   </record>
@@ -17,7 +17,7 @@
   <value name="listACL">Default</value>
   <value name="webappLoad">yes</value>
   <value name="reloadWithDependentPackage">yes</value>
-  <value name="build">954</value>
+  <value name="build">955</value>
   <value name="description">Track transactions at the service level and configure alerting rules</value>
   <null name="created_date"/>
   <array name="extendedProperties" type="record" depth="1">
@@ -38,4 +38,5 @@
       <value name="value"></value>
     </record>
   </array>
+  <value name="name">WxServiceAlerts</value>
 </Values>

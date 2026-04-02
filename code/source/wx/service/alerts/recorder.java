@@ -28,16 +28,16 @@ import com.jc.compute.ComputersForNamespace.EventType;
 import com.jc.service.ServiceInterceptor;
 // --- <<IS-END-IMPORTS>> ---
 
-public final class record
+public final class recorder
 
 {
 	// ---( internal utility methods )---
 
-	final static record _instance = new record();
+	final static recorder _instance = new recorder();
 
-	static record _newInstance() { return new record(); }
+	static recorder _newInstance() { return new recorder(); }
 
-	static record _cast(Object o) { return (record)o; }
+	static recorder _cast(Object o) { return (recorder)o; }
 
 	// ---( server methods )---
 
@@ -67,7 +67,6 @@ public final class record
 		// --- <<IS-START(clearRules)>> ---
 		// @sigtype java 3.5
 		AllComputers.instance.clear();
-			
 		// --- <<IS-END>> ---
 
                 
@@ -214,6 +213,39 @@ public final class record
 		
 		// pipeline out
 		
+		pipelineCursor.destroy();
+		// --- <<IS-END>> ---
+
+                
+	}
+
+
+
+	public static final void removeComputer (IData pipeline)
+        throws ServiceException
+	{
+		// --- <<IS-START(removeComputer)>> ---
+		// @sigtype java 3.5
+		// [i] field:0:required eventType
+		// [i] field:0:required filter
+		// [i] field:0:required timeInterval
+		// [o] object:0:required success
+		IDataCursor pipelineCursor = pipeline.getCursor();
+		String filter = IDataUtil.getString(pipelineCursor, "filter");
+		String timeIntervalStr = IDataUtil.getString(pipelineCursor,"timeInterval");
+		
+		// process
+		
+		long timeInterval = -1;
+		try { timeInterval = Long.parseLong(timeIntervalStr); } catch (Exception e) {
+			throw new ServiceException("Provide a valid non zero time interval");
+		}
+		
+		boolean didDelete = AllComputers.instance.remove(timeInterval, filter);
+		
+		// output
+		
+		IDataUtil.put(pipelineCursor, "success", didDelete);
 		pipelineCursor.destroy();
 		// --- <<IS-END>> ---
 

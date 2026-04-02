@@ -2,7 +2,7 @@
 	<input class="searchTerm" style="margin-left: 5px; margin-right: 5px" type="text" placeholder="service name" name="filter" value="%value filter%">
 	<button class="pill-button" type="submit">filter</button>
 </form>
-%invoke wx.service.alerts.record:getServiceAnalytics%
+%invoke wx.service.alerts.recorder:getServiceAnalytics%
   %ifvar results -notempty%
   %loop results%
   <div style="width: 100%; padding-top: 15px">

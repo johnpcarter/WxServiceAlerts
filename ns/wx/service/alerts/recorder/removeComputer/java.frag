@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Values version="2.0">
+  <value name="name">removeComputer</value>
+  <value name="encodeutf8">true</value>
+  <value name="body">SURhdGFDdXJzb3IgcGlwZWxpbmVDdXJzb3IgPSBwaXBlbGluZS5nZXRDdXJzb3IoKTsKU3RyaW5n
+IGZpbHRlciA9IElEYXRhVXRpbC5nZXRTdHJpbmcocGlwZWxpbmVDdXJzb3IsICJmaWx0ZXIiKTsK
+U3RyaW5nIHRpbWVJbnRlcnZhbFN0ciA9IElEYXRhVXRpbC5nZXRTdHJpbmcocGlwZWxpbmVDdXJz
+b3IsInRpbWVJbnRlcnZhbCIpOwoKLy8gcHJvY2VzcwoKbG9uZyB0aW1lSW50ZXJ2YWwgPSAtMTsK
+dHJ5IHsgdGltZUludGVydmFsID0gTG9uZy5wYXJzZUxvbmcodGltZUludGVydmFsU3RyKTsgfSBj
+YXRjaCAoRXhjZXB0aW9uIGUpIHsKCXRocm93IG5ldyBTZXJ2aWNlRXhjZXB0aW9uKCJQcm92aWRl
+IGEgdmFsaWQgbm9uIHplcm8gdGltZSBpbnRlcnZhbCIpOwp9Cgpib29sZWFuIGRpZERlbGV0ZSA9
+IEFsbENvbXB1dGVycy5pbnN0YW5jZS5yZW1vdmUodGltZUludGVydmFsLCBmaWx0ZXIpOwoKLy8g
+b3V0cHV0CgpJRGF0YVV0aWwucHV0KHBpcGVsaW5lQ3Vyc29yLCAic3VjY2VzcyIsIGRpZERlbGV0
+ZSk7CnBpcGVsaW5lQ3Vyc29yLmRlc3Ryb3koKTs=</value>
+</Values>

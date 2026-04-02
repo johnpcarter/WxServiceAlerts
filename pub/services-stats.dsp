@@ -8,7 +8,7 @@
 		<meta http-equiv="refresh" content="60">
 	</head>
 	<body>
-%invoke wx.service.alerts.record:getServiceAnalytics%
+%invoke wx.service.alerts.recorder:getServiceAnalytics%
 	%loop results%
 	%loop types%
 	<div style="margin-left: -5px; background-color: white">

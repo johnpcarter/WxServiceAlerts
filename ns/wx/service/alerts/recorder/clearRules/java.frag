@@ -3,5 +3,5 @@
 <Values version="2.0">
   <value name="name">clearRules</value>
   <value name="encodeutf8">true</value>
-  <value name="body">QWxsQ29tcHV0ZXJzLmluc3RhbmNlLmNsZWFyKCk7Cgk=</value>
+  <value name="body">QWxsQ29tcHV0ZXJzLmluc3RhbmNlLmNsZWFyKCk7</value>
 </Values>

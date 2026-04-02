@@ -17,7 +17,7 @@
   <value name="listACL">Default</value>
   <value name="webappLoad">yes</value>
   <value name="reloadWithDependentPackage">yes</value>
-  <value name="build">955</value>
+  <value name="build">956</value>
   <value name="description">Track transactions at the service level and configure alerting rules</value>
   <null name="created_date"/>
   <array name="extendedProperties" type="record" depth="1">

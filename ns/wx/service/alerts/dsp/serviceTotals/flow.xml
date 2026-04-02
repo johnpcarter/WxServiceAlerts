@@ -10,7 +10,7 @@
 
   <!-- nodes -->
 
-<INVOKE NAME="%timePeriod% == $null || %timePeriod% == &#39;CACHE&#39;" TIMEOUT="" SERVICE="wx.service.alerts.record:serviceTotals" VALIDATE-IN="$none" VALIDATE-OUT="$none">
+<INVOKE NAME="%timePeriod% == $null || %timePeriod% == &#39;CACHE&#39;" TIMEOUT="" SERVICE="wx.service.alerts.recorder:serviceTotals" VALIDATE-IN="$none" VALIDATE-OUT="$none">
   <COMMENT></COMMENT>
 
   <!-- nodes -->

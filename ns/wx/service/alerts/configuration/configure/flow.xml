@@ -3846,7 +3846,7 @@
 </INVOKE>
 </BRANCH>
 
-<INVOKE TIMEOUT="" SERVICE="wx.service.alerts.record:registerComputer" VALIDATE-IN="$none" VALIDATE-OUT="$none">
+<INVOKE TIMEOUT="" SERVICE="wx.service.alerts.recorder:registerComputer" VALIDATE-IN="$none" VALIDATE-OUT="$none">
   <COMMENT></COMMENT>
 
   <!-- nodes -->

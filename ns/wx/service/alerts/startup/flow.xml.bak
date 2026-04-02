@@ -434,12 +434,12 @@
 </MAP>
 </INVOKE>
 
-<BRANCH TIMEOUT="" LABELEXPRESSIONS="true">
+<BRANCH TIMEOUT="" SWITCH="/tableCount">
   <COMMENT>Only create the table if it does not yet exist</COMMENT>
 
   <!-- nodes -->
 
-<BRANCH TIMEOUT="" SWITCH="/%tableCount% == &#39;0&#39;" LABELEXPRESSIONS="true">
+<BRANCH NAME="0" TIMEOUT="" LABELEXPRESSIONS="true">
   <COMMENT>Only create DB tables if using our persist service</COMMENT>
 
   <!-- nodes -->

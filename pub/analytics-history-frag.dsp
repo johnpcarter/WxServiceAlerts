@@ -35,17 +35,17 @@
   <tr>
 	  <th style="background-color: #3774b9; color :white; padding: 15px; text-align: left">Service</th>
 	  <th style="background-color: #3774b9; color: white; padding: 15px; width: 250px">Successful</th>
-	  <th style="background-color: #3774b9; color: white; padding: 15px; width: 250px">Transactions</th>
 	  <th style="background-color: #3774b9; color: white; padding: 15px; width: 250px">Failed</th>
 	  <th style="background-color: #3774b9; color: white; padding: 15px; width: 250px">Avg duration (ms)</th>
+	  <th style="background-color: #3774b9; color: white; padding: 15px; width: 250px">Transactions</th>
   </tr>
   %loop results/rows%
 	  <tr>
 		  <td style="padding: 10px; text-align: left">%value name%</td>
 		  <td style="padding: 10px; text-align: center">%value totalCount%</td>
-		  <td style="padding: 10px; text-align: center">%value totalTransactions%</td>
 		  <td style="padding: 10px; text-align: center">%value totalErrors%</td>
 		  <td style="padding: 10px; text-align: center">%value averageDuration%</td>
+		  <td style="padding: 10px; text-align: center">%value totalTransactions%</td>
 	  </tr>
 	  %endloop%
 </table>

@@ -168,6 +168,7 @@ public final class recorder
 		pipelineCursor.destroy();
 		
 		// process
+		String traceRecordStr = System.getenv("com.ibm.service.alerts.trace");
 		
 		boolean countZeros = false;
 		boolean topLevelOnly = false;
@@ -182,7 +183,14 @@ public final class recorder
 		try { timeInterval = Long.parseLong(timeIntervalStr); } catch (Exception e) {
 			throw new ServiceException("Provide a valid non zero time interval");
 		}
+		
 		try { transactionDuration = Long.parseLong(transactionDurationStr); } catch (Exception e) {}
+		
+		boolean traceRecord = false;
+		
+		if (traceRecordStr != null) {
+			traceRecord = Boolean.parseBoolean(traceRecordStr);
+		}
 		
 		if (filter.endsWith(".*")) {
 			filter = filter.substring(0, filter.length()-2);
@@ -209,7 +217,7 @@ public final class recorder
 			}
 		}
 				
-		AllComputers.instance.add(timeInterval, EventType.valueOf(eventType), topLevelOnly, maxSlots, countZeros, filter, pipelineAttribute, c, excludeList, includeList, transactionDuration, persistService);
+		AllComputers.instance.add(timeInterval, EventType.valueOf(eventType), topLevelOnly, maxSlots, countZeros, filter, pipelineAttribute, c, excludeList, includeList, transactionDuration, persistService, traceRecord);
 		
 		// pipeline out
 		
@@ -226,7 +234,6 @@ public final class recorder
 	{
 		// --- <<IS-START(removeComputer)>> ---
 		// @sigtype java 3.5
-		// [i] field:0:required eventType
 		// [i] field:0:required filter
 		// [i] field:0:required timeInterval
 		// [o] object:0:required success

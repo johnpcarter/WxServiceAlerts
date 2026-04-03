@@ -53,14 +53,17 @@ public final class _priv
 
 
 
-	public static final void currentYear (IData pipeline)
+	public static final void currentMonthAndYear (IData pipeline)
         throws ServiceException
 	{
-		// --- <<IS-START(currentYear)>> ---
+		// --- <<IS-START(currentMonthAndYear)>> ---
 		// @sigtype java 3.5
 		// [o] field:0:required currentYear
+		// [o] field:0:required currentMonth
 		IDataCursor cursor = pipeline.getCursor();
 		IDataUtil.put(cursor, "currentYear", "" + java.time.Year.now().getValue());
+		IDataUtil.put(cursor, "currentMonth", "" + java.time.YearMonth.now().getMonthValue());
+		
 		cursor.destroy();
 		// --- <<IS-END>> ---
 

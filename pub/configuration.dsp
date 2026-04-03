@@ -96,6 +96,9 @@
       <form action="edit.dsp">
         <button class="pill-button" style="margin-top: 20px">Add service filter</button>
       </form>
+      <p style="font-style: italic; color: gray">
+        It is not recommended to make live changes in production as it may cause inaccuracies in the transaction counts and you should ideally restart the server following any changes.
+      </p>
     </div>
     <script>
       var coll = document.getElementsByClassName("collapsible");

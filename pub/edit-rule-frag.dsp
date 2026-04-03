@@ -47,8 +47,6 @@
 
   input.addEventListener("input", event => {
     
-    console.log("poop: " + input.value);
-
     info.style.setProperty("filter", "invert(.5) saturate(5);");
     warning.style.setProperty("filter", "invert(.5) saturate(5);");
     error.style.setProperty("filter", "invert(.5) saturate(5);");

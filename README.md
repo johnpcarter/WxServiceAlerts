@@ -69,7 +69,7 @@ own persistence service.
 
 *Alerts*
 
-This feature is only available to webMethods 10.7 or better. You can configure rules to detect trends and hence trigger system alerts to detect services 
+You can configure rules to detect trends and hence trigger system alerts to detect services 
 that are slowing or being invoked too often. You can then in turn subscribe to these alerts to implement custom actions if required. Refer to the usage guide for more info.
 
 *Usage*
@@ -83,5 +83,5 @@ http://localhost:5555/WxServiceAlerts/help.dsp
 webMethods services are directly editable. Supporting java library at code/jars/simple-rules.jar is in the
 git repository [WmServiceRules](https://github.com/johnpcarter/WmServiceRules).
 
-> This is a webMethods Micro Service Runtime package and requires an IBM webMethods Micro Service Runtime or Integration Server (10.5+) to host it. 
+> This is a webMethods Micro Service Runtime package and requires an IBM webMethods Micro Service Runtime or Integration Server 12.1 or better to host it. 
 Package versioning and configuration can be referenced in the package [manifest](./manifest.v3)  file. Alerts will only work if you are hosting in the package in a runtime that is 10.11 or better.

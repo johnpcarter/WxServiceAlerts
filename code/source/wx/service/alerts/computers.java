@@ -56,11 +56,10 @@ public final class computers
 			}
 		}
 		
-		// pipeline ou
+		// pipeline out
 		
 		IDataUtil.put(c, "computeAverage", av);
 		c.destroy();
-			
 		// --- <<IS-END>> ---
 
                 
